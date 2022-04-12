@@ -1,4 +1,9 @@
-# zetamlc: a lightweight general-purpose maths library.
+<p align="center">
+  <img src="/.github/icon/readme-icon-black.svg#gh-light-mode-only" height=80px/>
+  <img src="/.github/icon/readme-icon-white.svg#gh-dark-mode-only" height=80px/>
+</p>
+
+# zetamlc: the Zeta Maths Library for C
 
 _This readme is **unfinished**. It will be added to as development goes on._
 
