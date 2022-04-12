@@ -1,0 +1,13 @@
+# ---
+# .vscode files other than launch and tasks
+#
+
+**.vscode/**
+!**launch.json
+!**tasks.json
+
+# ---
+# binaries
+#
+
+**build/

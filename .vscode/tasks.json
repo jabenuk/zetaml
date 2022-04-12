@@ -1,0 +1,83 @@
+{
+	"version": "2.0.0",
+	"options": {
+		"env": {
+			"buildFolder": "${workspaceFolder}/build"
+		}
+	},
+	"tasks": [
+		/* __build */ {
+			"label": "__build",
+			"type": "shell",
+
+			"command": "clear;/usr/bin/cmake",
+            "args": [
+                "--build",
+                "${buildFolder}"
+            ]
+		/* __cfgre */ }, {
+			"label": "__cfgre",
+			"type": "shell",
+
+			"command": "clear;/usr/bin/cmake",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			
+			"args": [
+				".",
+				"-B",
+				"${buildFolder}",
+				// declare any additional CMake variables here for testing
+				"-DCMAKE_BUILD_TYPE=Debug"
+			]
+		/* __clean */  }, {
+			"label": "__clean",
+			"type": "shell",
+
+			"command": "rm",
+			"args": [
+				"-rf",
+				"${buildFolder}"
+			]
+		},
+		
+		/* build project */ {
+			"label": "build project",
+			
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"__build"
+			],
+
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+		/* configure project */ }, {
+			"label": "configure project",
+			
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"__cfgre"
+			]
+		/* clean and rebuild project */ }, {
+			"label": "clean and rebuild project",
+			
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"__clean",
+				"__cfgre",
+				"__build"
+			]
+		/* clean and configure project */ }, {
+			"label": "clean and configure project",
+			
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"__clean",
+				"__cfgre"
+			]
+		}
+	]
+}
