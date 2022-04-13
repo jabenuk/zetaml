@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
 
-            "program": "${workspaceFolder}/build/zmlctest",
+            "program": "${workspaceFolder}/build/tests/zmlctest",
             "cwd": "${workspaceFolder}",
 
             "externalConsole": false,

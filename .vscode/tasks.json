@@ -29,7 +29,9 @@
 				"-B",
 				"${buildFolder}",
 				// declare any additional CMake variables here for testing
-				"-DCMAKE_BUILD_TYPE=Debug"
+				"-DCMAKE_BUILD_TYPE=Debug",
+				"-DZML_BUILD_TESTS=ON",
+				//"-DZML_USE_FLOATS=ON"
 			]
 		/* __clean */  }, {
 			"label": "__clean",

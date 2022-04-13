@@ -11,10 +11,20 @@
 /* THE USE OR OTHER DEALINGS IN THE SOFTWARE.											   */
 /* *************************************************************************************** */
 
-#include <stdio.h>
+#define testf(x) printf("%s = %f\n", #x, x)
+
+#include <zetamlc.h>
 
 int main() {
-	printf("Hello world!\n");
+	// ======================
+	// utility functions
+	// ======================
+
+	testf(PI);
+	testf(zmlToDegrees(3.141592653589793238463));
+	testf(zmlToRadians(180));
+	testf(zmlLerp(5, 0, 10, 0, 100));
+	testf(zmlLerp(50, 0, 100, 0, 10));
 
 	return 0;
 }
