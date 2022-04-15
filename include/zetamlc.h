@@ -25,12 +25,6 @@ extern "C" {
 #	endif
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <math.h>
-
 #define PI (__floating) 3.141592653589793238463
 
 // ---
@@ -177,6 +171,46 @@ extern zmlVector 	zmlDivideVecScalar_r(zmlVector v1, __floating v2);
 extern void		 	zmlDivideVecScalar(zmlVector *v1, __floating v2);
 
 // ==============================================================================
+// *****				   PUBLIC MATRIX FUNCTIONALITY						*****
+// ==============================================================================
+
+/**
+ * @brief Matrix structure
+ * 
+ */
+typedef struct {
+	unsigned int rows;
+	unsigned int cols;
+	__floating **elements; // 2d array of elements
+} zmlMatrix;
+
+/**
+ * @brief An undefined matrix; no elements.
+ * 
+ */
+extern const zmlMatrix ZML_NULL_MATRIX;
+
+/**
+ * @brief Allocate memory for a matrix
+ * @param rows the number of rows
+ * @param cols the number of cols
+ */
+extern zmlMatrix zmlAllocMatrix(unsigned int rows, unsigned int cols);
+/**
+ * @brief Free a matrix's memory.
+ * 
+ * @param mat the matrix to free.
+ */
+extern void zmlFreeMatrix(zmlMatrix *mat);
+
+/**
+ * @brief Allocate and return an identity matrix with width and height size.
+ * 
+ * @param size the size (rows and columns) of the matrix.
+ */
+extern zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols);
+
+// ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================
 
@@ -203,11 +237,26 @@ extern __floating zmlToRadians(__floating deg);
 extern void zmlToStringV(zmlVector *val, char *str);
 
 /**
+ * @brief Takes a matrix value, val, and converts it to a formatted string.
+ * 
+ * @param val the matrix to format and express as a string.
+ * @param str the string to return the value into.
+ */
+extern void zmlToStringM(zmlMatrix *val, char *str);
+
+/**
  * @brief Prints the output of zmlToStringV(val) to stdout (with new line!).
  * 
  * @param val the vector to format and print.
  */
 extern void zmlPrintV(zmlVector *val);
+
+/**
+ * @brief Prints the output of zmlToStringM(val) to stdout (with new line!).
+ * 
+ * @param val the matrix to format and print.
+ */
+extern void zmlPrintM(zmlMatrix *val);
 
 /**
  * @brief Performs a linear interpolation operation on value val.

@@ -14,15 +14,34 @@
 #define testf(x) printf("%s = %f\n", #x, x)
 
 #include <zetamlc.h>
+#include <stdio.h>
 
 int main() {
 	printf("%d-bit\n\n", sizeof(void *) * 8);
 
 	// ======================
-	// vectors
+	// matrices
 	// ======================
 
 	{
+
+		zmlMatrix mat1 = zmlIdentityMatrix(4, 4);
+
+		zmlPrintM(&mat1);
+		zmlPrintM(&mat1);
+		zmlPrintM(&mat1);
+
+		zmlFreeMatrix(&mat1);
+
+	}
+
+	printf("\n");
+
+	// ======================
+	// vectors
+	// ======================
+
+	if (0) { // not using
 
 		zmlVector vec1 = zmlConstructVector(2, 2.0, 3.0);
 		zmlPrintV(&vec1);
@@ -46,6 +65,7 @@ int main() {
 		zmlFreeVector(&vec_cross1);
 		zmlFreeVector(&vec_cross2);
 		zmlFreeVector(&vec_crossp);
+
 	}
 
 	printf("\n");
@@ -54,7 +74,7 @@ int main() {
 	// utility functions
 	// ======================
 
-	{
+	if (0) { // not using
 
 		testf(PI);
 		testf(zmlToDegrees(PI));

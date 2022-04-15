@@ -1,6 +1,7 @@
 add_library(${PROJECT_NAME}
 	"utils.c"
 	"vector.c"
+	"matrix.c"
 )
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include")
 

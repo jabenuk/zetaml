@@ -37,7 +37,9 @@
 			<li><a href="#zmlToDegrees">zmlToDegrees()</a></li>
 			<li><a href="#zmlToRadians">zmlToRadians()</a></li>
 			<li><a href="#zmlToStringV">zmlToStringV()</a></li>
+			<li><a href="#zmlToStringM">zmlToStringM()</a></li>
 			<li><a href="#zmlPrintV">zmlPrintV()</a></li>
+			<li><a href="#zmlPrintM">zmlPrintM()</a></li>
 			<li><a href="#zmlLerp">zmlLerp()</a></li>
 		</ul>
 
@@ -78,14 +80,41 @@
 		
 		<hr>
 		
+		<h2 id="zmlToStringM"><code>void zmlToStringM(zmlMatrix *val, char *str)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>val</b></code> the matrix to format and express as a string.</li>
+			<li><code><b>str</b></code> the string to return the value into.</li>
+		</ul>
+		<h3>Summary</h3>
+		Takes a <a href="matrices.html#zmlMatrix">zmlMatrix</a> <code>val</code> and converts it to a formatted string. See <a href="https://stackoverflow.com/a/25799033/">this answer</a> on StackOverflow for an explanation into returning the string as an argument, rather than a return type. The string is formatted as such:
+<pre>
+(mat2x2) [ 3.00000, 0.00000 ],
+         [ 0.00000, 3.00000 ]
+</pre>
+		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.</span>
+		
+		<hr>
+		
 		<h2 id="zmlPrintV"><code>void zmlPrintV(zmlVector *val)</code></h2>
 		<h3>Arguments</h3>
 		<ul>
 			<li><code><b>val</b></code> the vector to format and print.</li>
 		</ul>
 		<h3>Summary</h3>
-		Prints the output of <a href="#zmlToStringV">zmlToStringV()</a> to stdout <i>(with a new line)</i>. The string allocated to print the vector is intended to be optimised to hold the least amount of memory possible, so you should use this function to print vectors rather than manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
+		Prints the output of <a href="#zmlToStringV">zmlToStringV()</a> to stdout <i>(with a new line)</i>. The string allocated to print the vector is intended to be optimised so that it is the exactly correct length to use as little memory as possible, so you should use this function to print vectors rather than manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
 		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print vector elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", vec.elements[0])</code>.</span>
+		
+		<hr>
+		
+		<h2 id="zmlPrintM"><code>void zmlPrintM(zmlMatrix *val)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>val</b></code> the matrix to format and print.</li>
+		</ul>
+		<h3>Summary</h3>
+		Prints the output of <a href="#zmlToStringM">zmlToStringM()</a> to stdout <i>(with 2 new lines)</i>. The string allocated to print the matrix is intended to be optimised so that it is the exactly correct length to use as little memory as possible, so you should use this function to print vectors rather than manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
+		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.</span>
 		
 		<hr>
 		

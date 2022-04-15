@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>matrices : zetamlc</title>
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="src/shared.css">
+		<link id="favicon" rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<header>
+			<h1>zetamlc.documentation</h1>
+			
+			<nav id="nav-links">
+				<a href="index.html">home</a>
+				<a href="vectors.html">vectors</a>
+				<a href="matrices.html">matrices</a>
+				<a href="transform.html">transformations</a>
+				<a href="utility.html">utility</a>
+			</nav>
+
+			<hr>
+		</header>
+
+		<h1>Matrices</h1>
+
+		Functionality related to matrix constructs.
+
+		<ul>
+			<h4>&emsp;Operators</h4>
+			<li><a href="#operators">Operator naming convention and index</a></li>
+
+			<h4>&emsp;Data types</h4>
+			<li><a href="#zmlMatrix">zmlMatrix</a></li>
+
+			<h4>&emsp;Functions</h4>
+			<li><a href="#zmlAllocMatrix">zmlAllocMatrix()</a></li>
+			<li><a href="#zmlFreeMatrix">zmlFreeMatrix()</a></li>
+			<li><a href="#zmlIdentityMatrix">zmlIdentityMatrix()</a></li>
+
+			<h4>&emsp;Public constants</h4>
+			<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
+		</ul>
+
+		<hr>
+
+		<h2 id="operators">Arithmetic and logical operator functions</h2>
+		<h3>Naming convention</h3>
+		A more detailed description of the naming convention used in zetaml operator functions can be found on the <a href="vectors.html#operators">vectors</a> page.
+		<br><br>
+		The functions for matrix-matrix, matrix-vector, and matrix-scalar operations are:
+		<br>
+		<i>TBA</i>
+
+		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
+
+		<hr>
+
+		<h2 id="zmlMatrix"><code>zmlMatrix</code></h2>
+		<h3>Summary</h3>
+		A matrix construct of any given size. The values in a zmlMatrix are of <b>floating-point</b> type.
+		<h3>Members</h3>
+		<ul>
+			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+			<li><code><b>elements</b></code> a 2D array of elements in the vector</li>
+		</ul>
+
+		<hr>
+		
+		<h2 id="zmlAllocMatrix"><code>zmlMatrix zmlAllocMatrix(unsigned int rows, unsigned int cols)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+		</ul>
+		<h3>Summary</h3>
+		Allocate memory for a matrix struct, and return the empty matrix. <b>Elements are NOT initialised!</b>
+		<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+
+		<hr>
+		
+		<h2 id="zmlFreeMatrix"><code>void zmlFreeMatrix(zmlMatrix *mat)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to free.</li>
+		</ul>
+		<h3>Summary</h3>
+		Free a matrix's memory.
+
+		<hr>
+		
+		<h2 id="zmlIdentityMatrix"><code>zmlMatrix zmlIdentityMatrix(unsigned int size)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+		</ul>
+		<h3>Summary</h3>
+		Allocate and initialise an identity matrix with the given size. (All elements on the main diagonal are 1, others are 0).
+		<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+
+		<hr>
+
+		<h2 id="ZML_NULL_MATRIX"><code>ZML_NULL_MATRIX</code></h2>
+		An undefined matrix with a size of 0. This is sometimes returned when functions fail (although functions will also print an error to <code>stdout</code> when they return ZML_NULL_MATRIX).
+		<span class="warning">The <code>elements</code> array in undefined matrices is a <b>null pointer</b> - using ZML_NULL_MATRIX is very unsafe!</span>
+
+		<hr>
+	</body>
+</html>

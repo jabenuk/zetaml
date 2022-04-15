@@ -15,7 +15,15 @@
 #ifndef __ZETAML_INTERNAL_H__
 #define __ZETAML_INTERNAL_H__
 
+// library header (files that include internal.h are implemented functions in zetamlc.h!)
 #include "zetamlc.h"
+
+// internally required headers
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <math.h>
 
 // use degrees instead of radians.
 static unsigned char _zml_usedegrees;
