@@ -53,6 +53,76 @@
 
 		<hr>
 
+		<h2 id="operators">Arithmetic and logical operator functions</h2>
+		<h3>Naming convention</h3>
+		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
+		<br><br>
+		For example, <code>zmlAddVecs_r</code> adds two vectors and <b>returns the result,</b> allocating heap space for the resulting vector. The '<code>_r</code>' comes from the fact that the function <u>r</u>eturns its result.<br>
+		However, <code>zmlAddVecs</code> adds <code>v2</code> (its second argument) to <code>v1</code> (its first argument), <b>modifying</b> v1. There is no '<code>_r</code>' because nothing is <u>r</u>eturned.
+		<br><br>
+		Vectors also have vector-scalar operations, such as <code>zmlAddVecScalar_r</code> and its respective void function <code>zmlAddVecScalar</code>. The above rules equally apply to these operators.
+		<br><br>
+		Finally, logical operators are named based on the initials of each syllable, e.g. <code>zmlVecLT</code> is the <u>L</u>ess <u>T</u>han operator and <code>zmlVecGTE</code> is the <u>G</u>reater <u>T</u>han or <u>E</u>qual to operator.
+		<br><br>
+		Following these rules, the functions for vector-vector and vector-scalar operations are:
+		<br>
+		<div style="display: flex">
+			<div>
+				<h4>Arithmetic operators (vector-vector)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlAddVecs_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+					<tr><td><code>zmlAddVecs(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+					<tr><td><code>zmlSubtractVecs_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+					<tr><td><code>zmlSubtractVecs(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecs_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecs(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+					<tr><td><code>zmlDivideVecs_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+					<tr><td><code>zmlDivideVecs(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
+				<h4>Arithmetic operators (vector-scalar)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlAddVecScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+					<tr><td><code>zmlAddVecScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+					<tr><td><code>zmlSubtractVecScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+					<tr><td><code>zmlSubtractVecScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+					<tr><td><code>zmlDivideVecScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+					<tr><td><code>zmlDivideVecScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
+				<h4>Boolean operators</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlVecEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+					<tr><td><code>zmlVecGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+					<tr><td><code>zmlVecGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+					<tr><td><code>zmlVecLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+					<tr><td><code>zmlVecLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+				</table>
+			</div>
+		</div>
+		<br>
+		You may not subtract a vector from a scalar or divide a scalar by a vector.
+
+		<hr>
+
 		<h2 id="zmlVector"><code>zmlVector</code></h2>
 		<h3>Summary</h3>
 		A vector construct of any given size. The values in a zmlVector are of <b>floating-point</b> type.
@@ -105,7 +175,7 @@
 		</ul>
 		<h3>Summary</h3>
 		Construct a vector with given values. The amount of given variable arguments is assumed to be <code>size</code>, so you <b>must initialise all values!</b> For example, if you were to call <code>zmlConstructVector(3, 2.0, 5.0)</code>, a Vector3 will be created but only the first two elements will be initialised - the last element will be undetermined. If you don't initialise all values, you should at least set the undefined elements manually as soon as possible.
-		<span class="warning"><b>This function does not work when using floats - </b> the C standard <b>does not permit</b> variadic arguments of float type! Attempting to use it in that case will return <a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a> and print a warning to <code>stdout</code>.</span>
+		<span class="warning"><b>This function does not work when using floats - </b> the C standard <b>does not permit</b> variadic arguments of float type! Attempting to use it in that case will return a zero vector and print a warning to <code>stdout</code>.</span>
 		<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
 
 		<hr>
@@ -176,8 +246,8 @@
 		<hr>
 
 		<h2 id="ZML_NULL_VECTOR"><code>ZML_NULL_VECTOR</code></h2>
-		An undefined vector with a size of 0. This is returned when functions fail (although functions will also print an error to <code>stdout</code> when they return ZML_NULL_VECTOR).
-		<span class="warning">The <code>elements</code> array in undefined vectors is a <b>null pointer</b>!</span>
+		An undefined vector with a size of 0. This is sometimes returned when functions fail (although functions will also print an error to <code>stdout</code> when they return ZML_NULL_VECTOR).
+		<span class="warning">The <code>elements</code> array in undefined vectors is a <b>null pointer</b> - using ZML_NULL_VECTOR is very unsafe!</span>
 
 		<hr>
 	</body>

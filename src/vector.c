@@ -53,7 +53,9 @@ void zmlFreeVector(zmlVector *vec) {
  */
 zmlVector zmlConstructVectorDefault(unsigned int size, __floating val) {
 	zmlVector r = zmlAllocVector(size);
-	memset(r.elements, val, size);
+	for (unsigned int i = 0; i < size; i++) {
+		r.elements[i] = val;
+	}
 
 	return r;
 }
@@ -66,20 +68,28 @@ zmlVector zmlConstructVectorDefault(unsigned int size, __floating val) {
  */
 zmlVector zmlConstructVector(unsigned int size, ...) {
 	#ifdef ZML_USING_FLOATS
-		#pragma message "Variadic arguments do not support floats. You should rebuild zetaml with -DZML_USE_FLOATS=OFF! (or avoid zetaml functions with variadic arguments)"
-		return ZML_NULL_VECTOR;
 	#endif
 
 	zmlVector r = zmlAllocVector(size);
 
-	va_list vl;
-	va_start(vl, size);
+	#ifdef ZML_USING_FLOATS
+		for (unsigned int i = 0; i < size; i++) {
+			r.elements[i] = 0;
+		}
+		
+		#pragma message "Variadic arguments do not support floats; you should manually set elements instead. A zero vector will be returned."
+		printf("zetaml: zmlConstructVector(): variadic arguments do not support floats; you could manually set elements instead. (zero vector returned)\n");
+	#else
+		va_list vl;
+		va_start(vl, size);
 
-	for (unsigned int i = 0; i < size; i++) {
-		r.elements[i] = va_arg(vl, __floating);
-	}
-	va_end(vl);
+		for (unsigned int i = 0; i < size; i++) {
+			r.elements[i] = va_arg(vl, __floating);
+		}
+		va_end(vl);
 
+	#endif
+	
 	return r;
 }
 
@@ -183,5 +193,159 @@ void zmlNormalise(zmlVector *vec) {
 
 	for (unsigned int i = 0; i < vec->size; i++) {
 		vec->elements[i] /= m;
+	}
+}
+
+#define _zml_assertSameSize(x, y, rval) {\
+	if (x.size != y.size) {\
+		printf("zetaml: assertion: given vectors are not the same size!\n");\
+		return rval;\
+	}\
+}
+
+unsigned char zmlVecEquals(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] != v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] <= v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] < v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] >= v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] > v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+
+zmlVector zmlAddVecs_r(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] + v2.elements[i];
+	}
+	return r;
+}
+void zmlAddVecs(zmlVector *v1, zmlVector v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] += v2.elements[i];
+	}
+}
+zmlVector zmlSubtractVecs_r(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] - v2.elements[i];
+	}
+	return r;
+}
+void zmlSubtractVecs(zmlVector *v1, zmlVector v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] -= v2.elements[i];
+	}
+}
+zmlVector zmlMultiplyVecs_r(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] * v2.elements[i];
+	}
+	return r;
+}
+void zmlMultiplyVecs(zmlVector *v1, zmlVector v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] *= v2.elements[i];
+	}
+}
+zmlVector zmlDivideVecs_r(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] / v2.elements[i];
+	}
+	return r;
+}
+void zmlDivideVecs(zmlVector *v1, zmlVector v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] /= v2.elements[i];
+	}
+}
+
+zmlVector zmlAddVecScalar_r(zmlVector v1, __floating v2) {
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] + v2;
+	}
+	return r;
+}
+void zmlAddVecScalar(zmlVector *v1, __floating v2) {
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] += v2;
+	}
+}
+zmlVector zmlSubtractVecScalar_r(zmlVector v1, __floating v2) {
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] - v2;
+	}
+	return r;
+}
+void zmlSubtractVecScalar(zmlVector *v1, __floating v2) {
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] -= v2;
+	}
+}
+zmlVector zmlMultiplyVecScalar_r(zmlVector v1, __floating v2) {
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] * v2;
+	}
+	return r;
+}
+void zmlMultiplyVecScalar(zmlVector *v1, __floating v2) {
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] *= v2;
+	}
+}
+zmlVector zmlDivideVecScalar_r(zmlVector v1, __floating v2) {
+	zmlVector r = zmlAllocVector(v1.size);
+	for (unsigned int i = 0; i < r.size; i++) {
+		r.elements[i] = v1.elements[i] / v2;
+	}
+	return r;
+}
+void zmlDivideVecScalar(zmlVector *v1, __floating v2) {
+	for (unsigned int i = 0; i < v1->size; i++) {
+		v1->elements[i] /= v2;
 	}
 }

@@ -143,6 +143,39 @@ extern zmlVector zmlNormalised(zmlVector *vec);
  */
 extern void zmlNormalise(zmlVector *vec);
 
+// -------------------------------------------
+// Boolean/arithmetic operation functions.
+// These are self-explanatory, and so are not documented.
+// 	NAMING CONVENTION: (explained in docs)
+//	 zmlAddVecs_r adds two vectors and *returns* the result, hence the '_r'.
+// 	 zmlAddVecs adds v2 to v1, modifying v1. There is no '_r' - it does not return anything, but rather modifies v1.
+//	 zmlAddVecScalar_r adds a vector and a scalar and returns the result. etc.
+// -------------------------------------------
+
+extern unsigned char zmlVecEquals(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2);
+
+extern zmlVector 	zmlAddVecs_r(zmlVector v1, zmlVector v2);
+extern void			zmlAddVecs(zmlVector *v1, zmlVector v2);
+extern zmlVector 	zmlSubtractVecs_r(zmlVector v1, zmlVector v2);
+extern void 		zmlSubtractVecs(zmlVector *v1, zmlVector v2);
+extern zmlVector 	zmlMultiplyVecs_r(zmlVector v1, zmlVector v2);
+extern void 		zmlMultiplyVecs(zmlVector *v1, zmlVector v2);
+extern zmlVector 	zmlDivideVecs_r(zmlVector v1, zmlVector v2);
+extern void 		zmlDivideVecs(zmlVector *v1, zmlVector v2);
+
+extern zmlVector 	zmlAddVecScalar_r(zmlVector v1, __floating v2);
+extern void		 	zmlAddVecScalar(zmlVector *v1, __floating v2);
+extern zmlVector 	zmlSubtractVecScalar_r(zmlVector v1, __floating v2);
+extern void		 	zmlSubtractVecScalar(zmlVector *v1, __floating v2);
+extern zmlVector 	zmlMultiplyVecScalar_r(zmlVector v1, __floating v2);
+extern void		 	zmlMultiplyVecScalar(zmlVector *v1, __floating v2);
+extern zmlVector 	zmlDivideVecScalar_r(zmlVector v1, __floating v2);
+extern void		 	zmlDivideVecScalar(zmlVector *v1, __floating v2);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================

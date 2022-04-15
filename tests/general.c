@@ -24,7 +24,7 @@ int main() {
 
 	{
 
-		zmlVector vec1 = zmlConstructVector(3, 2.0, 6.0, 3.0);
+		zmlVector vec1 = zmlConstructVector(2, 2.0, 3.0);
 		zmlPrintV(&vec1);
 		zmlVector vec2 = zmlCopyVector(&vec1);
 		zmlPrintV(&vec2);
@@ -34,7 +34,7 @@ int main() {
 		zmlVector vec_crossp = zmlCross(&vec_cross1, &vec_cross2);
 		zmlPrintV(&vec_crossp);
 
-		testf(zmlDot(&vec_cross1, &vec_cross2));
+		testf(zmlDot(&vec1, &vec1));
 
 		testf(zmlMagnitude(&vec1));
 
