@@ -140,3 +140,48 @@ __floating zmlDot(zmlVector *v1, zmlVector *v2) {
 
 	return r;
 }
+
+/**
+ * @brief returns the magnitude (length) of the given vector vec. 
+ * 
+ * @param vec the specified vector.
+ */
+__floating zmlMagnitude(zmlVector *vec) {
+	__floating r = (__floating) 0.0;
+
+	for (unsigned int i = 0; i < vec->size; i++) {
+		r += (__floating) pow(vec->elements[i], 2); // add square of each element to r
+	}
+
+	// result is made absolute just in case though that should never matter anyway
+	return (__floating) abs(sqrt(r));
+}
+
+/**
+ * @brief returns the given vector in its normalised state (magnitude of 1).
+ * 
+ * @param vec the specified vector.
+ */
+zmlVector zmlNormalised(zmlVector *vec) {
+	zmlVector r = zmlAllocVector(3);
+	float m = zmlMagnitude(vec);
+
+	for (unsigned int i = 0; i < vec->size; i++) {
+		r.elements[i] = vec->elements[i] / m;
+	}
+
+	return r;
+}
+
+/**
+ * @brief normalises (modifies) the specified vector.
+ * 
+ * @param vec the specified vector.
+ */
+void zmlNormalise(zmlVector *vec) {
+	float m = zmlMagnitude(vec);
+
+	for (unsigned int i = 0; i < vec->size; i++) {
+		vec->elements[i] /= m;
+	}
+}

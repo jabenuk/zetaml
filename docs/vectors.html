@@ -43,6 +43,9 @@
 			<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
 			<li><a href="#zmlCross">zmlCross()</a></li>
 			<li><a href="#zmlDot">zmlDot()</a></li>
+			<li><a href="#zmlMagnitude">zmlMagnitude()</a></li>
+			<li><a href="#zmlNormalised">zmlNormalised()</a></li>
+			<li><a href="#zmlNormalise">zmlNormalise()</a></li>
 
 			<h4>&emsp;Public constants</h4>
 			<li><a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a></li>
@@ -138,6 +141,37 @@
 		</ul>
 		<h3>Summary</h3>
 		Produces the dot (scalar) product of the two given vectors <code>v1</code> and <code>v2</code>. All given vectors must be of the same size: if not, 0 is returned and a warning is printed to <code>stdout</code>.
+
+		<hr>
+
+		<h2 id="zmlMagnitude"><code><i>floating</i> zmlMagnitude(zmlVector *vec)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>vec</b></code> the specified vector.</li>
+		</ul>
+		<h3>Summary</h3>
+		Returns the magnitude (length) of the given vector v.
+
+		<hr>
+
+		<h2 id="zmlNormalised"><code>zmlVector zmlNormalised(zmlVector *vec)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>vec</b></code> the specified vector.</li>
+		</ul>
+		<h3>Summary</h3>
+		Returns the given vector in its normalised state - that is to say its magnitude is 1.
+		<span class="warning">This function produces a new vector structure which must be freed with <a href="#zmlFreeVector">zmlFreeVector()</a>. In cases where you would type, for example, <code>vec = zmlNormalised(&vec)</code>, you should type <b><code>zmlNormalise(&vec)</code></b>, using the <a href="#zmlNormalise">zmlNormalise()</a> function instead.</span>
+
+		<hr>
+
+		<h2 id="zmlNormalise"><code>void zmlNormalise(zmlVector *vec)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>vec</b></code> the specified vector.</li>
+		</ul>
+		<h3>Summary</h3>
+		Normalises the specified vector by <b>modifying</b> it. This is an alternative to <a href="#zmlNormalised">zmlNormalised()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="zmlNormalised">zmlNormlised()</a>.
 
 		<hr>
 

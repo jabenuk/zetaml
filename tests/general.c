@@ -24,7 +24,7 @@ int main() {
 
 	{
 
-		zmlVector vec1 = zmlConstructVector(3, 1.0, 0.0, 0.0);
+		zmlVector vec1 = zmlConstructVector(3, 2.0, 6.0, 3.0);
 		zmlPrintV(&vec1);
 		zmlVector vec2 = zmlCopyVector(&vec1);
 		zmlPrintV(&vec2);
@@ -34,15 +34,18 @@ int main() {
 		zmlVector vec_crossp = zmlCross(&vec_cross1, &vec_cross2);
 		zmlPrintV(&vec_crossp);
 
-		__floating vec_dot = zmlDot(&vec_cross1, &vec_cross2);
-		testf(vec_dot);
+		testf(zmlDot(&vec_cross1, &vec_cross2));
+
+		testf(zmlMagnitude(&vec1));
+
+		zmlNormalise(&vec1);
+		zmlPrintV(&vec1);
 
 		zmlFreeVector(&vec1);
 		zmlFreeVector(&vec2);
 		zmlFreeVector(&vec_cross1);
 		zmlFreeVector(&vec_cross2);
 		zmlFreeVector(&vec_crossp);
-
 	}
 
 	printf("\n");

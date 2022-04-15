@@ -122,6 +122,27 @@ extern zmlVector zmlCross(zmlVector *v1, zmlVector *v2);
  */
 extern __floating zmlDot(zmlVector *v1, zmlVector *v2);
 
+/**
+ * @brief returns the magnitude (length) of the given vector vec. 
+ * 
+ * @param vec the specified vector.
+ */
+extern __floating zmlMagnitude(zmlVector *vec);
+
+/**
+ * @brief returns the given vector in its normalised state (magnitude of 1).
+ * 
+ * @param vec the specified vector.
+ */
+extern zmlVector zmlNormalised(zmlVector *vec);
+
+/**
+ * @brief normalises (modifies) the specified vector.
+ * 
+ * @param vec the specified vector.
+ */
+extern void zmlNormalise(zmlVector *vec);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================
