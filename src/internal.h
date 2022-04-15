@@ -11,15 +11,27 @@
 /* THE USE OR OTHER DEALINGS IN THE SOFTWARE.											   */
 /* *************************************************************************************** */
 
+#pragma once
 #ifndef __ZETAML_INTERNAL_H__
 #define __ZETAML_INTERNAL_H__
 
-#include <zetamlc.h>
+#include "zetamlc.h"
 
 // use degrees instead of radians.
 static unsigned char _zml_usedegrees;
 
 // use left-handed coordinates instead of right-handed coordinates.
 static unsigned char _zml_leftcoords;
+
+// get amount of digits in an unsigned integer.
+static unsigned int _zml_getDigitsi(unsigned int val) {
+	unsigned int count = 0;
+	do {
+		count++;
+		val /= 10;
+	} while (val);
+
+	return count;
+}
 
 #endif

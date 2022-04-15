@@ -11,6 +11,7 @@
 /* THE USE OR OTHER DEALINGS IN THE SOFTWARE.											   */
 /* *************************************************************************************** */
 
+#pragma once
 #ifndef __ZETAML_H__
 #define __ZETAML_H__
 
@@ -18,17 +19,25 @@
 extern "C" {
 #endif
 
-#ifndef PI
-#	define PI (__floating) 3.141592653589793238463
+#ifdef ZML_32_BIT
+#	ifndef ZML_USING_FLOATS
+#		warning "You are using a 32-bit build of zetaml but are not using floats. Using doubles might cause problems, you should rebuild zetaml with -DZML_USE_FLOATS=ON!"
+#	endif
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <math.h>
+
+#define PI (__floating) 3.141592653589793238463
 
 // ---
 // The following macros are flags that can be used in zmlSetLibFlag().
 
 #define ZML_USE_DEGREES 0x01		// use degrees instead of radians.
-#define ZML_USE_LEFT_COORDS 0x02	// use left-handed coordinates instead of right-handed coordinates.
+#define ZML_USE_LEFT_COORDS 0x02	// use left-handed coordinates instead of right-handed coordinates
 
 // ==============================================================================
 // *****					 CONFIGURATION FUNCTIONS						*****
@@ -41,6 +50,54 @@ extern "C" {
  * @param val the value to set the flag to
  */
 extern void zmlSetLibFlag(unsigned int flag, unsigned char val);
+
+// ==============================================================================
+// *****				   PUBLIC VECTOR FUNCTIONALITY						*****
+// ==============================================================================
+
+/**
+ * @brief A vector construct of any given size. 
+ * 
+ */
+typedef struct {
+	unsigned int size;
+	__floating *elements;
+} zmlVector;
+
+/**
+ * @brief An undefined vector; no dimension.
+ * 
+ */
+extern const zmlVector ZML_NULL_VECTOR;
+
+/**
+ * @brief Allocate memory for a vector struct, and return the empty vector. Elements are NOT initialised!
+ * 
+ * @param size the size of the vector.
+ */
+extern zmlVector zmlAllocVector(unsigned int size);
+/**
+ * @brief Free a vector's memory.
+ * 
+ * @param vec the vector to free.
+ */
+extern void zmlFreeVector(zmlVector *vec);
+
+/**
+ * @brief Construct a vector with a default value.
+ * 
+ * @param size the size of the vector.
+ * @param val the value to initialise the vector with.
+ */
+extern zmlVector zmlConstructVectorDefault(unsigned int size, __floating val);
+
+/**
+ * @brief Construct a vector with a default value.
+ * 
+ * @param size the size of the vector.
+ * @param ... the values to initialise the vector with. Must be floating-point!
+ */
+extern zmlVector zmlConstructVector(unsigned int size, ...);
 
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
@@ -59,6 +116,21 @@ extern __floating zmlToDegrees(__floating rad);
  * @param rad the value, in degrees, to convert to radians.
  */
 extern __floating zmlToRadians(__floating rad);
+
+/**
+ * @brief Takes a vector value, val, and converts it to a formatted string.
+ * 
+ * @param val the vector to format and express as a string.
+ * @param str the string to return the value into.
+ */
+extern void zmlToStringV(zmlVector *val, char *str);
+
+/**
+ * @brief Prints the output of zmlToStringV(val) to stdout (with new line!).
+ * 
+ * @param val the vector to format and print.
+ */
+extern void zmlPrintV(zmlVector *val);
 
 /**
  * @brief Performs a linear interpolation operation on value val.

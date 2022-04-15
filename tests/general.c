@@ -16,15 +16,30 @@
 #include <zetamlc.h>
 
 int main() {
+	printf("%d-bit\n\n", sizeof(void *) * 8);
+
+	// ======================
+	// vectors
+	// ======================
+
+	zmlVector vec1 = zmlConstructVector(2, 2.23412, 6.15203);
+
+	zmlPrintV(&vec1);
+
+	zmlFreeVector(&vec1);
+
+	printf("\n");
+	
 	// ======================
 	// utility functions
 	// ======================
 
 	testf(PI);
-	testf(zmlToDegrees(3.141592653589793238463));
+	testf(zmlToDegrees(PI));
 	testf(zmlToRadians(180));
 	testf(zmlLerp(5, 0, 10, 0, 100));
 	testf(zmlLerp(50, 0, 100, 0, 10));
 
+	printf("\n");
 	return 0;
 }
