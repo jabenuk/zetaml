@@ -1,7 +1,7 @@
 /* *************************************************************************************** */
 /* 						THE ZETA MATHS LIBRARY LICENSE INFORMATION						   */
 /* *************************************************************************************** */
-/* Copyright (c) 2021 Jack Bennett														   */
+/* Copyright (c) 2022 Jack Bennett														   */
 /* --------------------------------------------------------------------------------------- */
 /* THE  SOFTWARE IS  PROVIDED "AS IS",  WITHOUT WARRANTY OF ANY KIND, EXPRESS  OR IMPLIED, */
 /* INCLUDING  BUT  NOT  LIMITED  TO  THE  WARRANTIES  OF  MERCHANTABILITY,  FITNESS FOR  A */
