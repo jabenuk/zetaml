@@ -106,7 +106,7 @@ extern zmlVector zmlCopyVector(zmlVector *val);
  * @param v1 the first vector to operate on.
  * @param v2 the second vector to operate on.
  */
-extern zmlVector zmlCross(zmlVector *v1, zmlVector *v2);
+extern zmlVector zmlCross(zmlVector v1, zmlVector v2);
 
 /**
  * @brief produces a vector that is the dot (scalar) product of the two given vectors v1 and v2. 
@@ -114,21 +114,21 @@ extern zmlVector zmlCross(zmlVector *v1, zmlVector *v2);
  * @param v1 the first vector to operate on.
  * @param v2 the second vector to operate on.
  */
-extern __floating zmlDot(zmlVector *v1, zmlVector *v2);
+extern __floating zmlDot(zmlVector v1, zmlVector v2);
 
 /**
  * @brief returns the magnitude (length) of the given vector vec. 
  * 
  * @param vec the specified vector.
  */
-extern __floating zmlMagnitude(zmlVector *vec);
+extern __floating zmlMagnitude(zmlVector vec);
 
 /**
  * @brief returns the given vector in its normalised state (magnitude of 1).
  * 
  * @param vec the specified vector.
  */
-extern zmlVector zmlNormalised(zmlVector *vec);
+extern zmlVector zmlNormalised(zmlVector vec);
 
 /**
  * @brief normalises (modifies) the specified vector.
@@ -210,6 +210,45 @@ extern void zmlFreeMatrix(zmlMatrix *mat);
  */
 extern zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols);
 
+/**
+ * @brief copy a matrix's values
+ * 
+ * @param val the pointer to the matrix to be copied
+ */
+extern zmlMatrix zmlCopyMatrix(zmlMatrix *val);
+
+/**
+ * @brief get a specified row from the given matrix as a vector.
+ * 
+ * @param val the matrix to be observed
+ * @param index the index of the row to retrieve.
+ */
+extern zmlVector zmlGetMatrixRow(zmlMatrix val, unsigned int index);
+/**
+ * @brief set a row in the given matrix to a specified vector.
+ * 
+ * @param mat the matrix to be observed
+ * @param index the index of the row to set.
+ * @param vec the vector to set the row to. Must be the same length as the amount of columns in mat.
+ */
+extern void zmlSetMatrixRow(zmlMatrix *mat, unsigned int index, zmlVector vec);
+
+/**
+ * @brief get a specified column from the given matrix as a vector.
+ * 
+ * @param val the matrix to be observed
+ * @param index the index of the column to retrieve.
+ */
+extern zmlVector zmlGetMatrixCol(zmlMatrix val, unsigned int index);
+/**
+ * @brief set a column in the given matrix to a specified vector.
+ * 
+ * @param mat the matrix to be observed
+ * @param index the index of the column to set.
+ * @param vec the vector to set the column to. Must be the same length as the amount of rows in mat.
+ */
+extern void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================
@@ -234,7 +273,7 @@ extern __floating zmlToRadians(__floating deg);
  * @param val the vector to format and express as a string.
  * @param str the string to return the value into.
  */
-extern void zmlToStringV(zmlVector *val, char *str);
+extern void zmlToStringV(zmlVector val, char *str);
 
 /**
  * @brief Takes a matrix value, val, and converts it to a formatted string.
@@ -242,21 +281,21 @@ extern void zmlToStringV(zmlVector *val, char *str);
  * @param val the matrix to format and express as a string.
  * @param str the string to return the value into.
  */
-extern void zmlToStringM(zmlMatrix *val, char *str);
+extern void zmlToStringM(zmlMatrix val, char *str);
 
 /**
  * @brief Prints the output of zmlToStringV(val) to stdout (with new line!).
  * 
  * @param val the vector to format and print.
  */
-extern void zmlPrintV(zmlVector *val);
+extern void zmlPrintV(zmlVector val);
 
 /**
  * @brief Prints the output of zmlToStringM(val) to stdout (with new line!).
  * 
  * @param val the matrix to format and print.
  */
-extern void zmlPrintM(zmlMatrix *val);
+extern void zmlPrintM(zmlMatrix val);
 
 /**
  * @brief Performs a linear interpolation operation on value val.

@@ -114,17 +114,17 @@ zmlVector zmlCopyVector(zmlVector *val) {
  * @param v1 the first vector to operate on.
  * @param v2 the second vector to operate on.
  */
-zmlVector zmlCross(zmlVector *v1, zmlVector *v2) {
-	if (v1->size != 3 || v2->size != 3) {
+zmlVector zmlCross(zmlVector v1, zmlVector v2) {
+	if (v1.size != 3 || v2.size != 3) {
 		printf("zetaml: zmlCross(): one or both given vectors are not 3-dimensional! ZML_NULL_VECTOR returned!\n");
 		return ZML_NULL_VECTOR;
 	}
 
 	zmlVector r = zmlAllocVector(3);
 
-	r.elements[0] = v1->elements[1] * v2->elements[2] - v1->elements[2] * v2->elements[1];
-	r.elements[1] = v1->elements[2] * v2->elements[0] - v1->elements[0] * v2->elements[2];
-	r.elements[2] = v1->elements[0] * v2->elements[1] - v1->elements[1] * v2->elements[0];
+	r.elements[0] = v1.elements[1] * v2.elements[2] - v1.elements[2] * v2.elements[1];
+	r.elements[1] = v1.elements[2] * v2.elements[0] - v1.elements[0] * v2.elements[2];
+	r.elements[2] = v1.elements[0] * v2.elements[1] - v1.elements[1] * v2.elements[0];
 
 	return r;
 }
@@ -135,13 +135,13 @@ zmlVector zmlCross(zmlVector *v1, zmlVector *v2) {
  * @param v1 the first vector to operate on.
  * @param v2 the second vector to operate on.
  */
-__floating zmlDot(zmlVector *v1, zmlVector *v2) {
+__floating zmlDot(zmlVector v1, zmlVector v2) {
 	__floating r = (__floating) 0.0;
 
 	// add each vector element to the result, multiplied by the other equivalent element.
-	if (v1->size == v2->size) {
-		for (unsigned int i = 0; i < v1->size; i++) {
-			r += (__floating) (v1->elements[i] * v2->elements[i]);
+	if (v1.size == v2.size) {
+		for (unsigned int i = 0; i < v1.size; i++) {
+			r += (__floating) (v1.elements[i] * v2.elements[i]);
 		}
 	} else {
 		// 0 is returned if arguments are different dimensions
@@ -156,11 +156,11 @@ __floating zmlDot(zmlVector *v1, zmlVector *v2) {
  * 
  * @param vec the specified vector.
  */
-__floating zmlMagnitude(zmlVector *vec) {
+__floating zmlMagnitude(zmlVector vec) {
 	__floating r = (__floating) 0.0;
 
-	for (unsigned int i = 0; i < vec->size; i++) {
-		r += (__floating) pow(vec->elements[i], 2); // add square of each element to r
+	for (unsigned int i = 0; i < vec.size; i++) {
+		r += (__floating) pow(vec.elements[i], 2); // add square of each element to r
 	}
 
 	// result is made absolute just in case though that should never matter anyway
@@ -172,12 +172,12 @@ __floating zmlMagnitude(zmlVector *vec) {
  * 
  * @param vec the specified vector.
  */
-zmlVector zmlNormalised(zmlVector *vec) {
+zmlVector zmlNormalised(zmlVector vec) {
 	zmlVector r = zmlAllocVector(3);
 	float m = zmlMagnitude(vec);
 
-	for (unsigned int i = 0; i < vec->size; i++) {
-		r.elements[i] = vec->elements[i] / m;
+	for (unsigned int i = 0; i < vec.size; i++) {
+		r.elements[i] = vec.elements[i] / m;
 	}
 
 	return r;
@@ -189,7 +189,7 @@ zmlVector zmlNormalised(zmlVector *vec) {
  * @param vec the specified vector.
  */
 void zmlNormalise(zmlVector *vec) {
-	float m = zmlMagnitude(vec);
+	float m = zmlMagnitude(*vec);
 
 	for (unsigned int i = 0; i < vec->size; i++) {
 		vec->elements[i] /= m;

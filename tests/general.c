@@ -26,12 +26,23 @@ int main() {
 	{
 
 		zmlMatrix mat1 = zmlIdentityMatrix(4, 4);
+		mat1.elements[2][3] = 596;
 
-		zmlPrintM(&mat1);
-		zmlPrintM(&mat1);
-		zmlPrintM(&mat1);
+		zmlVector vec1 = zmlGetMatrixRow(mat1, 2);
+
+		zmlVector vec2 = zmlConstructVector(4, 5.0, 1.0, 2.0, 8.0);
+		zmlSetMatrixRow(&mat1, 1, vec2);
+
+		zmlSetMatrixCol(&mat1, 0, vec2);
+		zmlVector vec3 = zmlGetMatrixCol(mat1, 0);
+
+		zmlPrintM(mat1);
+		zmlPrintV(vec1);
+		zmlPrintV(vec3);
 
 		zmlFreeMatrix(&mat1);
+		zmlFreeVector(&vec1);
+		zmlFreeVector(&vec2);
 
 	}
 
@@ -44,21 +55,21 @@ int main() {
 	if (0) { // not using
 
 		zmlVector vec1 = zmlConstructVector(2, 2.0, 3.0);
-		zmlPrintV(&vec1);
+		zmlPrintV(vec1);
 		zmlVector vec2 = zmlCopyVector(&vec1);
-		zmlPrintV(&vec2);
+		zmlPrintV(vec2);
 
 		zmlVector vec_cross1 = zmlConstructVector(3, 0.0, 0.0, 1.0);
 		zmlVector vec_cross2 = zmlConstructVector(3, 1.0, 0.0, 0.0);
-		zmlVector vec_crossp = zmlCross(&vec_cross1, &vec_cross2);
-		zmlPrintV(&vec_crossp);
+		zmlVector vec_crossp = zmlCross(vec_cross1, vec_cross2);
+		zmlPrintV(vec_crossp);
 
-		testf(zmlDot(&vec1, &vec1));
+		testf(zmlDot(vec1, vec1));
 
-		testf(zmlMagnitude(&vec1));
+		testf(zmlMagnitude(vec1));
 
 		zmlNormalise(&vec1);
-		zmlPrintV(&vec1);
+		zmlPrintV(vec1);
 
 		zmlFreeVector(&vec1);
 		zmlFreeVector(&vec2);
