@@ -195,47 +195,6 @@ void zmlNormalise(zmlVector *vec) {
 	}\
 }
 
-unsigned char zmlVecEquals(zmlVector v1, zmlVector v2) {
-	_zml_assertSameSize(v1, v2, 0);
-	for (unsigned int i = 0; i < v1.size; i++) {
-		if (v1.elements[i] != v2.elements[i])
-			return 0;
-	}
-	return 1;
-}
-extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
-	_zml_assertSameSize(v1, v2, 0);
-	for (unsigned int i = 0; i < v1.size; i++) {
-		if (v1.elements[i] <= v2.elements[i])
-			return 0;
-	}
-	return 1;
-}
-extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
-	_zml_assertSameSize(v1, v2, 0);
-	for (unsigned int i = 0; i < v1.size; i++) {
-		if (v1.elements[i] < v2.elements[i])
-			return 0;
-	}
-	return 1;
-}
-extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
-	_zml_assertSameSize(v1, v2, 0);
-	for (unsigned int i = 0; i < v1.size; i++) {
-		if (v1.elements[i] >= v2.elements[i])
-			return 0;
-	}
-	return 1;
-}
-extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2) {
-	_zml_assertSameSize(v1, v2, 0);
-	for (unsigned int i = 0; i < v1.size; i++) {
-		if (v1.elements[i] > v2.elements[i])
-			return 0;
-	}
-	return 1;
-}
-
 zmlVector zmlAddVecs_r(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
 	zmlVector r = zmlAllocVector(v1.size);
@@ -340,4 +299,64 @@ void zmlDivideVecScalar(zmlVector *v1, __floating v2) {
 	for (unsigned int i = 0; i < v1->size; i++) {
 		v1->elements[i] /= v2;
 	}
+}
+
+zmlVector zmlMultiplyVecMat_r(zmlVector v1, zmlMatrix v2);
+void zmlMultiplyVecMat(zmlVector *v1, zmlMatrix v2) {
+	zmlVector buf = zmlCopyVector(v1);
+
+	for (unsigned int i = 0; i < v1->size; i++) {
+		zmlVector rowvec = zmlGetMatrixRow(v2, i);
+		buf.elements[i] = zmlDot(*v1, rowvec);
+
+		zmlFreeVector(&rowvec);
+	}
+
+	// set v1 to buf
+	zmlFreeVector(v1);
+	*v1 = zmlCopyVector(&buf);
+
+	// free buffer
+	zmlFreeVector(&buf);
+}
+
+unsigned char zmlVecEquals(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] != v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] <= v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] < v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] >= v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] > v2.elements[i])
+			return 0;
+	}
+	return 1;
 }

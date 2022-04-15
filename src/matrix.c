@@ -253,3 +253,176 @@ void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val) {
 	// deallocate now-unnecessary buffer
 	zmlFreeMatrix(&buf);
 }
+
+#define _zml_assertSameSize(x, y, rval) {\
+	if (x.rows != y.rows || x.cols != y.cols) {\
+		printf("zetaml: assertion: given matrices are not the same size!\n");\
+		return rval;\
+	}\
+}
+
+zmlMatrix zmlAddMats_r(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_MATRIX);
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlAddMats(&r, v2);
+	return r;
+}
+void zmlAddMats(zmlMatrix *v1, zmlMatrix v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] += v2.elements[row][col];
+		}
+	}
+}
+zmlMatrix zmlSubtractMats_r(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_MATRIX);
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlSubtractMats(&r, v2);
+	return r;
+}
+void zmlSubtractMats(zmlMatrix *v1, zmlMatrix v2) {
+	_zml_assertSameSize((*v1), v2,);
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] -= v2.elements[row][col];
+		}
+	}
+}
+zmlMatrix zmlMultiplyMats_r(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, ZML_NULL_MATRIX);
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlMultiplyMats(&r, v2);
+	return r;
+}
+void zmlMultiplyMats(zmlMatrix *v1, zmlMatrix v2) {
+	_zml_assertSameSize((*v1), v2,);
+
+	// copy v1 into buffer so it isn't changed in the middle of the calculation
+	zmlMatrix buf = zmlCopyMatrix(v1);
+
+	// convert rows of v1 to an array of vectors
+	zmlVector v1_rows[v1->rows];
+	for (unsigned int i = 0; i < v1->rows; i++)	v1_rows[i] = zmlGetMatrixRow(*v1, i);
+
+	// convert columns of v2 to array of vectors
+	zmlVector v2_cols[v2.cols];
+	for (unsigned int i = 0; i < v2.cols; i++) v2_cols[i] = zmlGetMatrixCol(v2, i);
+
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			buf.elements[row][col] = zmlDot(v1_rows[row], v2_cols[col]);
+		}
+	}
+
+	// set v1 to buf
+	zmlFreeMatrix(v1);
+	*v1 = zmlCopyMatrix(&buf);
+
+	// free vectors
+	for (unsigned int i = 0; i < v1->rows; i++)	zmlFreeVector(&v1_rows[i]);
+	for (unsigned int i = 0; i < v2.cols; i++)	zmlFreeVector(&v2_cols[i]);
+
+	// free matrix buffer
+	zmlFreeMatrix(&buf);
+}
+
+zmlMatrix zmlAddMatScalar_r(zmlMatrix v1, __floating v2) {
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlAddMatScalar(&r, v2);
+	return r;
+}
+void zmlAddMatScalar(zmlMatrix *v1, __floating v2) {
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] += v2;
+		}
+	}
+}
+zmlMatrix zmlSubtractMatScalar_r(zmlMatrix v1, __floating v2) {
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlSubtractMatScalar(&r, v2);
+	return r;
+}
+void zmlSubtractMatScalar(zmlMatrix *v1, __floating v2) {
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] -= v2;
+		}
+	}
+}
+zmlMatrix zmlMultiplyMatScalar_r(zmlMatrix v1, __floating v2) {
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlMultiplyMatScalar(&r, v2);
+	return r;
+}
+void zmlMultiplyMatScalar(zmlMatrix *v1, __floating v2) {
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] *= v2;
+		}
+	}
+}
+zmlMatrix zmlDivideMatScalar_r(zmlMatrix v1, __floating v2) {
+	zmlMatrix r = zmlCopyMatrix(&v1);
+	zmlDivideMatScalar(&r, v2);
+	return r;
+}
+void zmlDivideMatScalar(zmlMatrix *v1, __floating v2) {
+	for (unsigned int row = 0; row < v1->rows; row++) {
+		for (unsigned int col = 0; col < v1->cols; col++) {
+			v1->elements[row][col] /= v2;
+		}
+	}
+}
+
+unsigned char zmlMatEquals(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int row = 0; row < v1.rows; row++) {
+		for (unsigned int col = 0; col < v1.cols; col++) {
+			if (v1.elements[row][col] != v2.elements[row][col])
+				return 0;
+		}
+	}
+	return 1;
+}
+unsigned char zmlMatGT(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int row = 0; row < v1.rows; row++) {
+		for (unsigned int col = 0; col < v1.cols; col++) {
+			if (v1.elements[row][col] <= v2.elements[row][col])
+				return 0;
+		}
+	}
+	return 1;
+}
+unsigned char zmlMatGTE(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int row = 0; row < v1.rows; row++) {
+		for (unsigned int col = 0; col < v1.cols; col++) {
+			if (v1.elements[row][col] < v2.elements[row][col])
+				return 0;
+		}
+	}
+	return 1;
+}
+unsigned char zmlMatLT(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int row = 0; row < v1.rows; row++) {
+		for (unsigned int col = 0; col < v1.cols; col++) {
+			if (v1.elements[row][col] >= v2.elements[row][col])
+				return 0;
+		}
+	}
+	return 1;
+}
+unsigned char zmlMatLTE(zmlMatrix v1, zmlMatrix v2) {
+	_zml_assertSameSize(v1, v2, 0);
+	for (unsigned int row = 0; row < v1.rows; row++) {
+		for (unsigned int col = 0; col < v1.cols; col++) {
+			if (v1.elements[row][col] > v2.elements[row][col])
+				return 0;
+		}
+	}
+	return 1;
+}

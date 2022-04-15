@@ -46,7 +46,7 @@ extern "C" {
 extern void zmlSetLibFlag(unsigned int flag, unsigned char val);
 
 // ==============================================================================
-// *****				   PUBLIC VECTOR FUNCTIONALITY						*****
+// *****					  	PUBLIC STRUCTURES							*****
 // ==============================================================================
 
 /**
@@ -57,6 +57,20 @@ typedef struct {
 	unsigned int size;
 	__floating *elements;
 } zmlVector;
+
+/**
+ * @brief Matrix structure
+ * 
+ */
+typedef struct {
+	unsigned int rows;
+	unsigned int cols;
+	__floating **elements; // 2d array of elements
+} zmlMatrix;
+
+// ==============================================================================
+// *****				   PUBLIC VECTOR FUNCTIONALITY						*****
+// ==============================================================================
 
 /**
  * @brief An undefined vector; no dimension.
@@ -146,12 +160,6 @@ extern void zmlNormalise(zmlVector *vec);
 //	 zmlAddVecScalar_r adds a vector and a scalar and returns the result. etc.
 // -------------------------------------------
 
-extern unsigned char zmlVecEquals(zmlVector v1, zmlVector v2);
-extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2);
-extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2);
-extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2);
-extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2);
-
 extern zmlVector 	zmlAddVecs_r(zmlVector v1, zmlVector v2);
 extern void			zmlAddVecs(zmlVector *v1, zmlVector v2);
 extern zmlVector 	zmlSubtractVecs_r(zmlVector v1, zmlVector v2);
@@ -170,19 +178,18 @@ extern void		 	zmlMultiplyVecScalar(zmlVector *v1, __floating v2);
 extern zmlVector 	zmlDivideVecScalar_r(zmlVector v1, __floating v2);
 extern void		 	zmlDivideVecScalar(zmlVector *v1, __floating v2);
 
+extern zmlVector	zmlMultiplyVecMat_r(zmlVector v1, zmlMatrix v2);
+extern void			zmlMultiplyVecMat(zmlVector *v1, zmlMatrix v2);
+
+extern unsigned char zmlVecEquals(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2);
+
 // ==============================================================================
 // *****				   PUBLIC MATRIX FUNCTIONALITY						*****
 // ==============================================================================
-
-/**
- * @brief Matrix structure
- * 
- */
-typedef struct {
-	unsigned int rows;
-	unsigned int cols;
-	__floating **elements; // 2d array of elements
-} zmlMatrix;
 
 /**
  * @brief An undefined matrix; no elements.
@@ -276,6 +283,33 @@ extern void zmlAugmentVec(zmlMatrix *mat, zmlVector vec);
  * @param val the matrix to augment onto mat.
  */
 extern void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val);
+
+// -------------------------------------------
+// Boolean/arithmetic operation functions.
+// These are self-explanatory, and so are not extensively documented.
+// -------------------------------------------
+
+extern zmlMatrix 	zmlAddMats_r(zmlMatrix v1, zmlMatrix v2);
+extern void			zmlAddMats(zmlMatrix *v1, zmlMatrix v2);
+extern zmlMatrix 	zmlSubtractMats_r(zmlMatrix v1, zmlMatrix v2);
+extern void			zmlSubtractMats(zmlMatrix *v1, zmlMatrix v2);
+extern zmlMatrix 	zmlMultiplyMats_r(zmlMatrix v1, zmlMatrix v2);
+extern void			zmlMultiplyMats(zmlMatrix *v1, zmlMatrix v2);
+
+extern zmlMatrix 	zmlAddMatScalar_r(zmlMatrix v1, __floating v2);
+extern void		 	zmlAddMatScalar(zmlMatrix *v1, __floating v2);
+extern zmlMatrix 	zmlSubtractMatScalar_r(zmlMatrix v1, __floating v2);
+extern void		 	zmlSubtractMatScalar(zmlMatrix *v1, __floating v2);
+extern zmlMatrix 	zmlMultiplyMatScalar_r(zmlMatrix v1, __floating v2);
+extern void		 	zmlMultiplyMatScalar(zmlMatrix *v1, __floating v2);
+extern zmlMatrix 	zmlDivideMatScalar_r(zmlMatrix v1, __floating v2);
+extern void		 	zmlDivideMatScalar(zmlMatrix *v1, __floating v2);
+
+extern unsigned char zmlMatEquals(zmlMatrix v1, zmlMatrix v2);
+extern unsigned char zmlMatGT(zmlMatrix v1, zmlMatrix v2);
+extern unsigned char zmlMatGTE(zmlMatrix v1, zmlMatrix v2);
+extern unsigned char zmlMatLT(zmlMatrix v1, zmlMatrix v2);
+extern unsigned char zmlMatLTE(zmlMatrix v1, zmlMatrix v2);
 
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****

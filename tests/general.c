@@ -25,23 +25,20 @@ int main() {
 
 	{
 
-		zmlMatrix mat1 = zmlIdentityMatrix(4, 4);
-		mat1.elements[1][2] = 5.0;
+		zmlMatrix m1 = zmlIdentityMatrix(4, 4);
+		zmlMultiplyMatScalar(&m1, 4);
+		zmlVector v0 = zmlConstructVector(4, 2.0, 5.0, 2.0, 1.0);
+		zmlSetMatrixCol(&m1, 3, v0);
+		zmlFreeVector(&v0);
 
-		zmlPrintM(mat1);
+		zmlVector v1 = zmlConstructVectorDefault(4, 1.0);
+		zmlMultiplyVecMat(&v1, m1);
 
-		zmlVector v1 = zmlConstructVector(4, 1.0, 2.0, 3.0, 4.0);
+		zmlPrintM(m1);
 		zmlPrintV(v1);
-		zmlAugmentVec(&mat1, v1);
-		zmlPrintM(mat1);
 
-		zmlAugmentMat(&mat1, mat1);
-		zmlPrintM(mat1);
-
-		zmlFreeMatrix(&mat1);
+		zmlFreeMatrix(&m1);
 		zmlFreeVector(&v1);
-
-		printf("\n");
 
 	}
 
