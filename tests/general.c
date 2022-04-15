@@ -30,11 +30,20 @@ int main() {
 
 		zmlPrintM(mat1);
 
+		zmlVector v1 = zmlConstructVector(4, 1.0, 2.0, 3.0, 4.0);
+		zmlPrintV(v1);
+		zmlAugmentVec(&mat1, v1);
+		zmlPrintM(mat1);
+
+		zmlAugmentMat(&mat1, mat1);
+		zmlPrintM(mat1);
+
 		zmlFreeMatrix(&mat1);
+		zmlFreeVector(&v1);
+
+		printf("\n");
 
 	}
-
-	printf("\n");
 
 	// ======================
 	// vectors
@@ -65,9 +74,9 @@ int main() {
 		zmlFreeVector(&vec_cross2);
 		zmlFreeVector(&vec_crossp);
 
-	}
+		printf("\n");
 
-	printf("\n");
+	}
 	
 	// ======================
 	// utility functions
@@ -80,9 +89,10 @@ int main() {
 		testf(zmlToRadians(180));
 		testf(zmlLerp(5, 0, 10, 0, 100));
 		testf(zmlLerp(50, 0, 100, 0, 10));
+
+		printf("\n");
 	
 	}
 
-	printf("\n");
 	return 0;
 }

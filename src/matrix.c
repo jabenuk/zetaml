@@ -181,3 +181,75 @@ void zmlTranspose(zmlMatrix *mat) {
 
 	zmlFreeMatrix(&buf);
 }
+
+/**
+ * @brief augment vector 'vec' onto matrix 'mat'.
+ * 
+ * @param mat the matrix to modify.
+ * @param vec the vector to augment onto mat.
+ */
+void zmlAugmentVec(zmlMatrix *mat, zmlVector vec) {
+	if (vec.size != mat->cols) {
+		printf("zetaml: zmlSetMatrixRow(): invalid sized vector given, function aborted\n");
+		return;
+	}
+
+	// increase height by 1
+	zmlMatrix buf = zmlAllocMatrix(mat->rows + 1, mat->cols);
+	
+	// copy mat's values into buf.
+	for (unsigned int r = 0; r < mat->rows; r++) {
+		for (unsigned int c = 0; c < mat->cols; c++) {
+			buf.elements[r][c] = mat->elements[r][c];
+		}
+	}
+
+	// copy vec's values into the new row in buf.
+	for (unsigned int i = 0; i < buf.cols; i++) {
+		buf.elements[buf.rows - 1][i] = vec.elements[i];
+	}
+
+	// replace mat with allocated buffer
+	zmlFreeMatrix(mat);
+	*mat = zmlCopyMatrix(&buf);
+
+	// deallocate now-unnecessary buffer
+	zmlFreeMatrix(&buf);
+}
+
+/**
+ * @brief augment matrix 'val' onto matrix 'mat'
+ * 
+ * @param mat the matrix to modify.
+ * @param val the matrix to augment onto mat.
+ */
+void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val) {
+	if (val.cols != mat->cols) {
+		printf("zetaml: zmlSetMatrixRow(): invalid sized vector given, function aborted\n");
+		return;
+	}
+
+	// allocate space for augmented matrix
+	zmlMatrix buf = zmlAllocMatrix(mat->rows + val.rows, mat->cols);
+
+	// copy mat's values into buf.
+	for (unsigned int r = 0; r < mat->rows; r++) {
+		for (unsigned int c = 0; c < mat->cols; c++) {
+			buf.elements[r][c] = mat->elements[r][c];
+		}
+	}
+
+	// copy val's values into buf, offset by the amount of rows in mat.
+	for (unsigned int r = mat->rows; r < buf.rows; r++) {
+		for (unsigned int c = 0; c < mat->cols; c++) {
+			buf.elements[r][c] = val.elements[r - mat->rows][c];
+		}
+	}
+
+	// replace mat with allocated buffer
+	zmlFreeMatrix(mat);
+	*mat = zmlCopyMatrix(&buf);
+
+	// deallocate now-unnecessary buffer
+	zmlFreeMatrix(&buf);
+}

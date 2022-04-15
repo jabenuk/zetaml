@@ -262,6 +262,21 @@ extern zmlMatrix zmlTransposed(zmlMatrix mat);
  */
 extern void zmlTranspose(zmlMatrix *mat);
 
+/**
+ * @brief augment vector 'vec' onto matrix 'mat'.
+ * 
+ * @param mat the matrix to modify.
+ * @param vec the vector to augment onto mat.
+ */
+extern void zmlAugmentVec(zmlMatrix *mat, zmlVector vec);
+/**
+ * @brief augment matrix 'val' onto matrix 'mat'
+ * 
+ * @param mat the matrix to modify.
+ * @param val the matrix to augment onto mat.
+ */
+extern void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================

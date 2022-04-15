@@ -49,6 +49,8 @@
 			<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
 			<li><a href="#zmlTransposed">zmlTransposed()</a></li>
 			<li><a href="#zmlTranspose">zmlTranspose()</a></li>
+			<li><a href="#zmlAugmentVec">zmlAugmentVec()</a></li>
+			<li><a href="#zmlAugmentMat">zmlAugmentMat()</a></li>
 
 			<h4>&emsp;Public constants</h4>
 			<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
@@ -203,6 +205,30 @@
 		</ul>
 		<h3>Summary</h3>
 		Transposes the given matrix by <b>modifying</b> it. This works as an alternative to <a href="#zmlTransposed">zmlTransposed()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="#zmlTransposed">zmlTransposed()</a>.
+
+		<hr>
+
+		<h2 id="zmlAugmentVec"><code>void zmlAugmentVec(zmlMatrix *mat, zmlVector vec)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to modify.</li>
+			<li><code><b>vec</b></code> the vector to augment onto mat.</li>
+		</ul>
+		<h3>Summary</h3>
+		Augments vector <code>vec</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code> increases when calling this function. The size of the vector <b>must be equal</b> to the amount of columns in the matrix!
+		<span class="note">The augmented vector is used as a <b>row</b> and is added on to the <b>bottom</b> of the matrix.</span>
+
+		<hr>
+
+		<h2 id="zmlAugmentMat"><code>void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to modify.</li>
+			<li><code><b>val</b></code> the matrix to augment onto mat.</li>
+		</ul>
+		<h3>Summary</h3>
+		Augments matrix <code>val</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code> increases when calling this function. The amount of columns in <code>val</code> <b>must be equal</b> to the amount of columns in <code>mat</code>!
+		<span class="note">The augmented matrix is added on to the <b>bottom</b> of <code>mat</code>.</span>
 
 		<hr>
 

@@ -67,9 +67,6 @@ zmlVector zmlConstructVectorDefault(unsigned int size, __floating val) {
  * @param ... the values to initialise the vector with. Must be floating-point!
  */
 zmlVector zmlConstructVector(unsigned int size, ...) {
-	#ifdef ZML_USING_FLOATS
-	#endif
-
 	zmlVector r = zmlAllocVector(size);
 
 	#ifdef ZML_USING_FLOATS

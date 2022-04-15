@@ -130,7 +130,7 @@ void zmlToStringM(zmlMatrix val, char *str) {
 	memset(res, 0, maxlen);
 
 	// add the type descriptor first
-	snprintf(res, maxlen, "(mat%dx%d) ", val.rows, val.cols);
+	snprintf(res, maxlen, "(mat%dx%d) ", val.cols, val.rows);
 
 	// the list of elements is in the format 3, 6, 8, 2, ...
 	for (unsigned int r = 0; r < val.rows; r++) {
