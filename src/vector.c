@@ -173,13 +173,8 @@ __floating zmlMagnitude(zmlVector vec) {
  * @param vec the specified vector.
  */
 zmlVector zmlNormalised(zmlVector vec) {
-	zmlVector r = zmlAllocVector(3);
-	float m = zmlMagnitude(vec);
-
-	for (unsigned int i = 0; i < vec.size; i++) {
-		r.elements[i] = vec.elements[i] / m;
-	}
-
+	zmlVector r = zmlCopyVector(&vec);
+	zmlNormalise(&r);
 	return r;
 }
 

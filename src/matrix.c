@@ -154,3 +154,30 @@ void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec) {
 		mat->elements[i][index] = vec.elements[i];
 	}
 }
+
+/**
+ * @brief allocate and return the given matrix in its transposed state - that is to say, the rows and columns of the matrix are swapped. 
+ * 
+ * @param mat the matrix to transpose
+ */
+zmlMatrix zmlTransposed(zmlMatrix mat) {
+	zmlMatrix r = zmlCopyMatrix(&mat);
+	zmlTranspose(&r);
+	return r;
+}
+/**
+ * @brief transpose the given matrix by modifying it directly. 
+ * 
+ * @param mat the matrix to transpose
+ */
+void zmlTranspose(zmlMatrix *mat) {
+	zmlMatrix buf = zmlCopyMatrix(mat);
+
+	for (unsigned int r = 0; r < mat->rows; r++) {
+		for (unsigned int c = 0; c < mat->cols; c++) {
+			mat->elements[r][c] = buf.elements[c][r];
+		}
+	}
+
+	zmlFreeMatrix(&buf);
+}

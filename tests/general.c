@@ -26,23 +26,11 @@ int main() {
 	{
 
 		zmlMatrix mat1 = zmlIdentityMatrix(4, 4);
-		mat1.elements[2][3] = 596;
-
-		zmlVector vec1 = zmlGetMatrixRow(mat1, 2);
-
-		zmlVector vec2 = zmlConstructVector(4, 5.0, 1.0, 2.0, 8.0);
-		zmlSetMatrixRow(&mat1, 1, vec2);
-
-		zmlSetMatrixCol(&mat1, 0, vec2);
-		zmlVector vec3 = zmlGetMatrixCol(mat1, 0);
+		mat1.elements[1][2] = 5.0;
 
 		zmlPrintM(mat1);
-		zmlPrintV(vec1);
-		zmlPrintV(vec3);
 
 		zmlFreeMatrix(&mat1);
-		zmlFreeVector(&vec1);
-		zmlFreeVector(&vec2);
 
 	}
 

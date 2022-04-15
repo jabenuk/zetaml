@@ -249,6 +249,19 @@ extern zmlVector zmlGetMatrixCol(zmlMatrix val, unsigned int index);
  */
 extern void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec);
 
+/**
+ * @brief allocate and return the given matrix in its transposed state - that is to say, the rows and columns of the matrix are swapped. 
+ * 
+ * @param mat the matrix to transpose
+ */
+extern zmlMatrix zmlTransposed(zmlMatrix mat);
+/**
+ * @brief transpose the given matrix by modifying it directly. 
+ * 
+ * @param mat the matrix to transpose
+ */
+extern void zmlTranspose(zmlMatrix *mat);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================

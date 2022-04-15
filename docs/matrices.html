@@ -47,6 +47,8 @@
 			<li><a href="#zmlSetMatrixRow">zmlSetMatrixRow()</a></li>
 			<li><a href="#zmlGetMatrixCol">zmlGetMatrixCol()</a></li>
 			<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
+			<li><a href="#zmlTransposed">zmlTransposed()</a></li>
+			<li><a href="#zmlTranspose">zmlTranspose()</a></li>
 
 			<h4>&emsp;Public constants</h4>
 			<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
@@ -168,6 +170,39 @@
 		</ul>
 		<h3>Summary</h3>
 		Set a column in the given matrix to a specified vector.
+
+		<hr>
+
+		<h2 id="zmlSetMatrixCol"><code>void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to be modified.</li>
+			<li><code><b>index</b></code> the index of the column to set.</li>
+			<li><code><b>vec</b></code> the vector to set the column to. Must be the same size as the amount of rows in matrix <code>mat</code>.</li>
+		</ul>
+		<h3>Summary</h3>
+		Set a column in the given matrix to a specified vector.
+
+		<hr>
+
+		<h2 id="zmlTransposed"><code>zmlMatrix zmlTransposed(zmlMatrix mat)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to transpose.</li>
+		</ul>
+		<h3>Summary</h3>
+		Returns the given matrix in its transposed state - that is to say, the rows and columns of the matrix are swapped. 
+		<span class="warning">This function produces a new matrix structure which must be freed with <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>. In cases where you would type, for example, <code>mat = zmlTransposed(&mat)</code>, you should type <b><code>zmlTranspose(&mat)</code></b>, using the <a href="#zmlTranspose">zmlTranspose()</a> function instead.</span>
+
+		<hr>
+
+		<h2 id="zmlTranspose"><code>void zmlTranspose(zmlMatrix *mat)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to transpose.</li>
+		</ul>
+		<h3>Summary</h3>
+		Transposes the given matrix by <b>modifying</b> it. This works as an alternative to <a href="#zmlTransposed">zmlTransposed()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="#zmlTransposed">zmlTransposed()</a>.
 
 		<hr>
 
