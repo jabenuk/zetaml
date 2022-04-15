@@ -22,14 +22,28 @@ int main() {
 	// vectors
 	// ======================
 
-	zmlVector vec1 = zmlConstructVector(2, 2.23412, 6.15203);
-	zmlVector vec2 = zmlCopyVector(&vec1);
+	{
 
-	zmlPrintV(&vec1);
-	zmlPrintV(&vec2);
+		zmlVector vec1 = zmlConstructVector(3, 1.0, 0.0, 0.0);
+		zmlPrintV(&vec1);
+		zmlVector vec2 = zmlCopyVector(&vec1);
+		zmlPrintV(&vec2);
 
-	zmlFreeVector(&vec1);
-	zmlFreeVector(&vec2);
+		zmlVector vec_cross1 = zmlConstructVector(3, 0.0, 0.0, 1.0);
+		zmlVector vec_cross2 = zmlConstructVector(3, 1.0, 0.0, 0.0);
+		zmlVector vec_crossp = zmlCross(&vec_cross1, &vec_cross2);
+		zmlPrintV(&vec_crossp);
+
+		__floating vec_dot = zmlDot(&vec_cross1, &vec_cross2);
+		testf(vec_dot);
+
+		zmlFreeVector(&vec1);
+		zmlFreeVector(&vec2);
+		zmlFreeVector(&vec_cross1);
+		zmlFreeVector(&vec_cross2);
+		zmlFreeVector(&vec_crossp);
+
+	}
 
 	printf("\n");
 	
@@ -37,11 +51,15 @@ int main() {
 	// utility functions
 	// ======================
 
-	testf(PI);
-	testf(zmlToDegrees(PI));
-	testf(zmlToRadians(180));
-	testf(zmlLerp(5, 0, 10, 0, 100));
-	testf(zmlLerp(50, 0, 100, 0, 10));
+	{
+
+		testf(PI);
+		testf(zmlToDegrees(PI));
+		testf(zmlToRadians(180));
+		testf(zmlLerp(5, 0, 10, 0, 100));
+		testf(zmlLerp(50, 0, 100, 0, 10));
+	
+	}
 
 	printf("\n");
 	return 0;

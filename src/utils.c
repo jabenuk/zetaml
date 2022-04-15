@@ -65,13 +65,13 @@ void zmlToStringV(zmlVector *val, char *str) {
 	char elementsbuffer[maxlen];
 	memset(elementsbuffer, 0, maxlen);
 
-	// there is also "( " and " )" on either side AND the type descriptor (+ ''). This is "vec[size]" so it is 3 + however-many-digits characters long.
+	// there is also "( " and " )" on either side (4) AND the type descriptor (+ ''). This is "vec[size]" so it is 9 + however-many-digits characters long + null term.
 	maxlen += 10 + _zml_getDigitsi(val->size);
 	
 	// the list of elements is in the format 3, 6, 8, 2, ...
 	for (unsigned int i = 0; i < val->size; i++) {
 		// the amount of digits in the number
-		unsigned int numdigits = _zml_getDigitsi(val->elements[i]) + 6; // 6 because of 5 decimals + null term
+		unsigned int numdigits = _zml_getDigitsi(val->elements[i]) + 6; // digits + 5 decimals + null term.
 
 		char e[numdigits + 3]; // 3 because of ", \0"
 		snprintf(e, numdigits + 3, "%.5f", val->elements[i]);

@@ -106,6 +106,22 @@ extern zmlVector zmlConstructVector(unsigned int size, ...);
  */
 extern zmlVector zmlCopyVector(zmlVector *val);
 
+/**
+ * @brief produces a vector that is the cross product of the two given vectors; this represents the vector perpendicular to the plane that v1 and v2 create. 
+ * 
+ * @param v1 the first vector to operate on.
+ * @param v2 the second vector to operate on.
+ */
+extern zmlVector zmlCross(zmlVector *v1, zmlVector *v2);
+
+/**
+ * @brief produces a vector that is the dot (scalar) product of the two given vectors v1 and v2. 
+ * 
+ * @param v1 the first vector to operate on.
+ * @param v2 the second vector to operate on.
+ */
+extern __floating zmlDot(zmlVector *v1, zmlVector *v2);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================

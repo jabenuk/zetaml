@@ -90,9 +90,52 @@ zmlVector zmlConstructVector(unsigned int size, ...) {
  */
 zmlVector zmlCopyVector(zmlVector *val) {
 	zmlVector r = zmlAllocVector(val->size);
-	
+
 	for (unsigned int i = 0; i < val->size; i++) {
 		r.elements[i] = val->elements[i];
+	}
+
+	return r;
+}
+
+/**
+ * @brief produces a vector that is the cross product of the two given vectors; this represents the vector perpendicular to the plane that v1 and v2 create. 
+ * 
+ * @param v1 the first vector to operate on.
+ * @param v2 the second vector to operate on.
+ */
+zmlVector zmlCross(zmlVector *v1, zmlVector *v2) {
+	if (v1->size != 3 || v2->size != 3) {
+		printf("zetaml: zmlCross(): one or both given vectors are not 3-dimensional! ZML_NULL_VECTOR returned!\n");
+		return ZML_NULL_VECTOR;
+	}
+
+	zmlVector r = zmlAllocVector(3);
+
+	r.elements[0] = v1->elements[1] * v2->elements[2] - v1->elements[2] * v2->elements[1];
+	r.elements[1] = v1->elements[2] * v2->elements[0] - v1->elements[0] * v2->elements[2];
+	r.elements[2] = v1->elements[0] * v2->elements[1] - v1->elements[1] * v2->elements[0];
+
+	return r;
+}
+
+/**
+ * @brief produces a vector that is the dot (scalar) product of the two given vectors v1 and v2. 
+ * 
+ * @param v1 the first vector to operate on.
+ * @param v2 the second vector to operate on.
+ */
+__floating zmlDot(zmlVector *v1, zmlVector *v2) {
+	__floating r = (__floating) 0.0;
+
+	// add each vector element to the result, multiplied by the other equivalent element.
+	if (v1->size == v2->size) {
+		for (unsigned int i = 0; i < v1->size; i++) {
+			r += (__floating) (v1->elements[i] * v2->elements[i]);
+		}
+	} else {
+		// 0 is returned if arguments are different dimensions
+		printf("zetaml: zmlDot(): the given vectors are of different sizes! 0 returned!\n");
 	}
 
 	return r;
