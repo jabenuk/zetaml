@@ -23,10 +23,13 @@ int main() {
 	// ======================
 
 	zmlVector vec1 = zmlConstructVector(2, 2.23412, 6.15203);
+	zmlVector vec2 = zmlCopyVector(&vec1);
 
 	zmlPrintV(&vec1);
+	zmlPrintV(&vec2);
 
 	zmlFreeVector(&vec1);
+	zmlFreeVector(&vec2);
 
 	printf("\n");
 	

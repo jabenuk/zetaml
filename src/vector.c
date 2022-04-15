@@ -82,3 +82,18 @@ zmlVector zmlConstructVector(unsigned int size, ...) {
 
 	return r;
 }
+
+/**
+ * @brief copy a vector's values
+ * 
+ * @param val the pointer to the vector to be copied
+ */
+zmlVector zmlCopyVector(zmlVector *val) {
+	zmlVector r = zmlAllocVector(val->size);
+	
+	for (unsigned int i = 0; i < val->size; i++) {
+		r.elements[i] = val->elements[i];
+	}
+
+	return r;
+}

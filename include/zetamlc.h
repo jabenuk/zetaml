@@ -99,6 +99,13 @@ extern zmlVector zmlConstructVectorDefault(unsigned int size, __floating val);
  */
 extern zmlVector zmlConstructVector(unsigned int size, ...);
 
+/**
+ * @brief copy a vector's values
+ * 
+ * @param val the pointer to the vector to be copied
+ */
+extern zmlVector zmlCopyVector(zmlVector *val);
+
 // ==============================================================================
 // *****					PUBLIC UTILITY FUNCTIONS						*****
 // ==============================================================================
