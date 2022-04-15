@@ -197,10 +197,8 @@ void zmlNormalise(zmlVector *vec) {
 
 zmlVector zmlAddVecs_r(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] + v2.elements[i];
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlAddVecs(&r, v2);
 	return r;
 }
 void zmlAddVecs(zmlVector *v1, zmlVector v2) {
@@ -211,10 +209,8 @@ void zmlAddVecs(zmlVector *v1, zmlVector v2) {
 }
 zmlVector zmlSubtractVecs_r(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] - v2.elements[i];
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlSubtractVecs(&r, v2);
 	return r;
 }
 void zmlSubtractVecs(zmlVector *v1, zmlVector v2) {
@@ -225,10 +221,8 @@ void zmlSubtractVecs(zmlVector *v1, zmlVector v2) {
 }
 zmlVector zmlMultiplyVecs_r(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] * v2.elements[i];
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlMultiplyVecs(&r, v2);
 	return r;
 }
 void zmlMultiplyVecs(zmlVector *v1, zmlVector v2) {
@@ -239,10 +233,8 @@ void zmlMultiplyVecs(zmlVector *v1, zmlVector v2) {
 }
 zmlVector zmlDivideVecs_r(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, ZML_NULL_VECTOR);
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] / v2.elements[i];
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlDivideVecs(&r, v2);
 	return r;
 }
 void zmlDivideVecs(zmlVector *v1, zmlVector v2) {
@@ -253,10 +245,8 @@ void zmlDivideVecs(zmlVector *v1, zmlVector v2) {
 }
 
 zmlVector zmlAddVecScalar_r(zmlVector v1, __floating v2) {
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] + v2;
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlAddVecScalar(&r, v2);
 	return r;
 }
 void zmlAddVecScalar(zmlVector *v1, __floating v2) {
@@ -265,10 +255,8 @@ void zmlAddVecScalar(zmlVector *v1, __floating v2) {
 	}
 }
 zmlVector zmlSubtractVecScalar_r(zmlVector v1, __floating v2) {
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] - v2;
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlSubtractVecScalar(&r, v2);
 	return r;
 }
 void zmlSubtractVecScalar(zmlVector *v1, __floating v2) {
@@ -277,10 +265,8 @@ void zmlSubtractVecScalar(zmlVector *v1, __floating v2) {
 	}
 }
 zmlVector zmlMultiplyVecScalar_r(zmlVector v1, __floating v2) {
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] * v2;
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlMultiplyVecScalar(&r, v2);
 	return r;
 }
 void zmlMultiplyVecScalar(zmlVector *v1, __floating v2) {
@@ -289,10 +275,8 @@ void zmlMultiplyVecScalar(zmlVector *v1, __floating v2) {
 	}
 }
 zmlVector zmlDivideVecScalar_r(zmlVector v1, __floating v2) {
-	zmlVector r = zmlAllocVector(v1.size);
-	for (unsigned int i = 0; i < r.size; i++) {
-		r.elements[i] = v1.elements[i] / v2;
-	}
+	zmlVector r = zmlCopyVector(&v1);
+	zmlDivideVecScalar(&r, v2);
 	return r;
 }
 void zmlDivideVecScalar(zmlVector *v1, __floating v2) {
@@ -301,8 +285,30 @@ void zmlDivideVecScalar(zmlVector *v1, __floating v2) {
 	}
 }
 
-zmlVector zmlMultiplyVecMat_r(zmlVector v1, zmlMatrix v2);
+zmlVector zmlMultiplyVecMat_r(zmlVector v1, zmlMatrix v2) {
+	if (v2.rows != v2.cols) {
+		printf("zetaml: zmlMultiplyVecMat(): given matrix must be square!\n");
+		return ZML_NULL_VECTOR;
+	}
+	if (v1.size != v2.rows) {
+		printf("zetaml: zmlMultiplyVecMat(): given vector and matrix must be the same size! (e.g. 4x4 matrix -> 4d vector)\n");
+		return ZML_NULL_VECTOR;
+	}
+
+	zmlVector r = zmlCopyVector(&v1);
+	zmlMultiplyVecMat(&r, v2);
+	return r;
+}
 void zmlMultiplyVecMat(zmlVector *v1, zmlMatrix v2) {
+	if (v2.rows != v2.cols) {
+		printf("zetaml: zmlMultiplyVecMat(): given matrix must be square!\n");
+		return;
+	}
+	if (v1->size != v2.rows) {
+		printf("zetaml: zmlMultiplyVecMat(): given vector and matrix must be the same size! (e.g. 4x4 matrix -> 4d vector)\n");
+		return;
+	}
+
 	zmlVector buf = zmlCopyVector(v1);
 
 	for (unsigned int i = 0; i < v1->size; i++) {
