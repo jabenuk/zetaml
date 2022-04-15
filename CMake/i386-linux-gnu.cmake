@@ -1,5 +1,5 @@
 # ----------------
-# CMake toolchain file to build with x86 (i386) architecture.
+# CMake toolchain file to build with x86 (i386) architecture. (Linux GCC/G++).
 
 set(CMAKE_SYSTEM_NAME Linux)
 

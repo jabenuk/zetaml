@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>home : zetamlc</title>
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="src/shared.css">
+		<link id="favicon" rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<header>
+			<h1>zetamlc.documentation</h1>
+			
+			<nav id="nav-links">
+				<a href="index.html">home</a>
+				<a href="vectors.html">vectors</a>
+				<a href="matrices.html">matrices</a>
+				<a href="transform.html">transformations</a>
+				<a href="utility.html">utility</a>
+			</nav>
+
+			<hr>
+		</header>
+
+		<h1>Welcome to the Official Zeta Maths Library Documentation</h1>
+
+		<h2 id="summary">Summary</h2>
+		Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc. Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my other project(s). This is a <i>personal project,</i> not a professional one. But I still try to put effort into its documentation.
+		<br><br>
+		All code related to zetaml is open-source and free; see the source repository <a href="https://github.com/jabenuk/zetamlc">here</a>.
+
+		<h2 id="usage">Usage</h2>
+		Zetaml is built with <a href="https://cmake.org/">CMake</a>.
+		<br><br>
+		When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of <b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all.
+		<br><br>
+		To use the library, include <code>&lt;zetamlc.h&gt;</code>.
+
+		<h2 id="configuring-zetaml">Configuring zetaml</h2>
+
+		<h3 id="zmlSetLibFlag"><code>void zmlSetLibFlag(unsigned int flag, unsigned char val)</code></h3>
+		You can use this function to configure the library. <b>All flags are false by default!</b>
+		<ul>
+			<li><code>flag</code> the flag to set (see below).</li>
+			<li><code>val</code> the boolean value to set to the flag.</li>
+		</ul>
+
+		<h3 id="flags">Available flags</h3>
+		Not to be confused with the available <b>compilation flags</b>, which are <code>-DZML_USE_FLOATS</code> and <code>-DZML_BUILD_TESTS</code>. The flags in the following table are enabled with the <a href="#zmlSetLibFlag">zmlSetLibFlag()</a> at <b>runtime</b>.
+		<br><br>
+
+		<table>
+			<tr>
+				<th>Flag</th>
+				<th>Description</th>
+				<th>Additional notes</th>
+			</tr>
+			<tr>
+				<td><code>ZML_USE_DEGREES</code></td>
+				<td>Use degrees instead of radians.</td>
+				<td>Radians are used by default.</td>
+			</tr>
+			<tr>
+				<td><code>ZML_USE_LEFT_COORDS</code></td>
+				<td>Use left-handed coordinates instead of the default right-handed coordinates.</td>
+				<td>By convention, OpenGL uses right-handed coordinates, and DirectX uses left-handed coordinates. Zetaml uses right-handed by default.</td>
+			</tr>
+		</table>
+
+		<h2 id="using-these-docs">Using this documentation</h2>
+		Information you should take note of is highlighted as such:
+		<span class="note">
+			This is an example of a note.
+		</span>
+		<br>
+		More important information is highlighted as a warning, like so:
+		<span class="warning">
+			This is an example of a warning.
+		</span>
+
+		<h2 id="license">License</h2>
+<pre>
+MIT License
+
+Copyright (c) 2022 Jack Bennett
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</pre>
+
+		<hr>
+	</body>
+</html>
