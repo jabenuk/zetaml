@@ -2,6 +2,9 @@
 
 _This readme is **unfinished**. It will be added to as development goes on._
 
+## Documentation
+You can see the official documentation [here](jabenuk.github.io/zetamlc).
+
 ## Summary
 zetamlc is a C port of the original [Zeta Maths Library](https://github.com/jabenuk/zetaml) for C++.
 
