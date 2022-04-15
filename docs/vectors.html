@@ -32,6 +32,9 @@
 		Functionality related to vector constructs.
 
 		<ul>
+			<h4>&emsp;Operators</h4>
+			<li><a href="#operators">Operator naming convention and index</a></li>
+
 			<h4>&emsp;Data types</h4>
 			<li><a href="#zmlVector">zmlVector</a></li>
 
@@ -120,6 +123,8 @@
 		</div>
 		<br>
 		You may not subtract a vector from a scalar or divide a scalar by a vector.
+
+		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
 
 		<hr>
 
