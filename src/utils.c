@@ -38,10 +38,10 @@ __floating zmlToDegrees(__floating rad) {
 /**
  * @brief Takes a value deg, expressed in degrees, and converts it to radians. 
  * 
- * @param rad the value, in degrees, to convert to radians.
+ * @param deg the value, in degrees, to convert to radians.
  */
-__floating zmlToRadians(__floating rad) {
-	return rad * (PI / (__floating) 180.0);
+__floating zmlToRadians(__floating deg) {
+	return deg * (PI / (__floating) 180.0);
 }
 
 /**

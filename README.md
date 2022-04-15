@@ -12,7 +12,7 @@ zetamlc is suitable for any C/C++ project that requires more complex math functi
 
 ## Configuration and usage
 
-When compiling, use the `-DZML_USE_FLOATS` to use **floats** (32-bit floating values) instead of **doubles** (64-bit floating values).
+When compiling, use the `-DZML_USE_FLOATS=ON` flag to use **floats** (32-bit floating values) instead of **doubles** (64-bit floating values). You can build test executable(s) with `-DZML_BUILD_TESTS=ON`.
 
 Some more configuration can be done by using the `zmlSetLibFlag()` function. The possible flags are listed below:
  - `ZML_USE_DEGREES`: use degrees instead of radians.

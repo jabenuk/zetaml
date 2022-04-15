@@ -136,9 +136,9 @@ extern __floating zmlToDegrees(__floating rad);
 /**
  * @brief Takes a value deg, expressed in degrees, and converts it to radians. 
  * 
- * @param rad the value, in degrees, to convert to radians.
+ * @param deg the value, in degrees, to convert to radians.
  */
-extern __floating zmlToRadians(__floating rad);
+extern __floating zmlToRadians(__floating deg);
 
 /**
  * @brief Takes a vector value, val, and converts it to a formatted string.

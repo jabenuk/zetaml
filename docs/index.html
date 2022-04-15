@@ -37,7 +37,7 @@
 		<h2 id="usage">Usage</h2>
 		Zetaml is built with <a href="https://cmake.org/">CMake</a>.
 		<br><br>
-		When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of <b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all.
+		When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of <b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all. <i>As a sidenote: if you do decide to contribute, please remember to test your contributions for memory leaks with <a href="https://valgrind.org/">Valgrind</a>.</i>
 		<br><br>
 		To use the library, include <code>&lt;zetamlc.h&gt;</code>.
 
@@ -82,6 +82,8 @@
 		<span class="warning">
 			This is an example of a warning.
 		</span>
+		<br>
+		This documentation refers to both floats and doubles as 'floating-point values'. This is to avoid confusion when using floats (instead of doubles) via the <code>-ZML_USE_FLOATS=ON</code> compilation option.
 
 		<h2 id="license">License</h2>
 <pre>
@@ -105,7 +107,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE.	
 </pre>
 
 		<hr>
