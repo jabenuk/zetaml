@@ -33,7 +33,7 @@
 
 		<ul>
 			<h4>&emsp;Operators</h4>
-			<li><a href="#operators">Operator naming convention and index</a></li>
+			<li><a href="#operators">Operator index</a></li>
 
 			<h4>&emsp;Data types</h4>
 			<li><a href="#zmlMatrix">zmlMatrix</a></li>
@@ -59,12 +59,60 @@
 		<hr>
 
 		<h2 id="operators">Arithmetic and logical operator functions</h2>
-		<h3>Naming convention</h3>
-		A more detailed description of the naming convention used in zetaml operator functions can be found on the <a href="vectors.html#operators">vectors</a> page.
-		<br><br>
-		The functions for matrix-matrix, matrix-vector, and matrix-scalar operations are:
+		The functions for matrix-matrix, and matrix-scalar operations are:
 		<br>
-		<i>TBA</i>
+		<div style="display: flex">
+			<div>
+				<h4>Arithmetic operators (matrix-matrix)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlAddMats_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+					<tr><td><code>zmlAddMats(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+					<tr><td><code>zmlSubtractMats_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+					<tr><td><code>zmlSubtractMats(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+					<tr><td><code>zmlMultiplyMats_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyMats(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
+				<h4>Arithmetic operators (matrix-scalar)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlAddMatScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+					<tr><td><code>zmlAddMatScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+					<tr><td><code>zmlSubtractMatScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+					<tr><td><code>zmlSubtractMatScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+					<tr><td><code>zmlMultiplyMatScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyMatScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+					<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+					<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
+				<h4>Boolean operators</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlMatEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+					<tr><td><code>zmlMatGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+					<tr><td><code>zmlMatGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+					<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+					<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+				</table>
+			</div>
+		</div>
+		<br>
+		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
 
 		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
 

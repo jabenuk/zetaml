@@ -33,7 +33,7 @@
 
 		<ul>
 			<h4>&emsp;Operators</h4>
-			<li><a href="#operators">Operator naming convention and index</a></li>
+			<li><a href="#operators">Operator index</a></li>
 
 			<h4>&emsp;Data types</h4>
 			<li><a href="#zmlVector">zmlVector</a></li>
@@ -57,17 +57,7 @@
 		<hr>
 
 		<h2 id="operators">Arithmetic and logical operator functions</h2>
-		<h3>Naming convention</h3>
-		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
-		<br><br>
-		For example, <code>zmlAddVecs_r</code> adds two vectors and <b>returns the result,</b> allocating heap space for the resulting vector. The '<code>_r</code>' comes from the fact that the function <u>r</u>eturns its result.<br>
-		However, <code>zmlAddVecs</code> adds <code>v2</code> (its second argument) to <code>v1</code> (its first argument), <b>modifying</b> v1. There is no '<code>_r</code>' because nothing is <u>r</u>eturned.
-		<br><br>
-		Vectors also have vector-scalar operations, such as <code>zmlAddVecScalar_r</code> and its respective void function <code>zmlAddVecScalar</code>. The above rules equally apply to these operators.
-		<br><br>
-		Finally, logical operators are named based on the initials of each syllable, e.g. <code>zmlVecLT</code> is the <u>L</u>ess <u>T</u>han operator and <code>zmlVecGTE</code> is the <u>G</u>reater <u>T</u>han or <u>E</u>qual to operator.
-		<br><br>
-		Following these rules, the functions for vector-vector and vector-scalar operations are:
+		The functions for vector-vector, vector-scalar, and vector-matrix operations are:
 		<br>
 		<div style="display: flex">
 			<div>
@@ -107,6 +97,18 @@
 			</div>
 
 			<div>
+				<h4>Arithmetic operators (vector-matrix)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in integral C operators</th>
+					</tr>
+					<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
 				<h4>Boolean operators</h4>
 				<table style="margin-right: 7px">
 					<tr>
@@ -122,7 +124,7 @@
 			</div>
 		</div>
 		<br>
-		You may not subtract a vector from a scalar or divide a scalar by a vector.
+		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
 
 		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
 

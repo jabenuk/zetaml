@@ -72,6 +72,18 @@
 			</tr>
 		</table>
 
+		<h2 id="operators">Naming scheme of operator functions</h2>
+		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
+		<br><br>
+		For example, <code>zmlAddVecs_r</code> adds two vectors and <b>returns the result,</b> allocating heap space for the resulting vector. The '<code>_r</code>' comes from the fact that the function <u>r</u>eturns its result. Therefore, _r operators are equivalent to '<code>+</code>', '<code>-</code>', '<code>*</code>', etc.<br>
+		However, <code>zmlAddVecs</code> adds <code>v2</code> (its second argument) to <code>v1</code> (its first argument), <b>modifying</b> v1. There is no '<code>_r</code>' because nothing is <u>r</u>eturned. Therefore, _r operators are equivalent to '<code>+=</code>', '<code>-=</code>', '<code>*=</code>', etc.
+		<br><br>
+		When different types are operated on, they are all included in the function name, e.g. <code>zmlMultiplyVecMat()</code>.
+		<br><br>
+		Finally, logical operators are named based on the initials of each syllable, e.g. <code>zmlVecLT</code> is a <u>L</u>ess <u>T</u>han operator and <code>zmlMatGTE</code> is a <u>G</u>reater <u>T</u>han or <u>E</u>qual to operator.
+
+		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
+
 		<h2 id="using-these-docs">Using this documentation</h2>
 		Information you should take note of is highlighted as such:
 		<span class="note">
