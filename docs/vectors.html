@@ -14,7 +14,7 @@
 
 	<body>
 		<header>
-			<h1>zetamlc.documentation</h1>
+			<h1>zetamlc.documentation <a href="actual-index.html">[index]</a></h1>
 			
 			<nav id="nav-links">
 				<a href="index.html">home</a>
@@ -31,107 +31,43 @@
 
 		Functionality related to vector constructs.
 
-		<ul>
-			<h4>&emsp;Operators</h4>
-			<li><a href="#operators">Operator index</a></li>
-
-			<h4>&emsp;Data types</h4>
-			<li><a href="#zmlVector">zmlVector</a></li>
-
-			<h4>&emsp;Functions</h4>
-			<li><a href="#zmlAllocVector">zmlAllocVector()</a></li>
-			<li><a href="#zmlFreeVector">zmlFreeVector()</a></li>
-			<li><a href="#zmlConstructVectorDefault">zmlConstructVectorDefault()</a></li>
-			<li><a href="#zmlConstructVector">zmlConstructVector()</a></li>
-			<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
-			<li><a href="#zmlCross">zmlCross()</a></li>
-			<li><a href="#zmlDot">zmlDot()</a></li>
-			<li><a href="#zmlMagnitude">zmlMagnitude()</a></li>
-			<li><a href="#zmlNormalised">zmlNormalised()</a></li>
-			<li><a href="#zmlNormalise">zmlNormalise()</a></li>
-
-			<h4>&emsp;Public constants</h4>
-			<li><a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a></li>
-		</ul>
-
-		<hr>
-
-		<h2 id="operators">Arithmetic and logical operator functions</h2>
-		The functions for vector-vector, vector-scalar, and vector-matrix operations are:
-		<br>
-		<div style="display: flex">
+		<div class="hoz-collapse" id="hoz-collapse-3">
 			<div>
-				<h4>Arithmetic operators (vector-vector)</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlAddVecs_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
-					<tr><td><code>zmlAddVecs(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
-					<tr><td><code>zmlSubtractVecs_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
-					<tr><td><code>zmlSubtractVecs(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
-					<tr><td><code>zmlMultiplyVecs_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-					<tr><td><code>zmlMultiplyVecs(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-					<tr><td><code>zmlDivideVecs_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
-					<tr><td><code>zmlDivideVecs(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
-				</table>
+				<ul>
+					<h4>&emsp;Data types</h4>
+					<li><a href="#zmlVector">zmlVector</a></li>
+				</ul>
+				<ul>
+					<h4>&emsp;Operators</h4>
+					<li><a href="#operators">Operator index</a></li>
+				</ul>
+				<ul>
+					<h4>&emsp;Public constants</h4>
+					<li><a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a></li>
+				</ul>
 			</div>
-
-			<div>
-				<h4>Arithmetic operators (vector-scalar)</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlAddVecScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
-					<tr><td><code>zmlAddVecScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
-					<tr><td><code>zmlSubtractVecScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
-					<tr><td><code>zmlSubtractVecScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
-					<tr><td><code>zmlMultiplyVecScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-					<tr><td><code>zmlMultiplyVecScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-					<tr><td><code>zmlDivideVecScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
-					<tr><td><code>zmlDivideVecScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
-				</table>
-			</div>
-
-			<div>
-				<h4>Arithmetic operators (vector-matrix)</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-					<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-				</table>
-			</div>
-
-			<div>
-				<h4>Boolean operators</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlVecEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
-					<tr><td><code>zmlVecGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
-					<tr><td><code>zmlVecGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
-					<tr><td><code>zmlVecLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
-					<tr><td><code>zmlVecLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
-					<tr><td><code>zmlVecEqualsScalar(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
-					<tr><td><code>zmlVecGTScalar(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
-					<tr><td><code>zmlVecGTEScalar(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
-					<tr><td><code>zmlVecLTScalar(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
-					<tr><td><code>zmlVecLTEScalar(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
-				</table>
-			</div>
+			<ul>
+				<h4>&emsp;Vector manipulation</h4>
+				<li><a href="#zmlCross">zmlCross()</a></li>
+				<li><a href="#zmlDot">zmlDot()</a></li>
+				<br>
+				<li><a href="#zmlMagnitude">zmlMagnitude()</a></li>
+				<li><a href="#zmlNormalised">zmlNormalised()</a></li>
+				<li><a href="#zmlNormalise">zmlNormalise()</a></li>
+			</ul>
+			<ul>
+				<h4>&emsp;Vector creation</h4>
+				<li><a href="#zmlAllocVector">zmlAllocVector()</a></li>
+				<li><a href="#zmlConstructVectorDefault">zmlConstructVectorDefault()</a></li>
+				<li><a href="#zmlConstructVector">zmlConstructVector()</a></li>
+				<br>
+				<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
+			</ul>
+			<ul>
+				<h4>&emsp;Vector deletion</h4>
+				<li><a href="#zmlFreeVector">zmlFreeVector()</a></li>
+			</ul>
 		</div>
-		<br>
-		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
-
-		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
 
 		<hr>
 
@@ -143,6 +79,91 @@
 			<li><code><b>size</b></code> the size of the vector</li>
 			<li><code><b>elements</b></code> an array of elements in the vector</li>
 		</ul>
+
+		<hr>
+
+		<h2 id="operators">Arithmetic and logical operator functions</h2>
+		The functions for vector-vector, vector-scalar, and vector-matrix operations are:
+		<br>
+		<div class="table-container">
+			<div class="hoz-collapse" id="hoz-collapse-1">
+				<div>
+					<div>
+						<h4>Arithmetic operators (vector-vector)</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlAddVecs_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+							<tr><td><code>zmlAddVecs(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+							<tr><td><code>zmlSubtractVecs_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+							<tr><td><code>zmlSubtractVecs(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+							<tr><td><code>zmlMultiplyVecs_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+							<tr><td><code>zmlMultiplyVecs(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+							<tr><td><code>zmlDivideVecs_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+							<tr><td><code>zmlDivideVecs(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+						</table>
+					</div>
+		
+					<div>
+						<h4>Arithmetic operators (vector-matrix)</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+							<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+						</table>
+					</div>
+				</div>
+	
+				<div class="hoz-collapse" id="hoz-collapse-2">
+					<div>
+						<h4>Arithmetic operators (vector-scalar)</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlAddVecScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+							<tr><td><code>zmlAddVecScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+							<tr><td><code>zmlSubtractVecScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+							<tr><td><code>zmlSubtractVecScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+							<tr><td><code>zmlMultiplyVecScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+							<tr><td><code>zmlMultiplyVecScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+							<tr><td><code>zmlDivideVecScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+							<tr><td><code>zmlDivideVecScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+						</table>
+					</div>
+		
+					<div>
+						<h4>Boolean operators</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlVecEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+							<tr><td><code>zmlVecGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+							<tr><td><code>zmlVecGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+							<tr><td><code>zmlVecLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+							<tr><td><code>zmlVecLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+							<tr><td><code>zmlVecEqualsScalar(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+							<tr><td><code>zmlVecGTScalar(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+							<tr><td><code>zmlVecGTEScalar(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+							<tr><td><code>zmlVecLTScalar(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+							<tr><td><code>zmlVecLTEScalar(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
+
+		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
 
 		<hr>
 		

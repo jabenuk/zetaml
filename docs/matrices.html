@@ -14,7 +14,7 @@
 
 	<body>
 		<header>
-			<h1>zetamlc.documentation</h1>
+			<h1>zetamlc.documentation <a href="actual-index.html">[index]</a></h1>
 			
 			<nav id="nav-links">
 				<a href="index.html">home</a>
@@ -31,30 +31,58 @@
 
 		Functionality related to matrix constructs.
 
+		<div class="hoz-collapse" id="hoz-collapse-3">
+			<div>
+				<ul>
+					<h4>&emsp;Data types</h4>
+					<li><a href="#zmlMatrix">zmlMatrix</a></li>
+				</ul>
+				<ul>
+					<h4>&emsp;Operators</h4>
+					<li><a href="#operators">Operator index</a></li>
+				</ul>
+				<ul>
+					<h4>&emsp;Public constants</h4>
+					<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
+				</ul>
+			</div>
+			<ul>
+				<h4>&emsp;Matrix manipulation</h4>
+				<li><a href="#zmlGetMatrixRow">zmlGetMatrixRow()</a></li>
+				<li><a href="#zmlSetMatrixRow">zmlSetMatrixRow()</a></li>
+				<li><a href="#zmlGetMatrixCol">zmlGetMatrixCol()</a></li>
+				<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
+				<br>
+				<li><a href="#zmlTransposed">zmlTransposed()</a></li>
+				<li><a href="#zmlTranspose">zmlTranspose()</a></li>
+				<br>
+				<li><a href="#zmlAugmentVec">zmlAugmentVec()</a></li>
+				<li><a href="#zmlAugmentMat">zmlAugmentMat()</a></li>
+			</ul>
+			<ul>
+				<h4>&emsp;Matrix creation</h4>
+				<li><a href="#zmlAllocMatrix">zmlAllocMatrix()</a></li>
+				<li><a href="#zmlIdentityMatrix">zmlIdentityMatrix()</a></li>
+				<li><a href="#zmlZeroMatrix">zmlZeroMatrix()</a></li>
+				<br>
+				<li><a href="#zmlCopyMatrix">zmlCopyMatrix()</a></li>
+			</ul>
+			<ul>
+				<h4>&emsp;Matrix deletion</h4>
+				<li><a href="#zmlFreeMatrix">zmlFreeMatrix()</a></li>
+			</ul>
+		</div>
+
+		<hr>
+
+		<h2 id="zmlMatrix"><code>zmlMatrix</code></h2>
+		<h3>Summary</h3>
+		A matrix construct of any given size. The values in a zmlMatrix are of <b>floating-point</b> type.
+		<h3>Members</h3>
 		<ul>
-			<h4>&emsp;Operators</h4>
-			<li><a href="#operators">Operator index</a></li>
-
-			<h4>&emsp;Data types</h4>
-			<li><a href="#zmlMatrix">zmlMatrix</a></li>
-
-			<h4>&emsp;Functions</h4>
-			<li><a href="#zmlAllocMatrix">zmlAllocMatrix()</a></li>
-			<li><a href="#zmlFreeMatrix">zmlFreeMatrix()</a></li>
-			<li><a href="#zmlIdentityMatrix">zmlIdentityMatrix()</a></li>
-			<li><a href="#zmlZeroMatrix">zmlZeroMatrix()</a></li>
-			<li><a href="#zmlCopyMatrix">zmlCopyMatrix()</a></li>
-			<li><a href="#zmlGetMatrixRow">zmlGetMatrixRow()</a></li>
-			<li><a href="#zmlSetMatrixRow">zmlSetMatrixRow()</a></li>
-			<li><a href="#zmlGetMatrixCol">zmlGetMatrixCol()</a></li>
-			<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
-			<li><a href="#zmlTransposed">zmlTransposed()</a></li>
-			<li><a href="#zmlTranspose">zmlTranspose()</a></li>
-			<li><a href="#zmlAugmentVec">zmlAugmentVec()</a></li>
-			<li><a href="#zmlAugmentMat">zmlAugmentMat()</a></li>
-
-			<h4>&emsp;Public constants</h4>
-			<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
+			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+			<li><code><b>elements</b></code> a 2D array of elements in the matrix</li>
 		</ul>
 
 		<hr>
@@ -62,10 +90,10 @@
 		<h2 id="operators">Arithmetic and logical operator functions</h2>
 		The functions for matrix-matrix, and matrix-scalar operations are:
 		<br>
-		<div style="display: flex">
+		<div class="table-container" id="hoz-collapse-1">
 			<div>
 				<h4>Arithmetic operators (matrix-matrix)</h4>
-				<table style="margin-right: 7px">
+				<table>
 					<tr>
 						<th>Function name</th>
 						<th>Representation in operators</th>
@@ -79,55 +107,45 @@
 				</table>
 			</div>
 
-			<div>
-				<h4>Arithmetic operators (matrix-scalar)</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlAddMatScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
-					<tr><td><code>zmlAddMatScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
-					<tr><td><code>zmlSubtractMatScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
-					<tr><td><code>zmlSubtractMatScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
-					<tr><td><code>zmlMultiplyMatScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-					<tr><td><code>zmlMultiplyMatScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-					<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
-					<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
-				</table>
-			</div>
-
-			<div>
-				<h4>Boolean operators</h4>
-				<table style="margin-right: 7px">
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlMatEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
-					<tr><td><code>zmlMatGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
-					<tr><td><code>zmlMatGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
-					<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
-					<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
-				</table>
+			<div class="table-container" id="hoz-collapse-2">
+				<div>
+					<h4>Arithmetic operators (matrix-scalar)</h4>
+					<table>
+						<tr>
+							<th>Function name</th>
+							<th>Representation in operators</th>
+						</tr>
+						<tr><td><code>zmlAddMatScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+						<tr><td><code>zmlAddMatScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+						<tr><td><code>zmlSubtractMatScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+						<tr><td><code>zmlSubtractMatScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+						<tr><td><code>zmlMultiplyMatScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+						<tr><td><code>zmlMultiplyMatScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+						<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+						<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+					</table>
+				</div>
+	
+				<div>
+					<h4>Boolean operators</h4>
+					<table>
+						<tr>
+							<th>Function name</th>
+							<th>Representation in operators</th>
+						</tr>
+						<tr><td><code>zmlMatEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+						<tr><td><code>zmlMatGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+						<tr><td><code>zmlMatGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+						<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+						<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+					</table>
+				</div>
 			</div>
 		</div>
 		<br>
 		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
 
 		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
-
-		<hr>
-
-		<h2 id="zmlMatrix"><code>zmlMatrix</code></h2>
-		<h3>Summary</h3>
-		A matrix construct of any given size. The values in a zmlMatrix are of <b>floating-point</b> type.
-		<h3>Members</h3>
-		<ul>
-			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
-			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
-			<li><code><b>elements</b></code> a 2D array of elements in the matrix</li>
-		</ul>
 
 		<hr>
 		

@@ -27,7 +27,13 @@ nav#nav-links {
 	width: 100%;
 }
 
+.table-container, .hoz-collapse {
+	display: flex;
+}
+
 table, tr, th, td {
+	margin-right: 7px;
+	width: 500px;
 	border: 1px solid black;
 }
 tr, th, td {
@@ -64,8 +70,33 @@ tr, th, td {
 	white-space: pre-wrap;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 375px) {
 	#nav-links {
 		flex-direction: column;
 	}
+}
+@media screen and (max-width: 1035px) {
+	#hoz-collapse-1 {
+		flex-direction: column;
+	}
+}
+@media screen and (max-width: 1540px) {
+	#hoz-collapse-2 {
+		flex-direction: column;
+	}
+}
+@media screen and (max-width: 750px) {
+	#hoz-collapse-3 {
+		flex-direction: column;
+	}	
+}
+@media screen and (max-width: 520px) {
+	#hoz-collapse-4 {
+		flex-direction: column;
+	}	
+}
+@media screen and (max-width: 670px) {
+	#hoz-collapse-5 {
+		flex-direction: column;
+	}	
 }

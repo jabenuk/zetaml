@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>index : zetamlc</title>
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="src/shared.css">
+		<link id="favicon" rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<header>
+			<h1>zetamlc.documentation <a href="actual-index.html">[index]</a></h1>
+			
+			<nav id="nav-links">
+				<a href="index.html">home</a>
+				<a href="vectors.html">vectors</a>
+				<a href="matrices.html">matrices</a>
+				<a href="transform.html">transformations</a>
+				<a href="utility.html">utility</a>
+			</nav>
+
+			<hr>
+		</header>
+
+		<h1>Library index</h1>
+		
+		<hr>
+
+		<h2>Vectors</h2>
+		More information about these members can be found on the <a href="vectors.html">vectors page</a>.
+		<ul style="margin-top: 8px;">
+			<li class="li-structure"><i>(structure)</i> <b><code>zmlVector</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlAllocVector()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructVectorDefault()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructVector()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlCopyVector()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlFreeVector()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlCross()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlDot()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlMagnitude()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlNormalised()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlNormalise()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddVecs_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddVecs()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractVecs_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractVecs()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecs_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecs()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideVecs_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideVecs()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecMat_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecMat()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddVecScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddVecScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractVecScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractVecScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyVecScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideVecScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideVecScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecEquals()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecGT()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecGTE()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecLT()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecLTE()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecEqualsScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecGTScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecGTEScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecLTScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlVecLTEScalar()</code></b></li>
+			<li class="li-constant"><i>(constant)</i> <b><code>ZML_NULL_VECTOR</code></b></li>
+		</ul>
+
+		<hr>
+
+		<h2>Matrices</h2>
+		More information about these members can be found on the <a href="matrices.html">matrices page</a>.
+		<ul style="margin-top: 8px;">
+			<li class="li-structure"><i>(structure)</i> <b><code>zmlMatrix</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlAllocMatrix()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlIdentityMatrix()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlZeroMatrix()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlCopyMatrix()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlFreeMatrix()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlGetMatrixRow()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlGetMatrixCol()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlSetMatrixRow()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlSetMatrixCol()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlTransposed()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlTranspose()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlAugmentVec()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlAugmentMat()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddMats_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddMats()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractMats_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractMats()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyMats_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyMats()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddMatScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlAddMatScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractMatScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlSubtractMatScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyMatScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMultiplyMatScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideMatScalar_r()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlDivideMatScalar()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMatEquals()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMatGT()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMatGTE()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMatLT()</code></b></li>
+			<li class="li-operator"><i>(operator function)</i> <b><code>zmlMatLTE()</code></b></li>
+			<li class="li-constant"><i>(constant)</i> <b><code>ZML_NULL_MATRIX</code></b></li>
+		</ul>
+
+		<hr>
+
+		<h2>Transformations</h2>
+		More information about these members can be found on the <a href="transform.html">transformations page</a>.
+		<ul style="margin-top: 8px;">
+			<li class="li-function"><i>(function)</i> <b><code>zmlTranslated()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlTranslate()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlTranslateIdentity()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlRotated()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlRotate()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlRotateIdentity()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlScaled()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlScale()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlScaleIdentity()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructOrthoMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructOrthoMatrixRH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdateOrthoMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdateOrthoMatrixRH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructPerspectiveMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructPerspectiveMatrixRH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdatePerspectiveMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdatePerspectiveMatrixRH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructLookAtMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlConstructLookAtMatrixRH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdateLookAtMatrixLH()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlUpdateLookAtMatrixRH()</code></b></li>
+		</ul>
+
+		<hr>
+
+		<h2>Utility</h2>
+		More information about these members can be found on the <a href="utility.html">utility page</a>.
+		<ul style="margin-top: 8px;">
+			<li class="li-function"><i>(function)</i> <b><code>zmlToDegrees()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlToRadians()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlToStringV()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlToStringM()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlPrintV()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlPrintM()</code></b></li>
+			<li class="li-function"><i>(function)</i> <b><code>zmlLerp()</code></b></li>
+			<li class="li-constant"><i>(constant)</i> <b><code>PI</code></b></li>
+		</ul>
+
+		<hr>
+	</body>
+</html>

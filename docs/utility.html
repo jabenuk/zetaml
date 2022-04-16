@@ -14,8 +14,8 @@
 
 	<body>
 		<header>
-			<h1>zetamlc.documentation</h1>
-			 
+			<h1>zetamlc.documentation <a href="actual-index.html">[index]</a></h1>
+			
 			<nav id="nav-links">
 				<a href="index.html">home</a>
 				<a href="vectors.html">vectors</a>
@@ -31,16 +31,30 @@
 
 		Functions that don't fit in any of the other categories. 
 
-		<ul>
-			<h4>&emsp;Functions</h4>
-			<li><a href="#zmlToDegrees">zmlToDegrees()</a></li>
-			<li><a href="#zmlToRadians">zmlToRadians()</a></li>
-			<li><a href="#zmlToStringV">zmlToStringV()</a></li>
-			<li><a href="#zmlToStringM">zmlToStringM()</a></li>
-			<li><a href="#zmlPrintV">zmlPrintV()</a></li>
-			<li><a href="#zmlPrintM">zmlPrintM()</a></li>
-			<li><a href="#zmlLerp">zmlLerp()</a></li>
-		</ul>
+		<div class="hoz-collapse" id="hoz-collapse-5">
+			<ul>
+				<h4>&emsp;Angle units</h4>
+				<li><a href="#zmlToDegrees">zmlToDegrees()</a></li>
+				<li><a href="#zmlToRadians">zmlToRadians()</a></li>
+			</ul>
+			<ul>
+				<h4>&emsp;Formatted string creation</h4>
+				<li><a href="#zmlToStringV">zmlToStringV()</a></li>
+				<li><a href="#zmlToStringM">zmlToStringM()</a></li>
+				<li><a href="#zmlPrintV">zmlPrintV()</a></li>
+				<li><a href="#zmlPrintM">zmlPrintM()</a></li>
+			</ul>
+			<div>
+				<ul>
+					<h4>&emsp;Other mathematical functions</h4>
+					<li><a href="#zmlLerp">zmlLerp()</a></li>
+				</ul>
+				<ul>
+					<h4>&emsp;Mathematical constants</h4>
+					<li><a href="#PI">PI</a></li>
+				</ul>
+			</div>
+		</div>
 
 		<hr>
 		
@@ -132,6 +146,14 @@
 <pre>
 start2 + (stop2 - start2) * ((val - start1) / (stop1 - start1))
 </pre>
+		<hr>
+
+		<h2 id="PI"><code>PI</code></h2>
+		The irrational mathematical constant of the same name. This is pi (&pi;) shown to the nearest 21 decimal places, as stored internally in zetaml:
+<pre>
+3.141592653589793238463
+</pre>
+
 		<hr>
 	</body>
 </html>
