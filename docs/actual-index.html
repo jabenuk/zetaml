@@ -28,6 +28,15 @@
 		</header>
 
 		<h1>Library index</h1>
+
+		<h3>Highlight type</h3>
+		<div style="display:flex;">
+			<button onclick="clearhl()">none</button>
+			<button onclick="highlight('.li-structure')">structure</button>
+			<button onclick="highlight('.li-function')">function</button>
+			<button onclick="highlight('.li-operator')">operator function</button>
+			<button onclick="highlight('.li-constant')">constant</button>
+		</div>
 		
 		<hr>
 
@@ -161,5 +170,7 @@
 		</ul>
 
 		<hr>
+
+		<script src="src/index-highlight.js"></script>
 	</body>
 </html>
