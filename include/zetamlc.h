@@ -27,24 +27,6 @@ extern "C" {
 
 #define PI (__floating) 3.141592653589793238463
 
-// ---
-// The following macros are flags that can be used in zmlSetLibFlag().
-
-#define ZML_USE_DEGREES 0x01		// use degrees instead of radians.
-#define ZML_USE_LEFT_COORDS 0x02	// use left-handed coordinates instead of right-handed coordinates
-
-// ==============================================================================
-// *****					 CONFIGURATION FUNCTIONS						*****
-// ==============================================================================
-
-/**
- * @brief Sets a library flag 'flag' to the given boolean val.
- * 
- * @param flag the flag to modify
- * @param val the value to set the flag to
- */
-extern void zmlSetLibFlag(unsigned int flag, unsigned char val);
-
 // ==============================================================================
 // *****					  	PUBLIC STRUCTURES							*****
 // ==============================================================================
@@ -186,6 +168,11 @@ extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2);
+extern unsigned char zmlVecEqualsScalar(zmlVector v1, __floating v2);
+extern unsigned char zmlVecGTScalar(zmlVector v1, __floating v2);
+extern unsigned char zmlVecGTEScalar(zmlVector v1, __floating v2);
+extern unsigned char zmlVecLTScalar(zmlVector v1, __floating v2);
+extern unsigned char zmlVecLTEScalar(zmlVector v1, __floating v2);
 
 // ==============================================================================
 // *****				   PUBLIC MATRIX FUNCTIONALITY						*****
@@ -216,6 +203,13 @@ extern void zmlFreeMatrix(zmlMatrix *mat);
  * @param size the size (rows and columns) of the matrix.
  */
 extern zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols);
+
+/**
+ * @brief Allocate and return a zero matrix with width and height size.
+ * 
+ * @param size the size (rows and columns) of the matrix.
+ */
+extern zmlMatrix zmlZeroMatrix(unsigned int rows, unsigned int cols);
 
 /**
  * @brief copy a matrix's values
@@ -369,6 +363,88 @@ extern void zmlPrintM(zmlMatrix val);
  * @param stop2 the max point of the output range
  */
 extern __floating zmlLerp(__floating val, __floating start1, __floating stop1, __floating start2, __floating stop2);
+
+// ==============================================================================
+// *****				   PUBLIC TRANSFORMATION FUNCTIONS					*****
+// ==============================================================================
+
+/**
+ * @brief produces a translation matrix from a given matrix (mat) and the desired 3D vector vec. 
+ * 
+ * @param mat the matrix to base the translation matrix on.
+ * @param vec the vector to use as the translation factor.
+ */
+extern zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec);
+
+/**
+ * @brief alternative to zmlTranslated() that modifies mat instead of allocating and returning a new matrix.
+ * 
+ * @param mat the matrix to base the translation matrix on.
+ * @param vec the vector to use as the translation factor.
+ */
+extern void zmlTranslate(zmlMatrix *mat, zmlVector vec);
+
+/**
+ * @brief produces a translation matrix from an identity matrix and the desired 3D vector vec. 
+ * 
+ * @param vec the vector to use as the translation factor.
+ */
+extern zmlMatrix zmlTranslateIdentity(zmlVector vec);
+
+/**
+ * @brief produces a rotation matrix by rotating mat by angle on the given axes.
+ * 
+ * @param mat the matrix to base the rotation matrix on.
+ * @param angle the angle to rotate the specified axes by.
+ * @param x the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).
+ * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
+ * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
+ */
+extern zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __floating y, __floating z);
+
+/**
+ * @brief alternative to zmlRotated() that modifies mat instead of allocating and returning a new matrix.
+ * 
+ * @param mat the matrix to base the rotation matrix on.
+ * @param angle the angle to rotate the specified axes by.
+ * @param x the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).
+ * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
+ * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
+ */
+extern void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __floating z);
+
+/**
+ * @brief produces a rotation matrix by rotating a new identity matrix by angle on the given axes.
+ * 
+ * @param angle the angle to rotate the specified axes by.
+ * @param x the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).
+ * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
+ * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
+ */
+extern zmlMatrix zmlRotateIdentity(__floating angle, __floating x, __floating y, __floating z);
+
+/**
+ * @brief produces a scale matrix from a given matrix (mat) and the desired 3D vector vec. 
+ * 
+ * @param mat the matrix to base the scale matrix on.
+ * @param vec the vector to use as the scale factor.
+ */
+extern zmlMatrix zmlScaled(zmlMatrix *mat, zmlVector vec);
+
+/**
+ * @brief alternative to zmlScaled() that modifies mat instead of allocating and returning a new matrix.
+ * 
+ * @param mat the matrix to base the scale matrix on.
+ * @param vec the vector to use as the scale factor.
+ */
+extern void zmlScale(zmlMatrix *mat, zmlVector vec);
+
+/**
+ * @brief produces a scale matrix from an identity matrix and the desired 3D vector vec. 
+ * 
+ * @param vec the vector to use as the scale factor.
+ */
+extern zmlMatrix zmlScaleIdentity(zmlVector vec);
 
 #ifdef __cplusplus
 }

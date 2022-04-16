@@ -69,7 +69,25 @@ zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols) {
 		for (unsigned int col = 0; col < cols; col++) {
 			// set to 1 if on the main diagonal
 			// initialise all other values to 0.
-			r.elements[row][col] = (row == col) ? 1.0 : 0.0;
+			r.elements[row][col] = (row == col) ? (__floating) 1.0 : (__floating) 0.0;
+		}
+	}
+
+	return r;
+}
+
+/**
+ * @brief Allocate and return a zero matrix with width and height size.
+ * 
+ * @param size the size (rows and columns) of the matrix.
+ */
+zmlMatrix zmlZeroMatrix(unsigned int rows, unsigned int cols) {
+	zmlMatrix r = zmlAllocMatrix(rows, cols);
+
+	for (unsigned int row = 0; row < rows; row++) {
+		for (unsigned int col = 0; col < cols; col++) {
+			// init all values to 0.
+			r.elements[row][col] = (__floating) 0.0;
 		}
 	}
 

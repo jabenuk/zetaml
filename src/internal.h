@@ -15,21 +15,12 @@
 #ifndef __ZETAML_INTERNAL_H__
 #define __ZETAML_INTERNAL_H__
 
-// library header (files that include internal.h are implemented functions in zetamlc.h!)
-#include "zetamlc.h"
-
 // internally required headers
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
 #include <math.h>
-
-// use degrees instead of radians.
-static unsigned char _zml_usedegrees;
-
-// use left-handed coordinates instead of right-handed coordinates.
-static unsigned char _zml_leftcoords;
 
 // get amount of digits in an unsigned integer.
 static unsigned int _zml_getDigitsi(unsigned int val) {

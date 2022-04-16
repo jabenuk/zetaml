@@ -65,7 +65,7 @@
 				<table style="margin-right: 7px">
 					<tr>
 						<th>Function name</th>
-						<th>Representation in integral C operators</th>
+						<th>Representation in operators</th>
 					</tr>
 					<tr><td><code>zmlAddVecs_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
 					<tr><td><code>zmlAddVecs(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
@@ -83,7 +83,7 @@
 				<table style="margin-right: 7px">
 					<tr>
 						<th>Function name</th>
-						<th>Representation in integral C operators</th>
+						<th>Representation in operators</th>
 					</tr>
 					<tr><td><code>zmlAddVecScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
 					<tr><td><code>zmlAddVecScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
@@ -97,32 +97,35 @@
 			</div>
 
 			<div>
-				<div>
-					<h4>Arithmetic operators (vector-matrix)</h4>
-					<table style="margin-right: 7px">
-						<tr>
-							<th>Function name</th>
-							<th>Representation in integral C operators</th>
-						</tr>
-						<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-						<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-					</table>
-				</div>
-	
-				<div style="margin-top:20px">
-					<h4>Boolean operators</h4>
-					<table style="margin-right: 7px">
-						<tr>
-							<th>Function name</th>
-							<th>Representation in integral C operators</th>
-						</tr>
-						<tr><td><code>zmlVecEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
-						<tr><td><code>zmlVecGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
-						<tr><td><code>zmlVecGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
-						<tr><td><code>zmlVecLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
-						<tr><td><code>zmlVecLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
-					</table>
-				</div>
+				<h4>Arithmetic operators (vector-matrix)</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in operators</th>
+					</tr>
+					<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+					<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+				</table>
+			</div>
+
+			<div>
+				<h4>Boolean operators</h4>
+				<table style="margin-right: 7px">
+					<tr>
+						<th>Function name</th>
+						<th>Representation in operators</th>
+					</tr>
+					<tr><td><code>zmlVecEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+					<tr><td><code>zmlVecGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+					<tr><td><code>zmlVecGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+					<tr><td><code>zmlVecLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+					<tr><td><code>zmlVecLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+					<tr><td><code>zmlVecEqualsScalar(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+					<tr><td><code>zmlVecGTScalar(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+					<tr><td><code>zmlVecGTEScalar(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+					<tr><td><code>zmlVecLTScalar(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+					<tr><td><code>zmlVecLTEScalar(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+				</table>
 			</div>
 		</div>
 		<br>
@@ -185,6 +188,7 @@
 		<h3>Summary</h3>
 		Construct a vector with given values. The amount of given variable arguments is assumed to be <code>size</code>, so you <b>must initialise all values!</b> For example, if you were to call <code>zmlConstructVector(3, 2.0, 5.0)</code>, a Vector3 will be created but only the first two elements will be initialised - the last element will be undetermined. If you don't initialise all values, you should at least set the undefined elements manually as soon as possible.
 		<span class="warning"><b>This function does not work when using floats - </b> the C standard <b>does not permit</b> variadic arguments of float type! Attempting to use it in that case will return a zero vector and print a warning to <code>stdout</code>.</span>
+		<span class="warning">Given values <b>must explicitly be floating-point</b>; i.e., say '5.0' instead of '5'. This is simply due to how variadic arguments work in C. If you do not explicitly make the values floating-point, the vector will be initialised as a <b>zero vector.</b></span>
 		<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
 
 		<hr>

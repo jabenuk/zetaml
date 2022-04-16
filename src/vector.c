@@ -334,7 +334,7 @@ unsigned char zmlVecEquals(zmlVector v1, zmlVector v2) {
 	}
 	return 1;
 }
-extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
+unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, 0);
 	for (unsigned int i = 0; i < v1.size; i++) {
 		if (v1.elements[i] <= v2.elements[i])
@@ -342,7 +342,7 @@ extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2) {
 	}
 	return 1;
 }
-extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
+unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, 0);
 	for (unsigned int i = 0; i < v1.size; i++) {
 		if (v1.elements[i] < v2.elements[i])
@@ -350,7 +350,7 @@ extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2) {
 	}
 	return 1;
 }
-extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
+unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, 0);
 	for (unsigned int i = 0; i < v1.size; i++) {
 		if (v1.elements[i] >= v2.elements[i])
@@ -358,10 +358,45 @@ extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2) {
 	}
 	return 1;
 }
-extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2) {
+unsigned char zmlVecLTE(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, 0);
 	for (unsigned int i = 0; i < v1.size; i++) {
 		if (v1.elements[i] > v2.elements[i])
+			return 0;
+	}
+	return 1;
+}
+unsigned char zmlVecEqualsScalar(zmlVector v1, __floating v2) {
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] != v2)
+			return 0;
+	}
+	return 1;
+}
+unsigned char zmlVecGTScalar(zmlVector v1, __floating v2) {
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] <= v2)
+			return 0;
+	}
+	return 1;
+}
+unsigned char zmlVecGTEScalar(zmlVector v1, __floating v2) {
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] < v2)
+			return 0;
+	}
+	return 1;
+}
+unsigned char zmlVecLTScalar(zmlVector v1, __floating v2) {
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] >= v2)
+			return 0;
+	}
+	return 1;
+}
+unsigned char zmlVecLTEScalar(zmlVector v1, __floating v2) {
+	for (unsigned int i = 0; i < v1.size; i++) {
+		if (v1.elements[i] > v2)
 			return 0;
 	}
 	return 1;

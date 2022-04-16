@@ -16,15 +16,6 @@ When compiling, use the `-DZML_USE_FLOATS` flag to use floats (32-bit floating v
 
 To use the library, include `<zetamlc.h>`. 
 
-## Configuring zetaml
-
-You can use the `zmlSetLibFlag()` function to configure the library. All flags are false by default!
-
-| Flag | Description | Additional notes|
-| - | - | - |
-| `ZML_USE_DEGREES` | Use degrees instead of radians. | Radians are used by default. |
-| `ZML_USE_LEFT_COORDS` | Use left-handed coordinates instead of the default right-handed coordinates. | By convention, OpenGL uses right-handed coordinates, and DirectX uses left-handed coordinates. Zetaml uses right-handed by default. |
-
 ## Naming scheme of operator functions
 
 Zetaml operators are named systematically, and all work in order of left-to-right (i.e. `zmlDivideVecs_r(v1, v2)` is `v1 / v2`).

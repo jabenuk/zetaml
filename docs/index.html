@@ -41,37 +41,6 @@
 		<br><br>
 		To use the library, include <code>&lt;zetamlc.h&gt;</code>.
 
-		<h2 id="configuring-zetaml">Configuring zetaml</h2>
-
-		<h3 id="zmlSetLibFlag"><code>void zmlSetLibFlag(unsigned int flag, unsigned char val)</code></h3>
-		You can use this function to configure the library. <b>All flags are false by default!</b>
-		<ul>
-			<li><code>flag</code> the flag to set (see below).</li>
-			<li><code>val</code> the boolean value to set to the flag.</li>
-		</ul>
-
-		<h3 id="flags">Available flags</h3>
-		Not to be confused with the available <b>compilation flags</b>, which are <code>-DZML_USE_FLOATS</code> and <code>-DZML_BUILD_TESTS</code>. The flags in the following table are enabled with the <a href="#zmlSetLibFlag">zmlSetLibFlag()</a> at <b>runtime</b>.
-		<br><br>
-
-		<table>
-			<tr>
-				<th>Flag</th>
-				<th>Description</th>
-				<th>Additional notes</th>
-			</tr>
-			<tr>
-				<td><code>ZML_USE_DEGREES</code></td>
-				<td>Use degrees instead of radians.</td>
-				<td>Radians are used by default.</td>
-			</tr>
-			<tr>
-				<td><code>ZML_USE_LEFT_COORDS</code></td>
-				<td>Use left-handed coordinates instead of the default right-handed coordinates.</td>
-				<td>By convention, OpenGL uses right-handed coordinates, and DirectX uses left-handed coordinates. Zetaml uses right-handed by default.</td>
-			</tr>
-		</table>
-
 		<h2 id="operators">Naming scheme of operator functions</h2>
 		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
 		<br><br>

@@ -15,19 +15,6 @@
 #include "zetamlc.h"
 
 /**
- * @brief Sets a library flag 'flag' to the given boolean val.
- * 
- * @param flag the flag to modify
- * @param val the value to set the flag to
- */
-void zmlSetLibFlag(unsigned int flag, unsigned char val) {
-	switch (flag) {
-		case ZML_USE_DEGREES:		_zml_usedegrees = val; return;
-		case ZML_USE_LEFT_COORDS:	_zml_leftcoords = val; return;
-	}
-}
-
-/**
  * @brief Takes a value rad, expressed in radians, and converts it to degrees. 
  * 
  * @param rad the value, in radians, to convert to degrees.
@@ -181,6 +168,7 @@ void zmlPrintV(zmlVector val) {
 	for (unsigned int i = 0; i < val.size - 1; i++) maxlen += _zml_getDigitsi(val.elements[i]) + 9;
 
 	char r[maxlen];
+	memset(r, 0, maxlen);
 	zmlToStringV(val, r);
 
 	printf("%s\n", r);
@@ -201,11 +189,10 @@ void zmlPrintM(zmlMatrix val) {
 	}
 
 	char r[maxlen];
+	memset(r, 0, maxlen);
 	zmlToStringM(val, r);
 
-	// an extra newline is printed due to the more complex nature of the ToStringM output compared to ToStringV.
-	// this just organises the output a little better.
-	printf("%s\n\n", r);
+	printf("%s\n", r);
 }
 
 /**

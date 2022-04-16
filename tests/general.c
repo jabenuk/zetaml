@@ -26,21 +26,15 @@ int main() {
 	{
 
 		zmlMatrix m1 = zmlIdentityMatrix(4, 4);
-		zmlMultiplyMatScalar(&m1, 4);
-		zmlVector v0 = zmlConstructVector(4, 2.0, 5.0, 2.0, 1.0);
-		zmlSetMatrixCol(&m1, 3, v0);
+		zmlMultiplyMatScalar(&m1, 2);
 
-		zmlVector v1 = zmlConstructVectorDefault(4, 1.0);
-		zmlMultiplyVecMat(&v1, m1);
-		zmlVector v2 = zmlMultiplyVecMat_r(v1, m1);
+		zmlVector v1 = zmlConstructVector(3, 1.0, 2.0, 3.0);
 
+		zmlTranslate(&m1, v1);
+		zmlScale(&m1, v1);
 		zmlPrintM(m1);
-		zmlPrintV(v1);
-		zmlPrintV(v2);
 
 		zmlFreeMatrix(&m1);
-		zmlFreeVector(&v1);
-		zmlFreeVector(&v0);
 
 	}
 
