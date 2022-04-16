@@ -375,7 +375,6 @@ extern __floating zmlLerp(__floating val, __floating start1, __floating stop1, _
  * @param vec the vector to use as the translation factor.
  */
 extern zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec);
-
 /**
  * @brief alternative to zmlTranslated() that modifies mat instead of allocating and returning a new matrix.
  * 
@@ -383,7 +382,6 @@ extern zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec);
  * @param vec the vector to use as the translation factor.
  */
 extern void zmlTranslate(zmlMatrix *mat, zmlVector vec);
-
 /**
  * @brief produces a translation matrix from an identity matrix and the desired 3D vector vec. 
  * 
@@ -401,7 +399,6 @@ extern zmlMatrix zmlTranslateIdentity(zmlVector vec);
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
 extern zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __floating y, __floating z);
-
 /**
  * @brief alternative to zmlRotated() that modifies mat instead of allocating and returning a new matrix.
  * 
@@ -412,7 +409,6 @@ extern zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __flo
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
 extern void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __floating z);
-
 /**
  * @brief produces a rotation matrix by rotating a new identity matrix by angle on the given axes.
  * 
@@ -430,7 +426,6 @@ extern zmlMatrix zmlRotateIdentity(__floating angle, __floating x, __floating y,
  * @param vec the vector to use as the scale factor.
  */
 extern zmlMatrix zmlScaled(zmlMatrix *mat, zmlVector vec);
-
 /**
  * @brief alternative to zmlScaled() that modifies mat instead of allocating and returning a new matrix.
  * 
@@ -438,13 +433,140 @@ extern zmlMatrix zmlScaled(zmlMatrix *mat, zmlVector vec);
  * @param vec the vector to use as the scale factor.
  */
 extern void zmlScale(zmlMatrix *mat, zmlVector vec);
-
 /**
  * @brief produces a scale matrix from an identity matrix and the desired 3D vector vec. 
  * 
  * @param vec the vector to use as the scale factor.
  */
 extern zmlMatrix zmlScaleIdentity(zmlVector vec);
+
+// ==============================================================================
+// *****		    PUBLIC TRANSFORMATION (PROJECTION) FUNCTIONS			*****
+// ==============================================================================
+
+/**
+ * @brief allocates and initialises an orthographic projection matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param lm the left-most boundary.
+ * @param rm the right-most boundary.
+ * @param bm the bottom-most boundary.
+ * @param tm the top-most boundary.
+ * @param zn the nearest Z coordinate that will be rendered.
+ * @param zf the farthest Z coordinate that will be rendered.
+ */
+extern zmlMatrix zmlConstructOrthoMatrixLH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+/**
+ * @brief allocates and initialises an orthographic projection matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param lm the left-most boundary.
+ * @param rm the right-most boundary.
+ * @param bm the bottom-most boundary.
+ * @param tm the top-most boundary.
+ * @param zn the nearest Z coordinate that will be rendered.
+ * @param zf the farthest Z coordinate that will be rendered.
+ */
+extern zmlMatrix zmlConstructOrthoMatrixRH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+
+/**
+ * @brief modifies a matrix to be an orthographic projection matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param lm the left-most boundary.
+ * @param rm the right-most boundary.
+ * @param bm the bottom-most boundary.
+ * @param tm the top-most boundary.
+ * @param zn the nearest Z coordinate that will be rendered.
+ * @param zf the farthest Z coordinate that will be rendered.
+ */
+extern void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+/**
+ * @brief modifies a matrix to be an orthographic projection matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param lm the left-most boundary.
+ * @param rm the right-most boundary.
+ * @param bm the bottom-most boundary.
+ * @param tm the top-most boundary.
+ * @param zn the nearest Z coordinate that will be rendered.
+ * @param zf the farthest Z coordinate that will be rendered.
+ */
+extern void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+
+/**
+ * @brief allocates and initialises a perspective projection matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param near specifies the distance from the viewer to the nearest clipping plane.
+ * @param far specifies the distance from the viewer to the farthest clipping plane.
+ * @param fovy the angle of the field of view in the y direction.
+ * @param aspect_ratio the aspect ratio of the viewport.
+ */
+extern zmlMatrix zmlConstructPerspectiveMatrixLH(__floating near, __floating far, __floating fovy, __floating aspect_ratio);
+/**
+ * @brief allocates and initialises a perspective projection matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param near specifies the distance from the viewer to the nearest clipping plane.
+ * @param far specifies the distance from the viewer to the farthest clipping plane.
+ * @param fovy the angle of the field of view in the y direction.
+ * @param aspect_ratio the aspect ratio of the viewport.
+ */
+extern zmlMatrix zmlConstructPerspectiveMatrixRH(__floating near, __floating far, __floating fovy, __floating aspect_ratio);
+
+/**
+ * @brief modifies a matrix to be a perspective projection matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param near specifies the distance from the viewer to the nearest clipping plane.
+ * @param far specifies the distance from the viewer to the farthest clipping plane.
+ * @param fovy the angle of the field of view in the y direction.
+ * @param aspect_ratio the aspect ratio of the viewport.
+ */
+extern void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio);
+/**
+ * @brief modifies a matrix to be a perspective projection matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param near specifies the distance from the viewer to the nearest clipping plane.
+ * @param far specifies the distance from the viewer to the farthest clipping plane.
+ * @param fovy the angle of the field of view in the y direction.
+ * @param aspect_ratio the aspect ratio of the viewport.
+ */
+extern void zmlUpdatePerspectiveMatrixRH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio);
+
+/**
+ * @brief allocates and initialises a look-at matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param pos the position of the viewer/camera.
+ * @param focus the position the viewer/camera is looking at.
+ * @param up an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.
+ */
+extern zmlMatrix zmlConstructLookAtMatrixLH(zmlVector pos, zmlVector focus, zmlVector up);
+/**
+ * @brief allocates and initialises a look-at matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param pos the position of the viewer/camera.
+ * @param focus the position the viewer/camera is looking at.
+ * @param up an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.
+ */
+extern zmlMatrix zmlConstructLookAtMatrixRH(zmlVector pos, zmlVector focus, zmlVector up);
+
+/**
+ * @brief modifies a matrix to be a look-at matrix based on the given values. Uses left-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param pos the position of the viewer/camera.
+ * @param focus the position the viewer/camera is looking at.
+ * @param up an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.
+ */
+extern void zmlUpdateLookAtMatrixLH(zmlMatrix *mat, zmlVector pos, zmlVector focus, zmlVector up);
+/**
+ * @brief modifies a matrix to be a look-at matrix based on the given values. Uses right-handed coordinates!
+ * 
+ * @param mat the matrix to modify.
+ * @param pos the position of the viewer/camera.
+ * @param focus the position the viewer/camera is looking at.
+ * @param up an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.
+ */
+extern void zmlUpdateLookAtMatrixRH(zmlMatrix *mat, zmlVector pos, zmlVector focus, zmlVector up);
 
 #ifdef __cplusplus
 }

@@ -205,10 +205,10 @@
 		<ul>
 			<li><code><b>mat</b></code> the matrix to be modified.</li>
 			<li><code><b>index</b></code> the index of the row to set.</li>
-			<li><code><b>vec</b></code> the vector to set the row to. Must be the same size as the amount of columns in matrix <code>mat</code>.</li>
+			<li><code><b>vec</b></code> the vector to set the row to.</li>
 		</ul>
 		<h3>Summary</h3>
-		Set a row in the given matrix to a specified vector.
+		Set a row in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of columns in <code>mat</code>, the remaining matrix elements will be left unchanged.
 
 		<hr>
 
@@ -229,22 +229,10 @@
 		<ul>
 			<li><code><b>mat</b></code> the matrix to be modified.</li>
 			<li><code><b>index</b></code> the index of the column to set.</li>
-			<li><code><b>vec</b></code> the vector to set the column to. Must be the same size as the amount of rows in matrix <code>mat</code>.</li>
+			<li><code><b>vec</b></code> the vector to set the column to.</li>
 		</ul>
 		<h3>Summary</h3>
-		Set a column in the given matrix to a specified vector.
-
-		<hr>
-
-		<h2 id="zmlSetMatrixCol"><code>void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to be modified.</li>
-			<li><code><b>index</b></code> the index of the column to set.</li>
-			<li><code><b>vec</b></code> the vector to set the column to. Must be the same size as the amount of rows in matrix <code>mat</code>.</li>
-		</ul>
-		<h3>Summary</h3>
-		Set a column in the given matrix to a specified vector.
+		Set a column in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of rows in <code>mat</code>, the remaining matrix elements will be left unchanged.
 
 		<hr>
 

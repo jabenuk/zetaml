@@ -42,6 +42,12 @@
 			<li><a href="#zmlScaled">zmlScaled()</a></li>
 			<li><a href="#zmlScale">zmlScale()</a></li>
 			<li><a href="#zmlScaleIdentity">zmlScaleIdentity()</a></li>
+			<li><a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a></li>
+			<li><a href="#zmlUpdateOrthoMatrix">zmlUpdateOrthoMatrix()</a></li>
+			<li><a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a></li>
+			<li><a href="#zmlUpdatePerspectiveMatrix">zmlUpdatePerspectiveMatrix()</a></li>
+			<li><a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a></li>
+			<li><a href="#zmlUpdateLookAtMatrix">zmlUpdateLookAtMatrix()</a></li>
 		</ul>
 
 		<hr>
@@ -163,6 +169,116 @@
 		Produces a 4x4 scale matrix from a new identity matrix and the desired 3D vector <code>vec</code>.
 		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
 		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+
+		<hr>
+
+		<h2 id="zmlConstructOrthoMatrix"><code>zmlMatrix zmlConstructOrthoMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>lm</b></code> the left-most boundary.</li>
+			<li><code><b>rm</b></code> the right-most boundary.</li>
+			<li><code><b>bm</b></code> the bottom-most boundary.</li>
+			<li><code><b>tm</b></code> the top-most boundary.</li>
+			<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
+			<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
+		</ul>
+		<h3>Summary</h3>
+		Allocates and initialises an orthographic projection matrix based on the given values.
+		<ul>
+			<li><code><b>zmlConstructOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlConstructOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
+		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+
+		<hr>
+
+		<h2 id="zmlUpdateOrthoMatrix"><code>void zmlUpdateOrthoMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to modify.</li>
+			<li><code><b>lm</b></code> the left-most boundary.</li>
+			<li><code><b>rm</b></code> the right-most boundary.</li>
+			<li><code><b>bm</b></code> the bottom-most boundary.</li>
+			<li><code><b>tm</b></code> the top-most boundary.</li>
+			<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
+			<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
+		</ul>
+		<h3>Summary</h3>
+		Modifies an existing orthographic matrix based on the given values; an alternative to <a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a> that doesn't allocate any new memory.
+		<ul>
+			<li><code><b>zmlUpdateOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlUpdateOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
+
+		<hr>
+
+		<h2 id="zmlConstructPerspectiveMatrix"><code>zmlMatrix zmlConstructPerspectiveMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
+			<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
+			<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
+			<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
+		</ul>
+		<h3>Summary</h3>
+		Allocates and initialises an perspective projection matrix based on the given values.
+		<ul>
+			<li><code><b>zmlConstructPerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlConstructPerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
+		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+
+		<hr>
+
+		<h2 id="zmlUpdatePerspectiveMatrix"><code>void zmlUpdatePerspectiveMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to modify.</li>
+			<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
+			<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
+			<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
+			<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
+		</ul>
+		<h3>Summary</h3>
+		Modifies an existing orthographic matrix based on the given values; an alternative to <a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a> that doesn't allocate any new memory.
+		<ul>
+			<li><code><b>zmlUpdatePerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlUpdatePerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
+
+		<hr>
+
+		<h2 id="zmlConstructLookAtMatrix"><code>zmlMatrix zmlConstructLookAtMatrix{LH|RH}(zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>pos</b></code> the position of the viewer/camera.</li>
+			<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
+			<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
+		</ul>
+		<h3>Summary</h3>
+		Allocates and initialises a new look-at matrix based on the given values.
+		<ul>
+			<li><code><b>zmlConstructLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlConstructLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
+		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+
+		<hr>
+
+		<h2 id="zmlUpdateLookAtMatrix"><code>void zmlUpdateLookAtMatrix{LH|RH}(zmlMatrix *mat, zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the matrix to modify.</li>
+			<li><code><b>pos</b></code> the position of the viewer/camera.</li>
+			<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
+			<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
+		</ul>
+		<h3>Summary</h3>
+		Modifies an existing look-at matrix based on the given values; an alternative to <a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a> that doesn't allocate any new memory.
+		<ul>
+			<li><code><b>zmlUpdateLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
+			<li><code><b>zmlUpdateLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
+		</ul>
 
 		<hr>
 	</body>

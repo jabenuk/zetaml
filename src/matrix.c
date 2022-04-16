@@ -129,15 +129,15 @@ zmlVector zmlGetMatrixRow(zmlMatrix val, unsigned int index) {
  * 
  * @param mat the matrix to be observed
  * @param index the index of the row to set.
- * @param vec the vector to set the row to. Must be the same length as the amount of columns in mat.
+ * @param vec the vector to set the row to.
  */
 void zmlSetMatrixRow(zmlMatrix *mat, unsigned int index, zmlVector vec) {
-	if (vec.size != mat->cols) {
+	if (vec.size > mat->cols) {
 		printf("zetaml: zmlSetMatrixRow(): invalid sized vector given, function aborted\n");
 		return;
 	}
 
-	for (unsigned int i = 0; i < mat->cols; i++) {
+	for (unsigned int i = 0; i < vec.size; i++) {
 		mat->elements[index][i] = vec.elements[i];
 	}
 }
@@ -160,15 +160,15 @@ zmlVector zmlGetMatrixCol(zmlMatrix val, unsigned int index) {
  * 
  * @param mat the matrix to be observed
  * @param index the index of the column to set.
- * @param vec the vector to set the column to. Must be the same length as the amount of rows in mat.
+ * @param vec the vector to set the column to.
  */
 void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec) {
-	if (vec.size != mat->rows) {
+	if (vec.size > mat->rows) {
 		printf("zetaml: zmlSetMatrixRow(): invalid sized vector given, function aborted\n");
 		return;
 	}
 
-	for (unsigned int i = 0; i < mat->rows; i++) {
+	for (unsigned int i = 0; i < vec.size; i++) {
 		mat->elements[i][index] = vec.elements[i];
 	}
 }
