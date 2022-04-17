@@ -12,7 +12,7 @@ Zetaml is built with [CMake](https://cmake.org/).
 
 When compiling, use the `-DZML_USE_FLOATS` flag to use floats (32-bit floating values) instead of doubles (64-bit floating values). You can also use the `-DZML_BUILD_TESTS` flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the `i386-linux-gnu.cmake toolchain` file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all. *As a sidenote: if you do decide to contribute, please remember to test your contributions for memory leaks with [Valgrind](https://valgrind.org/).*
 
-To use the library, include `<zetamlc.h>`. 
+To use the library, include `<zetaml.h>`. 
 
 ## Naming scheme of operator functions
 

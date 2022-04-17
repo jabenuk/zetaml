@@ -25,7 +25,7 @@ extern "C" {
 #	endif
 #endif
 
-#define PI (__floating) 3.141592653589793238463
+#define PI 3.141592653589793238463
 
 // ==============================================================================
 // *****					  	PUBLIC STRUCTURES							*****
@@ -37,7 +37,7 @@ extern "C" {
  */
 typedef struct {
 	unsigned int size;
-	__floating *elements;
+	__zml_floating *elements;
 } zmlVector;
 
 /**
@@ -47,7 +47,7 @@ typedef struct {
 typedef struct {
 	unsigned int rows;
 	unsigned int cols;
-	__floating **elements; // 2d array of elements
+	__zml_floating **elements; // 2d array of elements
 } zmlMatrix;
 
 // ==============================================================================
@@ -79,7 +79,7 @@ extern void zmlFreeVector(zmlVector *vec);
  * @param size the size of the vector.
  * @param val the value to initialise the vector with.
  */
-extern zmlVector zmlConstructVectorDefault(unsigned int size, __floating val);
+extern zmlVector zmlConstructVectorDefault(unsigned int size, __zml_floating val);
 
 /**
  * @brief Construct a vector with a default value.
@@ -110,14 +110,14 @@ extern zmlVector zmlCross(zmlVector v1, zmlVector v2);
  * @param v1 the first vector to operate on.
  * @param v2 the second vector to operate on.
  */
-extern __floating zmlDot(zmlVector v1, zmlVector v2);
+extern __zml_floating zmlDot(zmlVector v1, zmlVector v2);
 
 /**
  * @brief returns the magnitude (length) of the given vector vec. 
  * 
  * @param vec the specified vector.
  */
-extern __floating zmlMagnitude(zmlVector vec);
+extern __zml_floating zmlMagnitude(zmlVector vec);
 
 /**
  * @brief returns the given vector in its normalised state (magnitude of 1).
@@ -151,14 +151,14 @@ extern void 		zmlMultiplyVecs(zmlVector *v1, zmlVector v2);
 extern zmlVector 	zmlDivideVecs_r(zmlVector v1, zmlVector v2);
 extern void 		zmlDivideVecs(zmlVector *v1, zmlVector v2);
 
-extern zmlVector 	zmlAddVecScalar_r(zmlVector v1, __floating v2);
-extern void		 	zmlAddVecScalar(zmlVector *v1, __floating v2);
-extern zmlVector 	zmlSubtractVecScalar_r(zmlVector v1, __floating v2);
-extern void		 	zmlSubtractVecScalar(zmlVector *v1, __floating v2);
-extern zmlVector 	zmlMultiplyVecScalar_r(zmlVector v1, __floating v2);
-extern void		 	zmlMultiplyVecScalar(zmlVector *v1, __floating v2);
-extern zmlVector 	zmlDivideVecScalar_r(zmlVector v1, __floating v2);
-extern void		 	zmlDivideVecScalar(zmlVector *v1, __floating v2);
+extern zmlVector 	zmlAddVecScalar_r(zmlVector v1, __zml_floating v2);
+extern void		 	zmlAddVecScalar(zmlVector *v1, __zml_floating v2);
+extern zmlVector 	zmlSubtractVecScalar_r(zmlVector v1, __zml_floating v2);
+extern void		 	zmlSubtractVecScalar(zmlVector *v1, __zml_floating v2);
+extern zmlVector 	zmlMultiplyVecScalar_r(zmlVector v1, __zml_floating v2);
+extern void		 	zmlMultiplyVecScalar(zmlVector *v1, __zml_floating v2);
+extern zmlVector 	zmlDivideVecScalar_r(zmlVector v1, __zml_floating v2);
+extern void		 	zmlDivideVecScalar(zmlVector *v1, __zml_floating v2);
 
 extern zmlVector	zmlMultiplyVecMat_r(zmlVector v1, zmlMatrix v2);
 extern void			zmlMultiplyVecMat(zmlVector *v1, zmlMatrix v2);
@@ -168,11 +168,11 @@ extern unsigned char zmlVecGT(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecGTE(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecLT(zmlVector v1, zmlVector v2);
 extern unsigned char zmlVecLTE(zmlVector v1, zmlVector v2);
-extern unsigned char zmlVecEqualsScalar(zmlVector v1, __floating v2);
-extern unsigned char zmlVecGTScalar(zmlVector v1, __floating v2);
-extern unsigned char zmlVecGTEScalar(zmlVector v1, __floating v2);
-extern unsigned char zmlVecLTScalar(zmlVector v1, __floating v2);
-extern unsigned char zmlVecLTEScalar(zmlVector v1, __floating v2);
+extern unsigned char zmlVecEqualsScalar(zmlVector v1, __zml_floating v2);
+extern unsigned char zmlVecGTScalar(zmlVector v1, __zml_floating v2);
+extern unsigned char zmlVecGTEScalar(zmlVector v1, __zml_floating v2);
+extern unsigned char zmlVecLTScalar(zmlVector v1, __zml_floating v2);
+extern unsigned char zmlVecLTEScalar(zmlVector v1, __zml_floating v2);
 
 // ==============================================================================
 // *****				   PUBLIC MATRIX FUNCTIONALITY						*****
@@ -290,14 +290,14 @@ extern void			zmlSubtractMats(zmlMatrix *v1, zmlMatrix v2);
 extern zmlMatrix 	zmlMultiplyMats_r(zmlMatrix v1, zmlMatrix v2);
 extern void			zmlMultiplyMats(zmlMatrix *v1, zmlMatrix v2);
 
-extern zmlMatrix 	zmlAddMatScalar_r(zmlMatrix v1, __floating v2);
-extern void		 	zmlAddMatScalar(zmlMatrix *v1, __floating v2);
-extern zmlMatrix 	zmlSubtractMatScalar_r(zmlMatrix v1, __floating v2);
-extern void		 	zmlSubtractMatScalar(zmlMatrix *v1, __floating v2);
-extern zmlMatrix 	zmlMultiplyMatScalar_r(zmlMatrix v1, __floating v2);
-extern void		 	zmlMultiplyMatScalar(zmlMatrix *v1, __floating v2);
-extern zmlMatrix 	zmlDivideMatScalar_r(zmlMatrix v1, __floating v2);
-extern void		 	zmlDivideMatScalar(zmlMatrix *v1, __floating v2);
+extern zmlMatrix 	zmlAddMatScalar_r(zmlMatrix v1, __zml_floating v2);
+extern void		 	zmlAddMatScalar(zmlMatrix *v1, __zml_floating v2);
+extern zmlMatrix 	zmlSubtractMatScalar_r(zmlMatrix v1, __zml_floating v2);
+extern void		 	zmlSubtractMatScalar(zmlMatrix *v1, __zml_floating v2);
+extern zmlMatrix 	zmlMultiplyMatScalar_r(zmlMatrix v1, __zml_floating v2);
+extern void		 	zmlMultiplyMatScalar(zmlMatrix *v1, __zml_floating v2);
+extern zmlMatrix 	zmlDivideMatScalar_r(zmlMatrix v1, __zml_floating v2);
+extern void		 	zmlDivideMatScalar(zmlMatrix *v1, __zml_floating v2);
 
 extern unsigned char zmlMatEquals(zmlMatrix v1, zmlMatrix v2);
 extern unsigned char zmlMatGT(zmlMatrix v1, zmlMatrix v2);
@@ -314,14 +314,14 @@ extern unsigned char zmlMatLTE(zmlMatrix v1, zmlMatrix v2);
  * 
  * @param rad the value, in radians, to convert to degrees.
  */
-extern __floating zmlToDegrees(__floating rad);
+extern __zml_floating zmlToDegrees(__zml_floating rad);
 
 /**
  * @brief Takes a value deg, expressed in degrees, and converts it to radians. 
  * 
  * @param deg the value, in degrees, to convert to radians.
  */
-extern __floating zmlToRadians(__floating deg);
+extern __zml_floating zmlToRadians(__zml_floating deg);
 
 /**
  * @brief Takes a vector value, val, and converts it to a formatted string.
@@ -362,7 +362,7 @@ extern void zmlPrintM(zmlMatrix val);
  * @param start2 the min point of the output range
  * @param stop2 the max point of the output range
  */
-extern __floating zmlLerp(__floating val, __floating start1, __floating stop1, __floating start2, __floating stop2);
+extern __zml_floating zmlLerp(__zml_floating val, __zml_floating start1, __zml_floating stop1, __zml_floating start2, __zml_floating stop2);
 
 // ==============================================================================
 // *****				   PUBLIC TRANSFORMATION FUNCTIONS					*****
@@ -398,7 +398,7 @@ extern zmlMatrix zmlTranslateIdentity(zmlVector vec);
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-extern zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __floating y, __floating z);
+extern zmlMatrix zmlRotated(zmlMatrix mat, __zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z);
 /**
  * @brief alternative to zmlRotated() that modifies mat instead of allocating and returning a new matrix.
  * 
@@ -408,7 +408,7 @@ extern zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __flo
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-extern void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __floating z);
+extern void zmlRotate(zmlMatrix *mat, __zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z);
 /**
  * @brief produces a rotation matrix by rotating a new identity matrix by angle on the given axes.
  * 
@@ -417,7 +417,7 @@ extern void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-extern zmlMatrix zmlRotateIdentity(__floating angle, __floating x, __floating y, __floating z);
+extern zmlMatrix zmlRotateIdentity(__zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z);
 
 /**
  * @brief produces a scale matrix from a given matrix (mat) and the desired 3D vector vec. 
@@ -454,7 +454,7 @@ extern zmlMatrix zmlScaleIdentity(zmlVector vec);
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-extern zmlMatrix zmlConstructOrthoMatrixLH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+extern zmlMatrix zmlConstructOrthoMatrixLH(__zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf);
 /**
  * @brief allocates and initialises an orthographic projection matrix based on the given values. Uses right-handed coordinates!
  * 
@@ -465,7 +465,7 @@ extern zmlMatrix zmlConstructOrthoMatrixLH(__floating lm, __floating rm, __float
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-extern zmlMatrix zmlConstructOrthoMatrixRH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+extern zmlMatrix zmlConstructOrthoMatrixRH(__zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf);
 
 /**
  * @brief modifies a matrix to be an orthographic projection matrix based on the given values. Uses left-handed coordinates!
@@ -478,7 +478,7 @@ extern zmlMatrix zmlConstructOrthoMatrixRH(__floating lm, __floating rm, __float
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-extern void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+extern void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf);
 /**
  * @brief modifies a matrix to be an orthographic projection matrix based on the given values. Uses right-handed coordinates!
  * 
@@ -490,7 +490,7 @@ extern void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __floating lm, __floating rm,
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-extern void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf);
+extern void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf);
 
 /**
  * @brief allocates and initialises a perspective projection matrix based on the given values. Uses left-handed coordinates!
@@ -500,7 +500,7 @@ extern void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __floating lm, __floating rm,
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-extern zmlMatrix zmlConstructPerspectiveMatrixLH(__floating near, __floating far, __floating fovy, __floating aspect_ratio);
+extern zmlMatrix zmlConstructPerspectiveMatrixLH(__zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio);
 /**
  * @brief allocates and initialises a perspective projection matrix based on the given values. Uses right-handed coordinates!
  * 
@@ -509,7 +509,7 @@ extern zmlMatrix zmlConstructPerspectiveMatrixLH(__floating near, __floating far
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-extern zmlMatrix zmlConstructPerspectiveMatrixRH(__floating near, __floating far, __floating fovy, __floating aspect_ratio);
+extern zmlMatrix zmlConstructPerspectiveMatrixRH(__zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio);
 
 /**
  * @brief modifies a matrix to be a perspective projection matrix based on the given values. Uses left-handed coordinates!
@@ -520,7 +520,7 @@ extern zmlMatrix zmlConstructPerspectiveMatrixRH(__floating near, __floating far
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-extern void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio);
+extern void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio);
 /**
  * @brief modifies a matrix to be a perspective projection matrix based on the given values. Uses right-handed coordinates!
  * 
@@ -530,7 +530,7 @@ extern void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __floating near, __floa
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-extern void zmlUpdatePerspectiveMatrixRH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio);
+extern void zmlUpdatePerspectiveMatrixRH(zmlMatrix *mat, __zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio);
 
 /**
  * @brief allocates and initialises a look-at matrix based on the given values. Uses left-handed coordinates!

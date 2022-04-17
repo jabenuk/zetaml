@@ -15,6 +15,8 @@
 #ifndef __ZETAML_INTERNAL_H__
 #define __ZETAML_INTERNAL_H__
 
+#include "zetaml.h"
+
 // internally required headers
 #include <stdio.h>
 #include <stdlib.h>

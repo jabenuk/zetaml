@@ -12,23 +12,22 @@
 /* *************************************************************************************** */
 
 #include "internal.h"
-#include "zetamlc.h"
 
 /**
  * @brief Takes a value rad, expressed in radians, and converts it to degrees. 
  * 
  * @param rad the value, in radians, to convert to degrees.
  */
-__floating zmlToDegrees(__floating rad) {
-	return rad / (PI / (__floating) 180.0);
+__zml_floating zmlToDegrees(__zml_floating rad) {
+	return rad / (PI / (__zml_floating) 180.0);
 }
 /**
  * @brief Takes a value deg, expressed in degrees, and converts it to radians. 
  * 
  * @param deg the value, in degrees, to convert to radians.
  */
-__floating zmlToRadians(__floating deg) {
-	return deg * (PI / (__floating) 180.0);
+__zml_floating zmlToRadians(__zml_floating deg) {
+	return deg * (PI / (__zml_floating) 180.0);
 }
 
 /**
@@ -204,6 +203,6 @@ void zmlPrintM(zmlMatrix val) {
  * @param start2 the min point of the output range
  * @param stop2 the max point of the output range
  */
-__floating zmlLerp(__floating val, __floating start1, __floating stop1, __floating start2, __floating stop2) {
+__zml_floating zmlLerp(__zml_floating val, __zml_floating start1, __zml_floating stop1, __zml_floating start2, __zml_floating stop2) {
 	return start2 + (stop2 - start2) * ((val - start1) / (stop1 - start1));
 }

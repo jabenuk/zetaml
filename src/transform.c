@@ -12,7 +12,6 @@
 /* *************************************************************************************** */
 
 #include "internal.h"
-#include "zetamlc.h"
 
 /**
  * @brief produces a translation matrix from a given matrix (mat) and the desired 3D vector vec. 
@@ -41,11 +40,11 @@ void zmlTranslate(zmlMatrix *mat, zmlVector vec) {
 		return;
 	}
 	// if there is no translation value then skip the rest of the function
-	if (zmlVecEqualsScalar(vec, (__floating) 0.0)) {
+	if (zmlVecEqualsScalar(vec, (__zml_floating) 0.0)) {
 		return;
 	}
 
-	zmlVector r = zmlConstructVectorDefault(4, (__floating) 0.0); // allocate and initialise vector r as a zero vector
+	zmlVector r = zmlConstructVectorDefault(4, (__zml_floating) 0.0); // allocate and initialise vector r as a zero vector
 	// loop through the columns in the matrix (this is asserted to be 4)
 	for (unsigned int i = 0; i < 4; i++) {
 		zmlVector col = zmlGetMatrixCol(*mat, i);
@@ -83,7 +82,7 @@ zmlMatrix zmlTranslateIdentity(zmlVector vec) {
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __floating y, __floating z) {
+zmlMatrix zmlRotated(zmlMatrix mat, __zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z) {
 	zmlMatrix r = zmlCopyMatrix(&mat);
 	zmlRotate(&r, angle, x, y, z);
 	return r;
@@ -97,21 +96,21 @@ zmlMatrix zmlRotated(zmlMatrix mat, __floating angle, __floating x, __floating y
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __floating z) {
+void zmlRotate(zmlMatrix *mat, __zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z) {
 	if (mat->cols != 4 || mat->rows != 4) {
 		printf("zetaml: zmlRotate(): given matrix is not 4x4, no transformation performed!\n");
 	}
 	// if there is no rotation then skip the rest of the function
-	if (angle == (__floating) 0.0 || (
-		x == (__floating) 0.0 &&
-		y == (__floating) 0.0 &&
-		z == (__floating) 0.0
+	if (angle == (__zml_floating) 0.0 || (
+		x == (__zml_floating) 0.0 &&
+		y == (__zml_floating) 0.0 &&
+		z == (__zml_floating) 0.0
 	)) {
 		return;
 	}
 
-	const __floating cos_angle = (__floating) cos(angle);
-	const __floating sin_angle = (__floating) sin(angle);
+	const __zml_floating cos_angle = (__zml_floating) cos(angle);
+	const __zml_floating sin_angle = (__zml_floating) sin(angle);
 	zmlMatrix rotated = zmlZeroMatrix(4, 4);
 
 	// create a unit vector with axes
@@ -123,7 +122,7 @@ void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __f
 	
 	// i have not got a clue:
 
-	zmlVector temp = zmlMultiplyVecScalar_r(axes, (__floating) 1.0 - cos_angle);
+	zmlVector temp = zmlMultiplyVecScalar_r(axes, (__zml_floating) 1.0 - cos_angle);
 
 	rotated.elements[0][0] = cos_angle + temp.elements[0] * axes.elements[0];
 	rotated.elements[1][0] = temp.elements[0] * axes.elements[1] + sin_angle * axes.elements[2];
@@ -146,7 +145,7 @@ void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __f
 		for (unsigned int ii = 0; ii < 3; ii++) matcols[ii] = zmlGetMatrixCol(*mat, ii);
 
 		// col is the resulting column that will replace the current column in the result matrix
-		zmlVector col = zmlConstructVectorDefault(4, (__floating) 0.0);
+		zmlVector col = zmlConstructVectorDefault(4, (__zml_floating) 0.0);
 
 		for (unsigned int j = 0; j < 3; j++) {
 			// multiply each matcol by the appropriate element in rotated
@@ -181,7 +180,7 @@ void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __f
  * @param y the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).
  * @param z the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).
  */
-zmlMatrix zmlRotateIdentity(__floating angle, __floating x, __floating y, __floating z) {
+zmlMatrix zmlRotateIdentity(__zml_floating angle, __zml_floating x, __zml_floating y, __zml_floating z) {
 	zmlMatrix r = zmlIdentityMatrix(4, 4);
 	zmlRotate(&r, angle, x, y, z);
 	return r;
@@ -214,7 +213,7 @@ void zmlScale(zmlMatrix *mat, zmlVector vec) {
 		return;
 	}
 	// if there is no scale value then skip the rest of the function
-	if (zmlVecEqualsScalar(vec, (__floating) 0.0)) {
+	if (zmlVecEqualsScalar(vec, (__zml_floating) 0.0)) {
 		return;
 	}
 
@@ -259,7 +258,7 @@ zmlMatrix zmlScaleIdentity(zmlVector vec) {
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-zmlMatrix zmlConstructOrthoMatrixLH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf) {
+zmlMatrix zmlConstructOrthoMatrixLH(__zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf) {
 	zmlMatrix r = zmlIdentityMatrix(4, 4);
 	zmlUpdateOrthoMatrixLH(&r, lm, rm, bm, tm, zn, zf);
 	return r;
@@ -274,7 +273,7 @@ zmlMatrix zmlConstructOrthoMatrixLH(__floating lm, __floating rm, __floating bm,
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-zmlMatrix zmlConstructOrthoMatrixRH(__floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf) {
+zmlMatrix zmlConstructOrthoMatrixRH(__zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf) {
 	zmlMatrix r = zmlIdentityMatrix(4, 4);
 	zmlUpdateOrthoMatrixRH(&r, lm, rm, bm, tm, zn, zf);
 	return r;
@@ -291,7 +290,7 @@ zmlMatrix zmlConstructOrthoMatrixRH(__floating lm, __floating rm, __floating bm,
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf) {
+void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf) {
 	if (mat->rows != 4 || mat->cols != 4) {
 		printf("zetaml: zmlUpdateOrthoMatrixLH(): given matrix is not 4x4, no transformation performed!\n");
 		return;
@@ -318,7 +317,7 @@ void zmlUpdateOrthoMatrixLH(zmlMatrix *mat, __floating lm, __floating rm, __floa
  * @param zn the nearest Z coordinate that will be rendered.
  * @param zf the farthest Z coordinate that will be rendered.
  */
-void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __floating lm, __floating rm, __floating bm, __floating tm, __floating zn, __floating zf) {
+void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __zml_floating lm, __zml_floating rm, __zml_floating bm, __zml_floating tm, __zml_floating zn, __zml_floating zf) {
 	if (mat->rows != 4 || mat->cols != 4) {
 		printf("zetaml: zmlUpdateOrthoMatrixRH(): given matrix is not 4x4, no transformation performed!\n");
 		return;
@@ -344,7 +343,7 @@ void zmlUpdateOrthoMatrixRH(zmlMatrix *mat, __floating lm, __floating rm, __floa
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-zmlMatrix zmlConstructPerspectiveMatrixLH(__floating near, __floating far, __floating fovy, __floating aspect_ratio) {
+zmlMatrix zmlConstructPerspectiveMatrixLH(__zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio) {
 	zmlMatrix r = zmlIdentityMatrix(4, 4);
 	zmlUpdatePerspectiveMatrixLH(&r, near, far, fovy, aspect_ratio);
 	return r;
@@ -357,7 +356,7 @@ zmlMatrix zmlConstructPerspectiveMatrixLH(__floating near, __floating far, __flo
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-zmlMatrix zmlConstructPerspectiveMatrixRH(__floating near, __floating far, __floating fovy, __floating aspect_ratio) {
+zmlMatrix zmlConstructPerspectiveMatrixRH(__zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio) {
 	zmlMatrix r = zmlIdentityMatrix(4, 4);
 	zmlUpdatePerspectiveMatrixRH(&r, near, far, fovy, aspect_ratio);
 	return r;
@@ -371,13 +370,13 @@ zmlMatrix zmlConstructPerspectiveMatrixRH(__floating near, __floating far, __flo
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio) {
+void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio) {
 	if (mat->rows != 4 || mat->cols != 4) {
 		printf("zetaml: zmlUpdateOrthoMatrixRH(): given matrix is not 4x4, no transformation performed!\n");
 		return;
 	}
 	
-	const __floating tfovy_half = tan(fovy / 2);
+	const __zml_floating tfovy_half = tan(fovy / 2);
 
 	mat->elements[0][0] = 1 / (aspect_ratio * tfovy_half);
 	mat->elements[1][1] = 1 / tfovy_half;
@@ -395,13 +394,13 @@ void zmlUpdatePerspectiveMatrixLH(zmlMatrix *mat, __floating near, __floating fa
  * @param fovy the angle of the field of view in the y direction.
  * @param aspect_ratio the aspect ratio of the viewport.
  */
-void zmlUpdatePerspectiveMatrixRH(zmlMatrix *mat, __floating near, __floating far, __floating fovy, __floating aspect_ratio) {
+void zmlUpdatePerspectiveMatrixRH(zmlMatrix *mat, __zml_floating near, __zml_floating far, __zml_floating fovy, __zml_floating aspect_ratio) {
 	if (mat->rows != 4 || mat->cols != 4) {
 		printf("zetaml: zmlUpdateOrthoMatrixRH(): given matrix is not 4x4, no transformation performed!\n");
 		return;
 	}
 	
-	const __floating tfovy_half = tan(fovy / 2);
+	const __zml_floating tfovy_half = tan(fovy / 2);
 
 	mat->elements[0][0] = 1 / (aspect_ratio * tfovy_half);
 	mat->elements[1][1] = 1 / tfovy_half;

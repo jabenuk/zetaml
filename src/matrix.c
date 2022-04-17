@@ -12,7 +12,6 @@
 /* *************************************************************************************** */
 
 #include "internal.h"
-#include "zetamlc.h"
 
 /**
  * @brief An undefined matrix; no elements.
@@ -31,10 +30,10 @@ zmlMatrix zmlAllocMatrix(unsigned int rows, unsigned int cols) {
 	r.cols = cols;
 
 	// allocate array of rows
-	r.elements = (__floating **) malloc(rows * sizeof(__floating *));
+	r.elements = (__zml_floating **) malloc(rows * sizeof(__zml_floating *));
 	// allocate each row's memory
 	for (unsigned int i = 0; i < rows; i++) {
-		r.elements[i] = (__floating *) malloc(cols * sizeof(__floating));
+		r.elements[i] = (__zml_floating *) malloc(cols * sizeof(__zml_floating));
 	}
 
 	return r;
@@ -69,7 +68,7 @@ zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols) {
 		for (unsigned int col = 0; col < cols; col++) {
 			// set to 1 if on the main diagonal
 			// initialise all other values to 0.
-			r.elements[row][col] = (row == col) ? (__floating) 1.0 : (__floating) 0.0;
+			r.elements[row][col] = (row == col) ? (__zml_floating) 1.0 : (__zml_floating) 0.0;
 		}
 	}
 
@@ -87,7 +86,7 @@ zmlMatrix zmlZeroMatrix(unsigned int rows, unsigned int cols) {
 	for (unsigned int row = 0; row < rows; row++) {
 		for (unsigned int col = 0; col < cols; col++) {
 			// init all values to 0.
-			r.elements[row][col] = (__floating) 0.0;
+			r.elements[row][col] = (__zml_floating) 0.0;
 		}
 	}
 
@@ -345,48 +344,48 @@ void zmlMultiplyMats(zmlMatrix *v1, zmlMatrix v2) {
 	zmlFreeMatrix(&buf);
 }
 
-zmlMatrix zmlAddMatScalar_r(zmlMatrix v1, __floating v2) {
+zmlMatrix zmlAddMatScalar_r(zmlMatrix v1, __zml_floating v2) {
 	zmlMatrix r = zmlCopyMatrix(&v1);
 	zmlAddMatScalar(&r, v2);
 	return r;
 }
-void zmlAddMatScalar(zmlMatrix *v1, __floating v2) {
+void zmlAddMatScalar(zmlMatrix *v1, __zml_floating v2) {
 	for (unsigned int row = 0; row < v1->rows; row++) {
 		for (unsigned int col = 0; col < v1->cols; col++) {
 			v1->elements[row][col] += v2;
 		}
 	}
 }
-zmlMatrix zmlSubtractMatScalar_r(zmlMatrix v1, __floating v2) {
+zmlMatrix zmlSubtractMatScalar_r(zmlMatrix v1, __zml_floating v2) {
 	zmlMatrix r = zmlCopyMatrix(&v1);
 	zmlSubtractMatScalar(&r, v2);
 	return r;
 }
-void zmlSubtractMatScalar(zmlMatrix *v1, __floating v2) {
+void zmlSubtractMatScalar(zmlMatrix *v1, __zml_floating v2) {
 	for (unsigned int row = 0; row < v1->rows; row++) {
 		for (unsigned int col = 0; col < v1->cols; col++) {
 			v1->elements[row][col] -= v2;
 		}
 	}
 }
-zmlMatrix zmlMultiplyMatScalar_r(zmlMatrix v1, __floating v2) {
+zmlMatrix zmlMultiplyMatScalar_r(zmlMatrix v1, __zml_floating v2) {
 	zmlMatrix r = zmlCopyMatrix(&v1);
 	zmlMultiplyMatScalar(&r, v2);
 	return r;
 }
-void zmlMultiplyMatScalar(zmlMatrix *v1, __floating v2) {
+void zmlMultiplyMatScalar(zmlMatrix *v1, __zml_floating v2) {
 	for (unsigned int row = 0; row < v1->rows; row++) {
 		for (unsigned int col = 0; col < v1->cols; col++) {
 			v1->elements[row][col] *= v2;
 		}
 	}
 }
-zmlMatrix zmlDivideMatScalar_r(zmlMatrix v1, __floating v2) {
+zmlMatrix zmlDivideMatScalar_r(zmlMatrix v1, __zml_floating v2) {
 	zmlMatrix r = zmlCopyMatrix(&v1);
 	zmlDivideMatScalar(&r, v2);
 	return r;
 }
-void zmlDivideMatScalar(zmlMatrix *v1, __floating v2) {
+void zmlDivideMatScalar(zmlMatrix *v1, __zml_floating v2) {
 	for (unsigned int row = 0; row < v1->rows; row++) {
 		for (unsigned int col = 0; col < v1->cols; col++) {
 			v1->elements[row][col] /= v2;

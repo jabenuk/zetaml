@@ -2,7 +2,7 @@
 
 <html lang="en">
 	<head>
-		<title>home : zetamlc</title>
+		<title>home : zetaml</title>
 
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
 
 	<body>
 		<header>
-			<h1>zetamlc.documentation <a href="actual-index.html">[index]</a></h1>
+			<h1>zetaml.documentation <a href="actual-index.html">[index]</a></h1>
 			
 			<nav id="nav-links">
 				<a href="index.html">home</a>
@@ -32,7 +32,7 @@
 		<h2 id="summary">Summary</h2>
 		Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc. Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my other project(s). This is a <i>personal project,</i> not a professional one. But I still try to put effort into its documentation.*
 		<br><br>
-		All code related to zetaml is open-source and free; see the source repository <a href="https://github.com/jabenuk/zetamlc">here</a>.
+		All code related to zetaml is open-source and free; see the source repository <a href="https://github.com/jabenuk/zetaml">here</a>.
 		<br><br>
 		*Yes, this site was done manually, despite what the <a href="actual-index.html">library index</a> might suggest. Everything on that list is documented (although brief, in the case of the many operator functions), which is something I'm quite proud of. On the other hand, the HTML files for this website are a mess. Too many divs. <i>Please</i> don't look at them.
 
@@ -41,7 +41,7 @@
 		<br><br>
 		When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of <b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all. <i>As a sidenote: if you do decide to contribute, please remember to test your contributions for memory leaks with <a href="https://valgrind.org/">Valgrind</a>.</i>
 		<br><br>
-		To use the library, include <code>&lt;zetamlc.h&gt;</code>.
+		To use the library, include <code>&lt;zetaml.h&gt;</code>.
 
 		<h2 id="operators">Naming scheme of operator functions</h2>
 		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').

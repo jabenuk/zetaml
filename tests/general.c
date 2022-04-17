@@ -13,7 +13,7 @@
 
 #define testf(x) printf("%s = %f\n", #x, x)
 
-#include <zetamlc.h>
+#include <zetaml.h>
 #include <stdio.h>
 
 int main() {
