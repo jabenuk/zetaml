@@ -115,7 +115,10 @@ void zmlRotate(zmlMatrix *mat, __floating angle, __floating x, __floating y, __f
 	zmlMatrix rotated = zmlZeroMatrix(4, 4);
 
 	// create a unit vector with axes
-	zmlVector axes = zmlConstructVector(3, x, y, z);
+	zmlVector axes = zmlAllocVector(3);
+	axes.elements[0] = x;
+	axes.elements[1] = y;
+	axes.elements[2] = z;
 	zmlNormalise(&axes);
 	
 	// i have not got a clue:
