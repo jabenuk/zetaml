@@ -1,11 +1,9 @@
-# zetamlc: the Zeta Maths Library for C
+# zetaml: a lightweight general-purpose maths library.
 
 ## Documentation
-You can see the official documentation [here](https://jabenuk.github.io/zetamlc/). The home page of that documentation is essentially mirrored in this README file.
+You can see the official documentation [here](https://jabenuk.github.io/zetaml/). The home page of that documentation is essentially mirrored in this README file.
 
 ## Summary
-zetamlc is a C port of the original [Zeta Maths Library](https://github.com/jabenuk/zetaml) for C++.
-
 Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc. Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my other project(s). This is a personal project, not a professional one. But I still try to put effort into its documentation. 
 
 ## Usage
@@ -27,5 +25,3 @@ However, `zmlAddVecs` adds v2 (its second argument) to v1 (its first argument), 
 When different types are operated on, they are all included in the function name, e.g. `zmlMultiplyVecMat()`.
 
 Finally, logical operators are named based on the initials of each syllable, e.g. `zmlVecLT` is a **L**ess **T**han operator and `zmlMatGTE` is a **G**reater **T**han or **E**qual to operator. 
-
-##### See more on the [official documentation](https://jabenuk.github.io/zetamlc/).
