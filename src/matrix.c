@@ -271,6 +271,20 @@ void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val) {
 	zmlFreeMatrix(&buf);
 }
 
+/**
+ * @brief copy the elements in a matrix into the 2D array 'arr'.
+ * 
+ * @param mat the matrix to copy from.
+ * @param arr the array buffer to copy into.
+ */
+void zmlCopyMatrixElements(zmlMatrix mat, __zml_floating arr[mat.rows][mat.cols]) {
+	for (unsigned int r = 0; r < mat.rows; r++) {
+		for (unsigned int c = 0; c < mat.cols; c++) {
+			arr[r][c] = mat.elements[r][c];
+		}
+	}
+}
+
 #define _zml_assertSameSize(x, y, rval) {\
 	if (x.rows != y.rows || x.cols != y.cols) {\
 		printf("zetaml: assertion: given matrices are not the same size!\n");\

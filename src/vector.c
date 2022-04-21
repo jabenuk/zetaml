@@ -325,6 +325,18 @@ void zmlMultiplyVecMat(zmlVector *v1, zmlMatrix v2) {
 	zmlFreeVector(&buf);
 }
 
+/**
+ * @brief copy the elements in a vector into the array 'arr'.
+ * 
+ * @param vec the vector to copy from.
+ * @param arr the array buffer to copy into.
+ */
+void zmlCopyVectorElements(zmlVector vec, __zml_floating arr[vec.size]) {
+	for (unsigned int i = 0; i < vec.size; i++) {
+		arr[i] = vec.elements[i];
+	}
+}
+
 unsigned char zmlVecEquals(zmlVector v1, zmlVector v2) {
 	_zml_assertSameSize(v1, v2, 0);
 	for (unsigned int i = 0; i < v1.size; i++) {

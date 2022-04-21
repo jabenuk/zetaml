@@ -30,7 +30,17 @@ int main() {
 		zmlVector up = zmlConstructVector(3, 0.0, 1.0, 0.0);
 		zmlMatrix m1 = zmlConstructLookAtMatrixRH(v1, v2, up);
 
-		zmlPrintM(m1);
+		double test[4][5];
+		zmlCopyMatrixElements(m1, test);
+
+		double test2[3];
+		zmlCopyVectorElements(v1, test2);
+
+		zmlPrintV(v1);
+
+		for (unsigned int i = 0; i < 3; i++) {
+			printf("%.5f\n", test2[i]);
+		}
 
 		zmlFreeMatrix(&m1);
 		zmlFreeVector(&v1);

@@ -133,6 +133,14 @@ extern zmlVector zmlNormalised(zmlVector vec);
  */
 extern void zmlNormalise(zmlVector *vec);
 
+/**
+ * @brief copy the elements in a vector into the array 'arr'.
+ * 
+ * @param vec the vector to copy from.
+ * @param arr the array buffer to copy into.
+ */
+extern void zmlCopyVectorElements(zmlVector vec, __zml_floating arr[vec.size]);
+
 // -------------------------------------------
 // Boolean/arithmetic operation functions.
 // These are self-explanatory, and so are not documented.
@@ -277,6 +285,14 @@ extern void zmlAugmentVec(zmlMatrix *mat, zmlVector vec);
  * @param val the matrix to augment onto mat.
  */
 extern void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val);
+
+/**
+ * @brief copy the elements in a matrix into the 2D array 'arr'.
+ * 
+ * @param mat the matrix to copy from.
+ * @param arr the array buffer to copy into.
+ */
+extern void zmlCopyMatrixElements(zmlMatrix mat, __zml_floating arr[mat.rows][mat.cols]);
 
 // -------------------------------------------
 // Boolean/arithmetic operation functions.

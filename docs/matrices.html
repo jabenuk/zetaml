@@ -66,6 +66,7 @@
 				<li><a href="#zmlZeroMatrix">zmlZeroMatrix()</a></li>
 				<br>
 				<li><a href="#zmlCopyMatrix">zmlCopyMatrix()</a></li>
+				<li><a href="#zmlCopyMatrixElements">zmlCopyMatrixElements()</a></li>
 			</ul>
 			<ul>
 				<h4>&emsp;Matrix deletion</h4>
@@ -296,6 +297,17 @@
 		<h3>Summary</h3>
 		Augments matrix <code>val</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code> increases when calling this function. The amount of columns in <code>val</code> <b>must be equal</b> to the amount of columns in <code>mat</code>!
 		<span class="note">The augmented matrix is added on to the <b>bottom</b> of <code>mat</code>.</span>
+
+		<hr>
+
+		<h2 id="zmlCopyMatrixElements"><code>void zmlCopyMatrixElements(zmlMatrix mat, <i>floating</i> arr[mat.rows][mat.cols])</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>mat</b></code> the specified matrix.</li>
+			<li><code><b>arr</b></code> the destination array.</li>
+		</ul>
+		<h3>Summary</h3>
+		Copies the elements from matrix <code>mat</code> into the specified 2D array <code>arr</code>. This is useful for copying the elements of the matrix into the stack.
 
 		<hr>
 

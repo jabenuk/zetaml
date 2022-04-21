@@ -62,6 +62,7 @@
 				<li><a href="#zmlConstructVector">zmlConstructVector()</a></li>
 				<br>
 				<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
+				<li><a href="#zmlCopyVectorElements">zmlCopyVectorElements()</a></li>
 			</ul>
 			<ul>
 				<h4>&emsp;Vector deletion</h4>
@@ -276,6 +277,17 @@
 		</ul>
 		<h3>Summary</h3>
 		Normalises the specified vector by <b>modifying</b> it. This is an alternative to <a href="#zmlNormalised">zmlNormalised()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="zmlNormalised">zmlNormlised()</a>.
+
+		<hr>
+
+		<h2 id="zmlCopyVectorElements"><code>void zmlCopyVectorElements(zmlVector vec, <i>floating</i> arr[vec.size])</code></h2>
+		<h3>Arguments</h3>
+		<ul>
+			<li><code><b>vec</b></code> the specified vector.</li>
+			<li><code><b>arr</b></code> the destination array.</li>
+		</ul>
+		<h3>Summary</h3>
+		Copies the elements from vector <code>vec</code> into the specified array <code>arr</code>. This is useful for copying the elements of the vector into the stack.
 
 		<hr>
 
