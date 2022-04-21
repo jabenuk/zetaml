@@ -4,7 +4,7 @@ add_library(${PROJECT_NAME}
 	"matrix.c"
 	"transform.c"
 )
-target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include")
+target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 if (X86_BUILD)
 	target_compile_definitions(${PROJECT_NAME} PUBLIC ZML_32_BIT)
