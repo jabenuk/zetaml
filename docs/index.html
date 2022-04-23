@@ -28,47 +28,95 @@
 		</header>
 
 		<h1>Welcome to the Official Zeta Maths Library Documentation</h1>
-
-		<h2 id="summary">Summary</h2>
-		Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc. Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my other project(s). This is a <i>personal project,</i> not a professional one. But I still try to put effort into its documentation.*
-		<br><br>
-		All code related to zetaml is open-source and free; see the source repository <a href="https://github.com/jabenuk/zetaml">here</a>.
-		<br><br>
-		*Yes, this site was done manually, despite what the <a href="actual-index.html">library index</a> might suggest. Everything on that list is documented (although brief, in the case of the many operator functions), which is something I'm quite proud of. On the other hand, the HTML files for this website are a mess. Too many divs. <i>Please</i> don't look at them.
-
-		<h2 id="usage">Usage</h2>
-		Zetaml is built with <a href="https://cmake.org/">CMake</a>.
-		<br><br>
-		When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of <b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s); this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing the project on both x86 and x86_64 architectures if you contribute at all. <i>As a sidenote: if you do decide to contribute, please remember to test your contributions for memory leaks with <a href="https://valgrind.org/">Valgrind</a>.</i>
-		<br><br>
-		To use the library, include <code>&lt;zetaml.h&gt;</code>.
-
-		<h2 id="operators">Naming scheme of operator functions</h2>
-		Zetaml operators are named systematically, and all work in order of left-to-right (i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
-		<br><br>
-		For example, <code>zmlAddVecs_r</code> adds two vectors and <b>returns the result,</b> allocating heap space for the resulting vector. The '<code>_r</code>' comes from the fact that the function <u>r</u>eturns its result. Therefore, _r operators are equivalent to '<code>+</code>', '<code>-</code>', '<code>*</code>', etc.<br>
-		However, <code>zmlAddVecs</code> adds <code>v2</code> (its second argument) to <code>v1</code> (its first argument), <b>modifying</b> v1. There is no '<code>_r</code>' because nothing is <u>r</u>eturned. Therefore, non-_r operators are equivalent to '<code>+=</code>', '<code>-=</code>', '<code>*=</code>', etc.
-		<br><br>
-		When different types are operated on, they are all included in the function name, e.g. <code>zmlMultiplyVecMat()</code>.
-		<br><br>
-		Finally, logical operators are named based on the initials of each syllable, e.g. <code>zmlVecLT</code> is a <u>L</u>ess <u>T</u>han operator and <code>zmlMatGTE</code> is a <u>G</u>reater <u>T</u>han or <u>E</u>qual to operator.
-
-		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
-
-		<h2 id="using-these-docs">Using this documentation</h2>
-		Information you should take note of is highlighted as such:
-		<span class="note">
-			This is an example of a note.
-		</span>
-		<br>
-		More important information is highlighted as a warning, like so:
-		<span class="warning">
-			This is an example of a warning.
-		</span>
-		<br>
-		This documentation refers to both floats and doubles as 'floating-point values', or in the context of parameters, <code><i>floating</i></code>. This is to avoid confusion when using floats (instead of doubles) via the <code>-ZML_USE_FLOATS=ON</code> compilation option.
-
-		<h2 id="license">License</h2>
+		
+		<section>
+			<h2 id="summary">Summary</h2>
+			<p>
+				Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc.
+				Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my
+				other project(s). This is a <i>personal project,</i> not a professional one. But I still try to put effort into its documentation.*
+				
+				<br><br>
+				
+				All code related to zetaml is open-source and free; see the source repository <a href="https://github.com/jabenuk/zetaml">here</a>.
+				<br><br>
+				
+				*Yes, this site was done manually, despite what the <a href="actual-index.html">library index</a> might suggest.
+				Everything on that list is documented (although brief, in the case of the many operator functions), which is something I'm quite proud of.
+				On the other hand, the HTML files for this website are a mess. Too many divs. <i>Please</i> don't look at them.
+			</p>
+		</section>
+		
+		<section>
+			<h2 id="usage">Usage</h2>
+			<p>
+				Zetaml is built with <a href="https://cmake.org/">CMake</a>.
+				
+				<br><br>
+				
+				When compiling, use the <code>-DZML_USE_FLOATS</code> flag to use <b>floats</b> (32-bit floating values) instead of
+				<b>doubles</b> (64-bit floating values). You can also use the <code>-DZML_BUILD_TESTS</code> flag to build test executable(s);
+				this can be useful if you intend to help develop zetaml. Furthermore, you can use the <code>i386-linux-gnu.cmake</code> toolchain
+				file to build for 32-bit with GCC - as zetaml aims to be as compatible as possible with early architectures, I recommend testing
+				the project on both x86 and x86_64 architectures if you contribute at all. <i>As a sidenote: if you do decide to contribute,
+				please remember to test your contributions for memory leaks with <a href="https://valgrind.org/">Valgrind</a>.</i>
+				
+				<br><br>
+				
+				To use the library, include <code>&lt;zetaml.h&gt;</code>.
+			</p>
+		</section>
+		
+		<section>
+			<h2 id="operators">Naming scheme of operator functions</h2>
+			<p>
+				Zetaml operators are named systematically, and all work in order of left-to-right
+				(i.e. '<code>zmlDivideVecs_r(v1, v2)</code>' is '<code>v1 / v2</code>').
+				
+				<br><br>
+				
+				For example, <code>zmlAddVecs_r</code> adds two vectors and <b>returns the result,</b> allocating heap space for the resulting vector.
+				The '<code>_r</code>' comes from the fact that the function <u>r</u>eturns its result. Therefore, _r operators are equivalent to
+				'<code>+</code>', '<code>-</code>', '<code>*</code>', etc.
+				<br>
+				However, <code>zmlAddVecs</code> adds <code>v2</code> (its second argument) to <code>v1</code> (its first argument),
+				<b>modifying</b> v1. There is no '<code>_r</code>' because nothing is <u>r</u>eturned. Therefore, non-_r operators are
+				equivalent to '<code>+=</code>', '<code>-=</code>', '<code>*=</code>', etc.
+				
+				<br><br>
+				
+				When different types are operated on, they are all included in the function name, e.g. <code>zmlMultiplyVecMat()</code>.
+				
+				<br><br>
+				
+				Finally, logical operators are named based on the initials of each syllable, e.g. <code>zmlVecLT</code> is a
+				<u>L</u>ess <u>T</u>han operator and <code>zmlMatGTE</code> is a <u>G</u>reater <u>T</u>han or <u>E</u>qual to operator.
+			</p>
+			
+			<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
+		</section>
+		
+		<section>
+			<h2 id="using-these-docs">Using this documentation</h2>
+			<p>
+				Information you should take note of is highlighted as such:
+				<span class="note">
+					This is an example of a note.
+				</span>
+				<br>
+				More important information is highlighted as a warning, like so:
+				<span class="warning">
+					This is an example of a warning.
+				</span>
+				<br>
+				This documentation refers to both floats and doubles as 'floating-point values', or in the context of parameters,
+				<code><i>floating</i></code>. This is to avoid confusion when using floats (instead of doubles) via the
+				<code>-ZML_USE_FLOATS=ON</code> compilation option.
+			</p>
+		</section>
+		
+		<section>
+			<h2 id="license">License</h2>
 <pre>
 MIT License
 
@@ -92,7 +140,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.	
 </pre>
-
+		</section>
+		
 		<hr>
 	</body>
 </html>

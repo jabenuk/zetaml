@@ -7,8 +7,11 @@ h1 {
 } h3, h4, h5, h6 {
 	margin-top: 10px;
 	margin-bottom: 0px;
+} h4.index-heading {
+	padding-inline-start: 40px;
 } ul {
 	margin-top: 0px;
+	padding-inline-start: 40px;
 } a:visited {
 	color: blue;
 }
@@ -16,12 +19,23 @@ h1 {
 .li-structure, .li-function, .li-operator, .li-constant {
 	transition: background-color 0.1s ease-in-out;
 }
+li.undotted {
+	list-style-type: none;
+}
+
+.hidden {
+	display: none !important;
+}
 
 header > h1 {
 	text-align: center;
 	font-size: 18pt;
 	margin-bottom: 2px;
 	margin-top: 0;
+}
+
+p {
+	all: initial;
 }
 
 nav#nav-links {

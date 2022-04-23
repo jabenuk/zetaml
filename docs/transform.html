@@ -29,268 +29,380 @@
 
 		<h1>Transformation functions</h1>
 
-		Functions related to transforming matrix and vector structures.
+		<p>Functions related to transforming matrix and vector structures.</p>
 
-		<div class="hoz-collapse" id="hoz-collapse-4">
-			<div>
+		<section class="hoz-collapse" id="hoz-collapse-4">
+			<h3 class="hidden">Page index</h3>
+			<section>
+				<h4 class="index-heading">&emsp;Basic transformations</h4>
 				<ul>
-					<h4>&emsp;Basic transformations</h4>
 					<li><a href="#zmlTranslated">zmlTranslated()</a></li>
 					<li><a href="#zmlTranslate">zmlTranslate()</a></li>
 					<li><a href="#zmlTranslateIdentity">zmlTranslateIdentity()</a></li>
-					<br>
+					
+					<li class="undotted"><br></li>
+					
 					<li><a href="#zmlRotated">zmlRotated()</a></li>
 					<li><a href="#zmlRotate">zmlRotate()</a></li>
 					<li><a href="#zmlRotateIdentity">zmlRotateIdentity()</a></li>
-					<br>
+					
+					<li class="undotted"><br></li>
+					
 					<li><a href="#zmlScaled">zmlScaled()</a></li>
 					<li><a href="#zmlScale">zmlScale()</a></li>
 					<li><a href="#zmlScaleIdentity">zmlScaleIdentity()</a></li>
 				</ul>
-			</div>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Projection transformations</h4>
+				<ul>
+					<li><a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a></li>
+					<li><a href="#zmlUpdateOrthoMatrix">zmlUpdateOrthoMatrix()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a></li>
+					<li><a href="#zmlUpdatePerspectiveMatrix">zmlUpdatePerspectiveMatrix()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a></li>
+					<li><a href="#zmlUpdateLookAtMatrix">zmlUpdateLookAtMatrix()</a></li>
+				</ul>
+			</section>
+		</section>
+
+		<hr>
+		
+		<section>
+			<h2 id="zmlTranslated"><code>zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
 			<ul>
-				<h4>&emsp;Projection transformations</h4>
-				<li><a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a></li>
-				<li><a href="#zmlUpdateOrthoMatrix">zmlUpdateOrthoMatrix()</a></li>
-				<br>
-				<li><a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a></li>
-				<li><a href="#zmlUpdatePerspectiveMatrix">zmlUpdatePerspectiveMatrix()</a></li>
-				<br>
-				<li><a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a></li>
-				<li><a href="#zmlUpdateLookAtMatrix">zmlUpdateLookAtMatrix()</a></li>
+				<li><code><b>mat</b></code> the matrix to base the translation matrix off of.</li>
+				<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
 			</ul>
-		</div>
-
+			<h3>Summary</h3>
+			<p>
+				Produces a 4x4 translation matrix from a given matrix <code>mat</code> and the desired 3D vector <code>vec</code>.
+			For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlTranslate">zmlTranslate()</a>.
+			</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlTranslated"><code>zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to base the translation matrix off of.</li>
-			<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 translation matrix from a given matrix <code>mat</code> and the desired 3D vector <code>vec</code>. For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlTranslate">zmlTranslate()</a>.
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlTranslate"><code>void zmlTranslate(zmlMatrix *mat, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to base the translation matrix off of.</li>
+				<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Modifies the given matrix <code>mat</code> so it can be used as a 4x4 translation matrix,
+				using vector <code>vec</code> as the translation factor.
+			</p>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlTranslate"><code>void zmlTranslate(zmlMatrix *mat, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to base the translation matrix off of.</li>
-			<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies the given matrix <code>mat</code> so it can be used as a 4x4 translation matrix, using vector <code>vec</code> as the translation factor.
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlTranslateIdentity"><code>zmlMatrix zmlTranslateIdentity(zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Produces a 4x4 translation matrix from an identity matrix.</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlTranslateIdentity"><code>zmlMatrix zmlTranslateIdentity(zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the vector to use as the transformation factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 translation matrix from an identity matrix.
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlRotated">
+				<code>zmlMatrix zmlRotated(zmlMatrix mat, <i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to base the rotation matrix on.</li>
+				<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
+				<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
+				<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
+				<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Produces a 4x4 rotation matrix from a given matrix <code>mat</code> and the desired angle <code>angle</code>.
+				The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers).
+				For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlRotate">zmlRotate()</a>.
+			</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlRotated"><code>zmlMatrix zmlRotated(zmlMatrix mat, <i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to base the rotation matrix on.</li>
-			<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
-			<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
-			<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
-			<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 rotation matrix from a given matrix <code>mat</code> and the desired angle <code>angle</code>. The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers). For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlRotate">zmlRotate()</a>.
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlRotate"><code>void zmlRotate(zmlMatrix *mat, <i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
+				<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
+				<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
+				<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Modifies the given matrix <code>mat</code> so it can be used as a 4x4 rotation matrix, using the desired angle <code>angle</code>.
+				The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers).
+			</p>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlRotate"><code>void zmlRotate(zmlMatrix *mat, <i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
-			<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
-			<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
-			<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies the given matrix <code>mat</code> so it can be used as a 4x4 rotation matrix, using the desired angle <code>angle</code>. The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers).
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlRotateIdentity">
+				<code>zmlMatrix zmlRotateIdentity(<i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
+				<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
+				<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
+				<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Produces a 4x4 rotation matrix from a new identity matrix and the desired angle <code>angle</code>.
+				The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers).
+			</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlRotateIdentity"><code>zmlMatrix zmlRotateIdentity(<i>floating</i> angle, <i>floating</i> x, <i>floating</i> y, <i>floating</i> z)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>angle</b></code> the angle to rotate the specified axes by. <b>Expressed in radians.</b></li>
-			<li><code><b>x</b></code> the multiplier for the X axis of rotation (set to 0 if you don't want X rotation).</li>
-			<li><code><b>y</b></code> the multiplier for the Y axis of rotation (set to 0 if you don't want Y rotation).</li>
-			<li><code><b>z</b></code> the multiplier for the Z axis of rotation (set to 0 if you don't want Z rotation).</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 rotation matrix from a new identity matrix and the desired angle <code>angle</code>. The matrix is rotated based on the given axes (<code>x</code>, <code>y</code>, and <code>z</code> multipliers).
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlScaled"><code>zmlMatrix zmlScaled(zmlMatrix mat, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to base the scale matrix off of.</li>
+				<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Produces a 4x4 scale matrix from a given matrix <code>mat</code> and the desired 3D vector <code>vec</code>.
+				For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlScale">zmlScale()</a>.
+			</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlScaled"><code>zmlMatrix zmlScaled(zmlMatrix mat, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to base the scale matrix off of.</li>
-			<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 scale matrix from a given matrix <code>mat</code> and the desired 3D vector <code>vec</code>. For an alternative that modifies <code>mat</code> rather than returning a new matrix, see <a href="#zmlScale">zmlScale()</a>.
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlScale"><code>void zmlScale(zmlMatrix *mat, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to base the scale matrix off of.</li>
+				<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Modifies the given matrix <code>mat</code> so it can be used as a 4x4 scale matrix, using vector <code>vec</code> as the scale factor.</p>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlScale"><code>void zmlScale(zmlMatrix *mat, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to base the scale matrix off of.</li>
-			<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies the given matrix <code>mat</code> so it can be used as a 4x4 scale matrix, using vector <code>vec</code> as the scale factor.
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlScaleIdentity"><code>zmlMatrix zmlScaleIdentity(zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Produces a 4x4 scale matrix from a new identity matrix and the desired 3D vector <code>vec</code>.</p>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+			<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlScaleIdentity"><code>zmlMatrix zmlScaleIdentity(zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the vector to use as the scale factor.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a 4x4 scale matrix from a new identity matrix and the desired 3D vector <code>vec</code>.
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-		<span class="note">The vector <code>vec</code> must be of size <b>3</b> and the matrix <code>mat</code> must be <b>4x4</b>.</span>
-
+		<section>
+			<h2 id="zmlConstructOrthoMatrix">
+				<code>zmlMatrix zmlConstructOrthoMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm,
+				<i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>lm</b></code> the left-most boundary.</li>
+				<li><code><b>rm</b></code> the right-most boundary.</li>
+				<li><code><b>bm</b></code> the bottom-most boundary.</li>
+				<li><code><b>tm</b></code> the top-most boundary.</li>
+				<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
+				<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocates and initialises an orthographic projection matrix based on the given values.</p>
+			<ul>
+				<li><code><b>zmlConstructOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlConstructOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlConstructOrthoMatrix"><code>zmlMatrix zmlConstructOrthoMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>lm</b></code> the left-most boundary.</li>
-			<li><code><b>rm</b></code> the right-most boundary.</li>
-			<li><code><b>bm</b></code> the bottom-most boundary.</li>
-			<li><code><b>tm</b></code> the top-most boundary.</li>
-			<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
-			<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocates and initialises an orthographic projection matrix based on the given values.
-		<ul>
-			<li><code><b>zmlConstructOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlConstructOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlUpdateOrthoMatrix">
+				<code>void zmlUpdateOrthoMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm,
+				<i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>lm</b></code> the left-most boundary.</li>
+				<li><code><b>rm</b></code> the right-most boundary.</li>
+				<li><code><b>bm</b></code> the bottom-most boundary.</li>
+				<li><code><b>tm</b></code> the top-most boundary.</li>
+				<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
+				<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Modifies an existing orthographic matrix based on the given values; an alternative to
+				<a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a> that doesn't allocate any new memory.
+			</p>
+			<ul>
+				<li><code><b>zmlUpdateOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlUpdateOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlUpdateOrthoMatrix"><code>void zmlUpdateOrthoMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>lm</b></code> the left-most boundary.</li>
-			<li><code><b>rm</b></code> the right-most boundary.</li>
-			<li><code><b>bm</b></code> the bottom-most boundary.</li>
-			<li><code><b>tm</b></code> the top-most boundary.</li>
-			<li><code><b>zn</b></code> the nearest Z coordinate that will be rendered.</li>
-			<li><code><b>zf</b></code> the farthest Z coordinate that will be rendered.</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies an existing orthographic matrix based on the given values; an alternative to <a href="#zmlConstructOrthoMatrix">zmlConstructOrthoMatrix()</a> that doesn't allocate any new memory.
-		<ul>
-			<li><code><b>zmlUpdateOrthoMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlUpdateOrthoMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-
+		<section>
+			<h2 id="zmlConstructPerspectiveMatrix">
+				<code>zmlMatrix zmlConstructPerspectiveMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, 
+				<i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
+				<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
+				<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
+				<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocates and initialises an perspective projection matrix based on the given values.</p>
+			<ul>
+				<li><code><b>zmlConstructPerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlConstructPerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlConstructPerspectiveMatrix"><code>zmlMatrix zmlConstructPerspectiveMatrix{LH|RH}(<i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
-			<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
-			<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
-			<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocates and initialises an perspective projection matrix based on the given values.
-		<ul>
-			<li><code><b>zmlConstructPerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlConstructPerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlUpdatePerspectiveMatrix">
+				<code>void zmlUpdatePerspectiveMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm,
+				<i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
+				<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
+				<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
+				<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Modifies an existing orthographic matrix based on the given values; an alternative to
+				<a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a> that doesn't allocate any new memory.
+			</p>
+			<ul>
+				<li><code><b>zmlUpdatePerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlUpdatePerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlUpdatePerspectiveMatrix"><code>void zmlUpdatePerspectiveMatrix{LH|RH}(zmlMatrix *mat, <i>floating</i> lm, <i>floating</i> rm, <i>floating</i> bm, <i>floating</i> tm, <i>floating</i> zn, <i>floating</i> zf)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>near</b></code> specifies the distance from the viewer to the nearest clipping plane.</li>
-			<li><code><b>far</b></code> specifies the distance from the viewer to the farthest clipping plane.</li>
-			<li><code><b>fovy</b></code> the angle of the field of view in the y direction. <b>Expressed in radians!</b></li>
-			<li><code><b>aspect_ratio</b></code> the aspect ratio of the viewport.</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies an existing orthographic matrix based on the given values; an alternative to <a href="#zmlConstructPerspectiveMatrix">zmlConstructPerspectiveMatrix()</a> that doesn't allocate any new memory.
-		<ul>
-			<li><code><b>zmlUpdatePerspectiveMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlUpdatePerspectiveMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-
+		<section>
+			<h2 id="zmlConstructLookAtMatrix"><code>zmlMatrix zmlConstructLookAtMatrix{LH|RH}(zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>pos</b></code> the position of the viewer/camera.</li>
+				<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
+				<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocates and initialises a new look-at matrix based on the given values.</p>
+			<ul>
+				<li><code><b>zmlConstructLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlConstructLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+			<span class="warning">
+				This function returns a new heap-allocated matrix, which must be freed after use with a call to
+				<a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.
+			</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlConstructLookAtMatrix"><code>zmlMatrix zmlConstructLookAtMatrix{LH|RH}(zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>pos</b></code> the position of the viewer/camera.</li>
-			<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
-			<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocates and initialises a new look-at matrix based on the given values.
-		<ul>
-			<li><code><b>zmlConstructLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlConstructLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-		<span class="warning">This function returns a new heap-allocated matrix, which must be freed after use with a call to <a href="matrices.html#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
-		<hr>
-
-		<h2 id="zmlUpdateLookAtMatrix"><code>void zmlUpdateLookAtMatrix{LH|RH}(zmlMatrix *mat, zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>pos</b></code> the position of the viewer/camera.</li>
-			<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
-			<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
-		</ul>
-		<h3>Summary</h3>
-		Modifies an existing look-at matrix based on the given values; an alternative to <a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a> that doesn't allocate any new memory.
-		<ul>
-			<li><code><b>zmlUpdateLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
-			<li><code><b>zmlUpdateLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
-		</ul>
-
+		<section>
+			<h2 id="zmlUpdateLookAtMatrix"><code>void zmlUpdateLookAtMatrix{LH|RH}(zmlMatrix *mat, zmlVector pos, zmlVector focus, zmlVector up)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>pos</b></code> the position of the viewer/camera.</li>
+				<li><code><b>focus</b></code> the position the viewer/camera is looking at.</li>
+				<li><code><b>up</b></code> an absolute unit vector indicating the up direction. If Y is the 'up' axis, set this to be ( 0, 1, 0 ), for example.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Modifies an existing look-at matrix based on the given values; an alternative to
+				<a href="#zmlConstructLookAtMatrix">zmlConstructLookAtMatrix()</a> that doesn't allocate any new memory.
+			</p>
+			<ul>
+				<li><code><b>zmlUpdateLookAtMatrixLH()</b></code>: for left-handed coordinate systems</li>
+				<li><code><b>zmlUpdateLookAtMatrixRH()</b></code>: for right-handed coordinate systems</li>
+			</ul>
+		</section>
+		
 		<hr>
 	</body>
 </html>

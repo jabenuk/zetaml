@@ -29,67 +29,84 @@
 
 		<h1>Vectors</h1>
 
-		Functionality related to vector constructs.
+		<p>Functionality related to vector constructs.</p>
 
-		<div class="hoz-collapse" id="hoz-collapse-3">
-			<div>
+		<section class="hoz-collapse" id="hoz-collapse-3">
+			<h3 class="hidden">Page index</h3>
+			<section>
+				<h4 class="index-heading">&emsp;Data types</h4>
 				<ul>
-					<h4>&emsp;Data types</h4>
 					<li><a href="#zmlVector">zmlVector</a></li>
 				</ul>
+				
+				<h4 class="index-heading">&emsp;Operators</h4>
 				<ul>
-					<h4>&emsp;Operators</h4>
 					<li><a href="#operators">Operator index</a></li>
 				</ul>
+				
+				<h4 class="index-heading">&emsp;Public constants</h4>
 				<ul>
-					<h4>&emsp;Public constants</h4>
 					<li><a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a></li>
 				</ul>
-			</div>
-			<ul>
-				<h4>&emsp;Vector manipulation</h4>
-				<li><a href="#zmlCross">zmlCross()</a></li>
-				<li><a href="#zmlDot">zmlDot()</a></li>
-				<br>
-				<li><a href="#zmlMagnitude">zmlMagnitude()</a></li>
-				<li><a href="#zmlNormalised">zmlNormalised()</a></li>
-				<li><a href="#zmlNormalise">zmlNormalise()</a></li>
-			</ul>
-			<ul>
-				<h4>&emsp;Vector creation</h4>
-				<li><a href="#zmlAllocVector">zmlAllocVector()</a></li>
-				<li><a href="#zmlConstructVectorDefault">zmlConstructVectorDefault()</a></li>
-				<li><a href="#zmlConstructVector">zmlConstructVector()</a></li>
-				<br>
-				<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
-				<li><a href="#zmlCopyVectorElements">zmlCopyVectorElements()</a></li>
-			</ul>
-			<ul>
-				<h4>&emsp;Vector deletion</h4>
-				<li><a href="#zmlFreeVector">zmlFreeVector()</a></li>
-			</ul>
-		</div>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Vector manipulation</h4>
+				<ul>
+					<li><a href="#zmlCross">zmlCross()</a></li>
+					<li><a href="#zmlDot">zmlDot()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlMagnitude">zmlMagnitude()</a></li>
+					<li><a href="#zmlNormalised">zmlNormalised()</a></li>
+					<li><a href="#zmlNormalise">zmlNormalise()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Vector creation</h4>
+				<ul>
+					<li><a href="#zmlAllocVector">zmlAllocVector()</a></li>
+					<li><a href="#zmlConstructVectorDefault">zmlConstructVectorDefault()</a></li>
+					<li><a href="#zmlConstructVector">zmlConstructVector()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlCopyVector">zmlCopyVector()</a></li>
+					<li><a href="#zmlCopyVectorElements">zmlCopyVectorElements()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Vector deletion</h4>
+				<ul>
+					<li><a href="#zmlFreeVector">zmlFreeVector()</a></li>
+				</ul>
+			</section>
+		</section>
 
 		<hr>
-
-		<h2 id="zmlVector"><code>zmlVector</code></h2>
-		<h3>Summary</h3>
-		A vector construct of any given size. The values in a zmlVector are of <b>floating-point</b> type.
-		<h3>Members</h3>
-		<ul>
-			<li><code><b>size</b></code> the size of the vector</li>
-			<li><code><b>elements</b></code> an array of elements in the vector</li>
-		</ul>
-
+		
+		<section>
+			<h2 id="zmlVector"><code>zmlVector</code></h2>
+			<h3>Summary</h3>
+			<p>A vector construct of any given size. The values in a zmlVector are of <b>floating-point</b> type.</p>
+			<h3>Members</h3>
+			<ul>
+				<li><code><b>size</b></code> the size of the vector</li>
+				<li><code><b>elements</b></code> an array of elements in the vector</li>
+			</ul>
+		</section>
+		
 		<hr>
 
-		<h2 id="operators">Arithmetic and logical operator functions</h2>
-		The functions for vector-vector, vector-scalar, and vector-matrix operations are:
-		<br>
-		<div class="table-container">
-			<div class="hoz-collapse" id="hoz-collapse-1">
-				<div>
-					<div>
+		<section>
+			<h2 id="operators">Arithmetic and logical operator functions</h2>
+			<p>The functions for vector-vector, vector-scalar, and vector-matrix operations are:</p>
+			<br>
+			<section class="table-container hoz-collapse" id="hoz-collapse-1">
+				<h3 class="hidden">Operator table</h3>
+				<section>
+					<h3 class="hidden">Vector, Matrix</h3>
+					<section>
 						<h4>Arithmetic operators (vector-vector)</h4>
 						<table>
 							<tr>
@@ -105,9 +122,9 @@
 							<tr><td><code>zmlDivideVecs_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
 							<tr><td><code>zmlDivideVecs(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
 						</table>
-					</div>
+					</section>
 		
-					<div>
+					<section>
 						<h4>Arithmetic operators (vector-matrix)</h4>
 						<table>
 							<tr>
@@ -117,11 +134,12 @@
 							<tr><td><code>zmlMultiplyVecMat_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
 							<tr><td><code>zmlMultiplyVecMat(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
 						</table>
-					</div>
-				</div>
-	
-				<div class="hoz-collapse" id="hoz-collapse-2">
-					<div>
+					</section>
+				</section>
+
+				<section class="hoz-collapse" id="hoz-collapse-2">
+					<h3 class="hidden">Scalar, Boolean</h3>
+					<section>
 						<h4>Arithmetic operators (vector-scalar)</h4>
 						<table>
 							<tr>
@@ -137,9 +155,9 @@
 							<tr><td><code>zmlDivideVecScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
 							<tr><td><code>zmlDivideVecScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
 						</table>
-					</div>
+					</section>
 		
-					<div>
+					<section>
 						<h4>Boolean operators</h4>
 						<table>
 							<tr>
@@ -157,144 +175,207 @@
 							<tr><td><code>zmlVecLTScalar(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
 							<tr><td><code>zmlVecLTEScalar(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
 						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br>
-		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
+					</section>
+				</section>
+			</section>
+			<br>
+			<p>
+				For more information regarding the naming convention used for operator functions, see
+				<a href="index.html#operators">Home/Naming scheme of operator functions</a>.
+			</p>
 
-		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
-
+			<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlAllocVector"><code>zmlVector zmlAllocVector(unsigned int size)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>size</b></code> the size of the vector</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocate memory for a vector struct, and return the empty vector. <b>Elements are NOT initialised!</b>
-		<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlAllocVector"><code>zmlVector zmlAllocVector(unsigned int size)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>size</b></code> the size of the vector</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocate memory for a vector struct, and return the empty vector. <b>Elements are NOT initialised!</b></p>
+			<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlFreeVector"><code>void zmlFreeVector(zmlVector *vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the vector to free.</li>
-		</ul>
-		<h3>Summary</h3>
-		Free a vector's memory.
-
+		<section>
+			<h2 id="zmlFreeVector"><code>void zmlFreeVector(zmlVector *vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the vector to free.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Free a vector's memory.</p>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlConstructVectorDefault"><code>zmlVector zmlConstructVectorDefault(unsigned int size, <i>floating</i> val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>size</b></code> the size of the vector.</li>
-			<li><code><b>val</b></code> the value to initialise the vector with.</li>
-		</ul>
-		<h3>Summary</h3>
-		Construct a vector with a default value.
-		<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlConstructVectorDefault"><code>zmlVector zmlConstructVectorDefault(unsigned int size, <i>floating</i> val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>size</b></code> the size of the vector.</li>
+				<li><code><b>val</b></code> the value to initialise the vector with.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Construct a vector with a default value.</p>
+			<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlConstructVector"><code>zmlVector zmlConstructVector(unsigned int size, ...)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>size</b></code> the size of the vector.</li>
-			<li><code><b>...</b></code> the values to initialise the vector with. Must be floating-point!</li>
-		</ul>
-		<h3>Summary</h3>
-		Construct a vector with given values. The amount of given variable arguments is assumed to be <code>size</code>, so you <b>must initialise all values!</b> For example, if you were to call <code>zmlConstructVector(3, 2.0, 5.0)</code>, a Vector3 will be created but only the first two elements will be initialised - the last element will be undetermined. If you don't initialise all values, you should at least set the undefined elements manually as soon as possible.
-		<span class="warning"><b>This function does not work when using floats - </b> the C standard <b>does not permit</b> variadic arguments of float type! Attempting to use it in that case will return a zero vector and print a warning to <code>stdout</code>.</span>
-		<span class="warning">Given values <b>must explicitly be floating-point</b>; i.e., say '5.0' instead of '5'. This is simply due to how variadic arguments work in C. If you do not explicitly make the values floating-point, the vector will be initialised as a <b>zero vector.</b></span>
-		<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlConstructVector"><code>zmlVector zmlConstructVector(unsigned int size, ...)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>size</b></code> the size of the vector.</li>
+				<li><code><b>...</b></code> the values to initialise the vector with. Must be floating-point!</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Construct a vector with given values. The amount of given variable arguments is assumed to be <code>size</code>,
+				so you <b>must initialise all values!</b> For example, if you were to call <code>zmlConstructVector(3, 2.0, 5.0)</code>,
+				a Vector3 will be created but only the first two elements will be initialised - the last element will be undetermined.
+				If you don't initialise all values, you should at least set the undefined elements manually as soon as possible.
+			</p>
+			<span class="warning">
+				<b>This function does not work when using floats - </b> the C standard <b>does not permit</b>
+				variadic arguments of float type! Attempting to use it in that case will return a zero vector and print a
+				warning to <code>stdout</code>.
+			</span>
+			<span class="warning">
+				Given values <b>must explicitly be floating-point</b>; i.e., say '5.0' instead of '5'. This is simply due to how
+				variadic arguments work in C. If you do not explicitly make the values floating-point, the vector will be initialised
+				as a <b>zero vector.</b>
+			</span>
+			<span class="warning">After a vector is created, it must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlCopyVector"><code>zmlVector zmlCopyVector(zmlVector *val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the vector to be copied.</li>
-		</ul>
-		<h3>Summary</h3>
-		Copy a vector's values into a new vector and return the duplicate. The original vector is not freed.
-		<span class="warning">The resultant vector must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlCopyVector"><code>zmlVector zmlCopyVector(zmlVector *val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the vector to be copied.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Copy a vector's values into a new vector and return the duplicate. The original vector is not freed.</p>
+			<span class="warning">The resultant vector must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlCross"><code>zmlVector zmlCross(zmlVector v1, zmlVector v2)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>v1</b></code> the first vector to operate on.</li>
-			<li><code><b>v2</b></code> the second vector to operate on.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces a vector that is the cross product of the two given vectors; this represents the vector perpendicular to the plane that <code>v1</code> and <code>v2</code> create. All involved vectors must be of size 3: if not, <a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a> is returned and a warning is printed to <code>stdout</code>.
-		<span class="warning">The resultant vector must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlCross"><code>zmlVector zmlCross(zmlVector v1, zmlVector v2)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>v1</b></code> the first vector to operate on.</li>
+				<li><code><b>v2</b></code> the second vector to operate on.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Produces a vector that is the cross product of the two given vectors; this represents the vector perpendicular to the plane that
+				<code>v1</code> and <code>v2</code> create. All involved vectors must be of size 3: if not,
+				<a href="#ZML_NULL_VECTOR">ZML_NULL_VECTOR</a> is returned and a warning is printed to <code>stdout</code>.
+			</p>
+			<span class="warning">The resultant vector must be freed after use with <a href="#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlDot"><code><i>floating</i> zmlDot(zmlVector v1, zmlVector v2)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>v1</b></code> the first vector to operate on.</li>
-			<li><code><b>v2</b></code> the second vector to operate on.</li>
-		</ul>
-		<h3>Summary</h3>
-		Produces the dot (scalar) product of the two given vectors <code>v1</code> and <code>v2</code>. All given vectors must be of the same size: if not, 0 is returned and a warning is printed to <code>stdout</code>.
-
+		<section>
+			<h2 id="zmlDot"><code><i>floating</i> zmlDot(zmlVector v1, zmlVector v2)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>v1</b></code> the first vector to operate on.</li>
+				<li><code><b>v2</b></code> the second vector to operate on.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Produces the dot (scalar) product of the two given vectors <code>v1</code> and <code>v2</code>.
+				All given vectors must be of the same size: if not, 0 is returned and a warning is printed to <code>stdout</code>.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlMagnitude"><code><i>floating</i> zmlMagnitude(zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the specified vector.</li>
-		</ul>
-		<h3>Summary</h3>
-		Returns the magnitude (length) of the given vector v.
-
+		<section>
+			<h2 id="zmlMagnitude"><code><i>floating</i> zmlMagnitude(zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the specified vector.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Returns the magnitude (length) of the given vector v.</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlNormalised"><code>zmlVector zmlNormalised(zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the specified vector.</li>
-		</ul>
-		<h3>Summary</h3>
-		Returns the given vector in its normalised state - that is to say its magnitude is 1.
-		<span class="warning">This function produces a new vector structure which must be freed with <a href="#zmlFreeVector">zmlFreeVector()</a>. In cases where you would type, for example, <code>vec = zmlNormalised(&vec)</code>, you should type <b><code>zmlNormalise(&vec)</code></b>, using the <a href="#zmlNormalise">zmlNormalise()</a> function instead.</span>
-
+		<section>
+			<h2 id="zmlNormalised"><code>zmlVector zmlNormalised(zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the specified vector.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Returns the given vector in its normalised state - that is to say its magnitude is 1.</p>
+			<span class="warning">
+				This function produces a new vector structure which must be freed with
+				<a href="#zmlFreeVector">zmlFreeVector()</a>. In cases where you would type, for example,
+				<code>vec = zmlNormalised(&vec)</code>, you should type <b><code>zmlNormalise(&vec)</code></b>,
+				using the <a href="#zmlNormalise">zmlNormalise()</a> function instead.
+			</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlNormalise"><code>void zmlNormalise(zmlVector *vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the specified vector.</li>
-		</ul>
-		<h3>Summary</h3>
-		Normalises the specified vector by <b>modifying</b> it. This is an alternative to <a href="#zmlNormalised">zmlNormalised()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="zmlNormalised">zmlNormlised()</a>.
-
+		<section>
+			<h2 id="zmlNormalise"><code>void zmlNormalise(zmlVector *vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the specified vector.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Normalises the specified vector by <b>modifying</b> it. This is an alternative to
+				<a href="#zmlNormalised">zmlNormalised()</a> that does not allocate any new memory;
+				you should use this function instead in some cases to avoid memory leaks - see the warning in
+				<a href="zmlNormalised">zmlNormlised()</a>.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlCopyVectorElements"><code>void zmlCopyVectorElements(zmlVector vec, <i>floating</i> arr[vec.size])</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>vec</b></code> the specified vector.</li>
-			<li><code><b>arr</b></code> the destination array.</li>
-		</ul>
-		<h3>Summary</h3>
-		Copies the elements from vector <code>vec</code> into the specified array <code>arr</code>. This is useful for copying the elements of the vector into the stack.
-
+		<section>
+			<h2 id="zmlCopyVectorElements"><code>void zmlCopyVectorElements(zmlVector vec, <i>floating</i> arr[vec.size])</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>vec</b></code> the specified vector.</li>
+				<li><code><b>arr</b></code> the destination array.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Copies the elements from vector <code>vec</code> into the specified array <code>arr</code>.
+				This is useful for copying the elements of the vector into the stack.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="ZML_NULL_VECTOR"><code>ZML_NULL_VECTOR</code></h2>
-		An undefined vector with a size of 0. This is sometimes returned when functions fail (although functions will also print an error to <code>stdout</code> when they return ZML_NULL_VECTOR).
-		<span class="warning">The <code>elements</code> array in undefined vectors is a <b>null pointer</b> - using ZML_NULL_VECTOR is very unsafe!</span>
-
+		<section>
+			<h2 id="ZML_NULL_VECTOR"><code>ZML_NULL_VECTOR</code></h2>
+			<p>
+				An undefined vector with a size of 0. This is sometimes returned when functions fail
+				(although functions will also print an error to <code>stdout</code> when they return ZML_NULL_VECTOR).
+			</p>
+			<span class="warning">The <code>elements</code> array in undefined vectors is a <b>null pointer</b> - using ZML_NULL_VECTOR is very unsafe!</span>
+		</section>
+		
 		<hr>
 	</body>
 </html>
