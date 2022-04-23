@@ -73,7 +73,6 @@ zmlVector zmlConstructVector(unsigned int size, ...) {
 			r.elements[i] = 0;
 		}
 		
-		#pragma message "Variadic arguments do not support floats; you should manually set elements instead. A zero vector will be returned."
 		printf("zetaml: zmlConstructVector(): variadic arguments do not support floats; you could manually set elements instead. (zero vector returned)\n");
 	#else
 		va_list vl;
