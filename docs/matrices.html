@@ -29,87 +29,103 @@
 
 		<h1>Matrices</h1>
 
-		Functionality related to matrix constructs.
+		<p>Functionality related to matrix constructs.</p>
 
-		<div class="hoz-collapse" id="hoz-collapse-3">
-			<div>
+		<section class="hoz-collapse" id="hoz-collapse-3">
+			<h3 class="hidden">Page index</h3>
+			<section>
+				<h4 class="index-heading">&emsp;Data types</h4>
 				<ul>
-					<h4>&emsp;Data types</h4>
 					<li><a href="#zmlMatrix">zmlMatrix</a></li>
 				</ul>
+				<h4 class="index-heading">&emsp;Operators</h4>
 				<ul>
-					<h4>&emsp;Operators</h4>
 					<li><a href="#operators">Operator index</a></li>
 				</ul>
+				<h4 class="index-heading">&emsp;Public constants</h4>
 				<ul>
-					<h4>&emsp;Public constants</h4>
 					<li><a href="#ZML_NULL_MATRIX">ZML_NULL_MATRIX</a></li>
 				</ul>
-			</div>
-			<ul>
-				<h4>&emsp;Matrix manipulation</h4>
-				<li><a href="#zmlGetMatrixRow">zmlGetMatrixRow()</a></li>
-				<li><a href="#zmlSetMatrixRow">zmlSetMatrixRow()</a></li>
-				<li><a href="#zmlGetMatrixCol">zmlGetMatrixCol()</a></li>
-				<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
-				<br>
-				<li><a href="#zmlTransposed">zmlTransposed()</a></li>
-				<li><a href="#zmlTranspose">zmlTranspose()</a></li>
-				<br>
-				<li><a href="#zmlAugmentVec">zmlAugmentVec()</a></li>
-				<li><a href="#zmlAugmentMat">zmlAugmentMat()</a></li>
-			</ul>
-			<ul>
-				<h4>&emsp;Matrix creation</h4>
-				<li><a href="#zmlAllocMatrix">zmlAllocMatrix()</a></li>
-				<li><a href="#zmlIdentityMatrix">zmlIdentityMatrix()</a></li>
-				<li><a href="#zmlZeroMatrix">zmlZeroMatrix()</a></li>
-				<br>
-				<li><a href="#zmlCopyMatrix">zmlCopyMatrix()</a></li>
-				<li><a href="#zmlCopyMatrixElements">zmlCopyMatrixElements()</a></li>
-			</ul>
-			<ul>
-				<h4>&emsp;Matrix deletion</h4>
-				<li><a href="#zmlFreeMatrix">zmlFreeMatrix()</a></li>
-			</ul>
-		</div>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Matrix manipulation</h4>
+				<ul>
+					<li><a href="#zmlGetMatrixRow">zmlGetMatrixRow()</a></li>
+					<li><a href="#zmlSetMatrixRow">zmlSetMatrixRow()</a></li>
+					<li><a href="#zmlGetMatrixCol">zmlGetMatrixCol()</a></li>
+					<li><a href="#zmlSetMatrixCol">zmlSetMatrixCol()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlTransposed">zmlTransposed()</a></li>
+					<li><a href="#zmlTranspose">zmlTranspose()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlAugmentVec">zmlAugmentVec()</a></li>
+					<li><a href="#zmlAugmentMat">zmlAugmentMat()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Matrix creation</h4>
+				<ul>
+					<li><a href="#zmlAllocMatrix">zmlAllocMatrix()</a></li>
+					<li><a href="#zmlIdentityMatrix">zmlIdentityMatrix()</a></li>
+					<li><a href="#zmlZeroMatrix">zmlZeroMatrix()</a></li>
+					
+					<li class="undotted"><br></li>
+					
+					<li><a href="#zmlCopyMatrix">zmlCopyMatrix()</a></li>
+					<li><a href="#zmlCopyMatrixElements">zmlCopyMatrixElements()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Matrix deletion</h4>
+				<ul>
+					<li><a href="#zmlFreeMatrix">zmlFreeMatrix()</a></li>
+				</ul>
+			</section>
+		</section>
 
 		<hr>
-
-		<h2 id="zmlMatrix"><code>zmlMatrix</code></h2>
-		<h3>Summary</h3>
-		A matrix construct of any given size. The values in a zmlMatrix are of <b>floating-point</b> type.
-		<h3>Members</h3>
-		<ul>
-			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
-			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
-			<li><code><b>elements</b></code> a 2D array of elements in the matrix</li>
-		</ul>
+		
+		<section>
+			<h2 id="zmlMatrix"><code>zmlMatrix</code></h2>
+			<h3>Summary</h3>
+			<p>A matrix construct of any given size. The values in a zmlMatrix are of <b>floating-point</b> type.</p>
+			<h3>Members</h3>
+			<ul>
+				<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+				<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+				<li><code><b>elements</b></code> a 2D array of elements in the matrix</li>
+			</ul>
+		</section>
 
 		<hr>
+		
+		<section>
+			<h2 id="operators">Arithmetic and logical operator functions</h2>
+			<p>The functions for matrix-matrix, and matrix-scalar operations are:</p>
+			<br>
+			<section class="table-container" id="hoz-collapse-1">
+				<h3 class="hidden">Operator table</h3>
+				<section>
+					<h4>Arithmetic operators (matrix-matrix)</h4>
+					<table>
+						<tr>
+							<th>Function name</th>
+							<th>Representation in operators</th>
+						</tr>
+						<tr><td><code>zmlAddMats_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+						<tr><td><code>zmlAddMats(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+						<tr><td><code>zmlSubtractMats_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+						<tr><td><code>zmlSubtractMats(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+						<tr><td><code>zmlMultiplyMats_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+						<tr><td><code>zmlMultiplyMats(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+					</table>
+				</section>
 
-		<h2 id="operators">Arithmetic and logical operator functions</h2>
-		The functions for matrix-matrix, and matrix-scalar operations are:
-		<br>
-		<div class="table-container" id="hoz-collapse-1">
-			<div>
-				<h4>Arithmetic operators (matrix-matrix)</h4>
-				<table>
-					<tr>
-						<th>Function name</th>
-						<th>Representation in operators</th>
-					</tr>
-					<tr><td><code>zmlAddMats_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
-					<tr><td><code>zmlAddMats(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
-					<tr><td><code>zmlSubtractMats_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
-					<tr><td><code>zmlSubtractMats(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
-					<tr><td><code>zmlMultiplyMats_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-					<tr><td><code>zmlMultiplyMats(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-				</table>
-			</div>
-
-			<div class="table-container" id="hoz-collapse-2">
-				<div>
+				<section>
 					<h4>Arithmetic operators (matrix-scalar)</h4>
 					<table>
 						<tr>
@@ -125,9 +141,9 @@
 						<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
 						<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
 					</table>
-				</div>
+				</section>
 	
-				<div>
+				<section>
 					<h4>Boolean operators</h4>
 					<table>
 						<tr>
@@ -140,181 +156,248 @@
 						<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
 						<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
 					</table>
-				</div>
-			</div>
-		</div>
-		<br>
-		For more information regarding the naming convention used for operator functions, see <a href="index.html#operators">Home/Naming scheme of operator functions</a>.
-
-		<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
-
+				</section>
+			</section>
+			<br>
+			<p>
+				For more information regarding the naming convention used for operator functions, see
+				<a href="index.html#operators">Home/Naming scheme of operator functions</a>.
+			</p>
+			
+			<span class="warning">The <code>_r</code> operator functions allocate memory for their return values which must be freed to avoid memory leaks.</span>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlAllocMatrix"><code>zmlMatrix zmlAllocMatrix(unsigned int rows, unsigned int cols)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
-			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocate memory for a matrix struct, and return the empty matrix. <b>Elements are NOT initialised!</b>
-		<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlAllocMatrix"><code>zmlMatrix zmlAllocMatrix(unsigned int rows, unsigned int cols)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+				<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocate memory for a matrix struct, and return the empty matrix. <b>Elements are NOT initialised!</b></p>
+			<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlFreeMatrix"><code>void zmlFreeMatrix(zmlMatrix *mat)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to free.</li>
-		</ul>
-		<h3>Summary</h3>
-		Free a matrix's memory.
-
+		<section>
+			<h2 id="zmlFreeMatrix"><code>void zmlFreeMatrix(zmlMatrix *mat)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to free.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Free a matrix's memory.</p>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlIdentityMatrix"><code>zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
-			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocate and initialise an identity matrix with the given size. (All elements on the main diagonal are 1, others are 0).
-		<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlIdentityMatrix"><code>zmlMatrix zmlIdentityMatrix(unsigned int rows, unsigned int cols)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+				<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocate and initialise an identity matrix with the given size. (All elements on the main diagonal are 1, others are 0).</p>
+			<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+		</section>
+		
 		<hr>
 		
-		<h2 id="zmlZeroMatrix"><code>zmlMatrix zmlZeroMatrix(unsigned int rows, unsigned int cols)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>rows</b></code> the amount of rows in the matrix</li>
-			<li><code><b>cols</b></code> the amount of columns in the matrix</li>
-		</ul>
-		<h3>Summary</h3>
-		Allocate and initialise a zero matrix with the given size.
-		<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlZeroMatrix"><code>zmlMatrix zmlZeroMatrix(unsigned int rows, unsigned int cols)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>rows</b></code> the amount of rows in the matrix</li>
+				<li><code><b>cols</b></code> the amount of columns in the matrix</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Allocate and initialise a zero matrix with the given size.</p>
+			<span class="warning">After a matrix is created, it must be freed after use with a call to <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h2 id="zmlCopyMatrix"><code>zmlMatrix zmlCopyMatrix(zmlMatrix *val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the matrix to be copied.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Copy a matrix's values into a new matrix and return the duplicate. The original matrix is not freed.</p>
+			<span class="warning">The resultant matrix must be freed after use with <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h2 id="zmlGetMatrixRow"><code>zmlVector zmlGetMatrixRow(zmlMatrix val, unsigned int index)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the matrix to be observed</li>
+				<li><code><b>index</b></code> the index of the row to retrieve.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Get a specified row from the given matrix in the form of a vector. The size of this vector
+				is the same as the width (columns) of matrix <code>val</code>.
+			</p>
+			<span class="warning">The resultant vector must be freed after use with <a href="vectors.html#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h2 id="zmlSetMatrixRow"><code>void zmlSetMatrixRow(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to be modified.</li>
+				<li><code><b>index</b></code> the index of the row to set.</li>
+				<li><code><b>vec</b></code> the vector to set the row to.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Set a row in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of columns in
+				<code>mat</code>, the remaining matrix elements will be left unchanged.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlCopyMatrix"><code>zmlMatrix zmlCopyMatrix(zmlMatrix *val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the matrix to be copied.</li>
-		</ul>
-		<h3>Summary</h3>
-		Copy a matrix's values into a new matrix and return the duplicate. The original matrix is not freed.
-		<span class="warning">The resultant matrix must be freed after use with <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>.</span>
-
+		<section>
+			<h2 id="zmlGetMatrixCol"><code>zmlVector zmlGetMatrixCol(zmlMatrix val, unsigned int index)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the matrix to be observed</li>
+				<li><code><b>index</b></code> the index of the column to retrieve.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Get a specified column from the given matrix in the form of a vector.
+				The size of this vector is the same as the height (rows) of matrix <code>val</code>.
+			</p>
+			<span class="warning">The resultant vector must be freed after use with <a href="vectors.html#zmlFreeVector">zmlFreeVector()</a>.</span>
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h2 id="zmlSetMatrixCol"><code>void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to be modified.</li>
+				<li><code><b>index</b></code> the index of the column to set.</li>
+				<li><code><b>vec</b></code> the vector to set the column to.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Set a column in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of rows in
+				<code>mat</code>, the remaining matrix elements will be left unchanged.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlGetMatrixRow"><code>zmlVector zmlGetMatrixRow(zmlMatrix val, unsigned int index)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the matrix to be observed</li>
-			<li><code><b>index</b></code> the index of the row to retrieve.</li>
-		</ul>
-		<h3>Summary</h3>
-		Get a specified row from the given matrix in the form of a vector. The size of this vector is the same as the width (columns) of matrix <code>val</code>.
-		<span class="warning">The resultant vector must be freed after use with <a href="vectors.html#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlTransposed"><code>zmlMatrix zmlTransposed(zmlMatrix mat)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to transpose.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Returns the given matrix in its transposed state - that is to say, the rows and columns of the matrix are swapped.</p>
+			<span class="warning">
+				This function produces a new matrix structure which must be freed with
+				<a href="#zmlFreeMatrix">zmlFreeMatrix()</a>. In cases where you would type, for example,
+				<code>mat = zmlTransposed(&mat)</code>, you should type <b><code>zmlTranspose(&mat)</code></b>,
+				using the <a href="#zmlTranspose">zmlTranspose()</a> function instead.
+			</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlSetMatrixRow"><code>void zmlSetMatrixRow(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to be modified.</li>
-			<li><code><b>index</b></code> the index of the row to set.</li>
-			<li><code><b>vec</b></code> the vector to set the row to.</li>
-		</ul>
-		<h3>Summary</h3>
-		Set a row in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of columns in <code>mat</code>, the remaining matrix elements will be left unchanged.
-
+		<section>
+			<h2 id="zmlTranspose"><code>void zmlTranspose(zmlMatrix *mat)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to transpose.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Transposes the given matrix by <b>modifying</b> it. This works as an alternative to
+				<a href="#zmlTransposed">zmlTransposed()</a> that does not allocate any new memory;
+				you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="#zmlTransposed">zmlTransposed()</a>.
+			</p>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlGetMatrixCol"><code>zmlVector zmlGetMatrixCol(zmlMatrix val, unsigned int index)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the matrix to be observed</li>
-			<li><code><b>index</b></code> the index of the column to retrieve.</li>
-		</ul>
-		<h3>Summary</h3>
-		Get a specified column from the given matrix in the form of a vector. The size of this vector is the same as the height (rows) of matrix <code>val</code>.
-		<span class="warning">The resultant vector must be freed after use with <a href="vectors.html#zmlFreeVector">zmlFreeVector()</a>.</span>
-
+		<section>
+			<h2 id="zmlAugmentVec"><code>void zmlAugmentVec(zmlMatrix *mat, zmlVector vec)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>vec</b></code> the vector to augment onto mat.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Augments vector <code>vec</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code>
+				increases when calling this function. The size of the vector <b>must be equal</b> to the amount of columns in the matrix!
+			</p>
+			<span class="note">The augmented vector is used as a <b>row</b> and is added on to the <b>bottom</b> of the matrix.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlSetMatrixCol"><code>void zmlSetMatrixCol(zmlMatrix *mat, unsigned int index, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to be modified.</li>
-			<li><code><b>index</b></code> the index of the column to set.</li>
-			<li><code><b>vec</b></code> the vector to set the column to.</li>
-		</ul>
-		<h3>Summary</h3>
-		Set a column in the given matrix to a specified vector. If the size of <code>vec</code> is less than the amount of rows in <code>mat</code>, the remaining matrix elements will be left unchanged.
-
+		<section>
+			<h2 id="zmlAugmentMat"><code>void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the matrix to modify.</li>
+				<li><code><b>val</b></code> the matrix to augment onto mat.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Augments matrix <code>val</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code>
+				increases when calling this function. The amount of columns in <code>val</code> <b>must be equal</b>
+				to the amount of columns in <code>mat</code>!
+			</p>
+			<span class="note">The augmented matrix is added on to the <b>bottom</b> of <code>mat</code>.</span>
+		</section>
+		
 		<hr>
 
-		<h2 id="zmlTransposed"><code>zmlMatrix zmlTransposed(zmlMatrix mat)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to transpose.</li>
-		</ul>
-		<h3>Summary</h3>
-		Returns the given matrix in its transposed state - that is to say, the rows and columns of the matrix are swapped. 
-		<span class="warning">This function produces a new matrix structure which must be freed with <a href="#zmlFreeMatrix">zmlFreeMatrix()</a>. In cases where you would type, for example, <code>mat = zmlTransposed(&mat)</code>, you should type <b><code>zmlTranspose(&mat)</code></b>, using the <a href="#zmlTranspose">zmlTranspose()</a> function instead.</span>
-
+		<section>
+			<h2 id="zmlCopyMatrixElements"><code>void zmlCopyMatrixElements(zmlMatrix mat, <i>floating</i> arr[mat.rows][mat.cols])</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>mat</b></code> the specified matrix.</li>
+				<li><code><b>arr</b></code> the destination array.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Copies the elements from matrix <code>mat</code> into the specified 2D array <code>arr</code>.
+				This is useful for copying the elements of the matrix into the stack.
+			</p>
+		</section>
+		
 		<hr>
-
-		<h2 id="zmlTranspose"><code>void zmlTranspose(zmlMatrix *mat)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to transpose.</li>
-		</ul>
-		<h3>Summary</h3>
-		Transposes the given matrix by <b>modifying</b> it. This works as an alternative to <a href="#zmlTransposed">zmlTransposed()</a> that does not allocate any new memory; you should use this function instead in some cases to avoid memory leaks - see the warning in <a href="#zmlTransposed">zmlTransposed()</a>.
-
-		<hr>
-
-		<h2 id="zmlAugmentVec"><code>void zmlAugmentVec(zmlMatrix *mat, zmlVector vec)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>vec</b></code> the vector to augment onto mat.</li>
-		</ul>
-		<h3>Summary</h3>
-		Augments vector <code>vec</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code> increases when calling this function. The size of the vector <b>must be equal</b> to the amount of columns in the matrix!
-		<span class="note">The augmented vector is used as a <b>row</b> and is added on to the <b>bottom</b> of the matrix.</span>
-
-		<hr>
-
-		<h2 id="zmlAugmentMat"><code>void zmlAugmentMat(zmlMatrix *mat, zmlMatrix val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the matrix to modify.</li>
-			<li><code><b>val</b></code> the matrix to augment onto mat.</li>
-		</ul>
-		<h3>Summary</h3>
-		Augments matrix <code>val</code> onto matrix <code>mat</code>. The size of the given matrix <code>mat</code> increases when calling this function. The amount of columns in <code>val</code> <b>must be equal</b> to the amount of columns in <code>mat</code>!
-		<span class="note">The augmented matrix is added on to the <b>bottom</b> of <code>mat</code>.</span>
-
-		<hr>
-
-		<h2 id="zmlCopyMatrixElements"><code>void zmlCopyMatrixElements(zmlMatrix mat, <i>floating</i> arr[mat.rows][mat.cols])</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>mat</b></code> the specified matrix.</li>
-			<li><code><b>arr</b></code> the destination array.</li>
-		</ul>
-		<h3>Summary</h3>
-		Copies the elements from matrix <code>mat</code> into the specified 2D array <code>arr</code>. This is useful for copying the elements of the matrix into the stack.
-
-		<hr>
-
-		<h2 id="ZML_NULL_MATRIX"><code>ZML_NULL_MATRIX</code></h2>
-		An undefined matrix with a size of 0. This is sometimes returned when functions fail (although functions will also print an error to <code>stdout</code> when they return ZML_NULL_MATRIX).
-		<span class="warning">The <code>elements</code> array in undefined matrices is a <b>null pointer</b> - using ZML_NULL_MATRIX is very unsafe!</span>
-
+		
+		<section>
+			<h2 id="ZML_NULL_MATRIX"><code>ZML_NULL_MATRIX</code></h2>
+			<p>
+				An undefined matrix with a size of 0. This is sometimes returned when functions fail (although functions will also print an error to
+				<code>stdout</code> when they return ZML_NULL_MATRIX).
+			</p>
+			<span class="warning">The <code>elements</code> array in undefined matrices is a <b>null pointer</b> - using ZML_NULL_MATRIX is very unsafe!</span>
+		</section>
+		
 		<hr>
 	</body>
 </html>

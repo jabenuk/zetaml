@@ -29,130 +29,190 @@
 
 		<h1>Miscellaneous utility functions</h1>
 
-		Functions that don't fit in any of the other categories. 
+		<p>Functions that don't fit in any of the other categories.</p>
 
-		<div class="hoz-collapse" id="hoz-collapse-5">
-			<ul>
-				<h4>&emsp;Angle units</h4>
-				<li><a href="#zmlToDegrees">zmlToDegrees()</a></li>
-				<li><a href="#zmlToRadians">zmlToRadians()</a></li>
-			</ul>
-			<ul>
-				<h4>&emsp;Formatted string creation</h4>
-				<li><a href="#zmlToStringV">zmlToStringV()</a></li>
-				<li><a href="#zmlToStringM">zmlToStringM()</a></li>
-				<li><a href="#zmlPrintV">zmlPrintV()</a></li>
-				<li><a href="#zmlPrintM">zmlPrintM()</a></li>
-			</ul>
-			<div>
+		<section class="hoz-collapse" id="hoz-collapse-5">
+			<h3 class="hidden">Page index</h3>
+			<section>
+				<h4 class="index-heading">&emsp;Angle units</h4>
 				<ul>
-					<h4>&emsp;Other mathematical functions</h4>
+					<li><a href="#zmlToDegrees">zmlToDegrees()</a></li>
+					<li><a href="#zmlToRadians">zmlToRadians()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Formatted string creation</h4>
+				<ul>
+					<li><a href="#zmlToStringV">zmlToStringV()</a></li>
+					<li><a href="#zmlToStringM">zmlToStringM()</a></li>
+					<li><a href="#zmlPrintV">zmlPrintV()</a></li>
+					<li><a href="#zmlPrintM">zmlPrintM()</a></li>
+				</ul>
+			</section>
+			<section>
+				<h4 class="index-heading">&emsp;Other mathematical functions</h4>
+				<ul>
 					<li><a href="#zmlLerp">zmlLerp()</a></li>
 				</ul>
+				<h4 class="index-heading">&emsp;Mathematical constants</h4>
 				<ul>
-					<h4>&emsp;Mathematical constants</h4>
 					<li><a href="#PI">PI</a></li>
 				</ul>
-			</div>
-		</div>
+			</section>
+		</section>
 
 		<hr>
 		
-		<h2 id="zmlToDegrees"><code><i>floating</i> zmlToDegrees(<i>floating</i> rad)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>rad</b></code> the value, in radians, to convert to degrees.</li>
-		</ul>
-		<h3>Summary</h3>
-		Takes a value <code>rad</code>, expressed in radians, and converts it to degrees.
-
-		<hr>
-		
-		<h2 id="zmlToRadians"><code><i>floating</i> zmlToRadians(<i>floating</i> deg)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>deg</b></code> the value, in degrees, to convert to radians.</li>
-		</ul>
-		<h3>Summary</h3>
-		Takes a value <code>deg</code>, expressed in degrees, and converts it to radians.
+		<section>
+			<h2 id="zmlToDegrees"><code><i>floating</i> zmlToDegrees(<i>floating</i> rad)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>rad</b></code> the value, in radians, to convert to degrees.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Takes a value <code>rad</code>, expressed in radians, and converts it to degrees.</p>
+		</section>
 		
 		<hr>
 		
-		<h2 id="zmlToStringV"><code>void zmlToStringV(zmlVector val, char *str)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the vector to format and express as a string.</li>
-			<li><code><b>str</b></code> the string to return the value into.</li>
-		</ul>
-		<h3>Summary</h3>
-		Takes a <a href="vectors.html#zmlVector">zmlVector</a> <code>val</code> and converts it to a formatted string. See <a href="https://stackoverflow.com/a/25799033/">this answer</a> on StackOverflow for an explanation into returning the string as an argument, rather than a return type. The string is formatted as such:
+		<section>
+			<h2 id="zmlToRadians"><code><i>floating</i> zmlToRadians(<i>floating</i> deg)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>deg</b></code> the value, in degrees, to convert to radians.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>Takes a value <code>deg</code>, expressed in degrees, and converts it to radians.</p>
+		</section>
+		
+		<hr>
+		
+		<section>
+			<h2 id="zmlToStringV"><code>void zmlToStringV(zmlVector val, char *str)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the vector to format and express as a string.</li>
+				<li><code><b>str</b></code> the string to return the value into.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Takes a <a href="vectors.html#zmlVector">zmlVector</a> <code>val</code> and converts it to a formatted string.
+				See <a href="https://stackoverflow.com/a/25799033/">this answer</a> on StackOverflow for an explanation into
+				returning the string as an argument, rather than a return type. The string is formatted as such:
+			</p>
 <pre>
 (vec2) ( 3.00000, 3.00000 )
 </pre>
-		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print vector elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", vec.elements[0])</code>.</span>
+			<span class="note">
+				There are always 5 decimals of precision. This is <b>not</b> representative of the internal
+				precision of the value. To print vector elements with higher precision, you will need to do it
+				manually e.g. <code>printf("%.9f", vec.elements[0])</code>.
+			</span>
+		</section>
 		
 		<hr>
 		
-		<h2 id="zmlToStringM"><code>void zmlToStringM(zmlMatrix val, char *str)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the matrix to format and express as a string.</li>
-			<li><code><b>str</b></code> the string to return the value into.</li>
-		</ul>
-		<h3>Summary</h3>
-		Takes a <a href="matrices.html#zmlMatrix">zmlMatrix</a> <code>val</code> and converts it to a formatted string. See <a href="https://stackoverflow.com/a/25799033/">this answer</a> on StackOverflow for an explanation into returning the string as an argument, rather than a return type. The string is formatted as such:
+		<section>
+			<h2 id="zmlToStringM"><code>void zmlToStringM(zmlMatrix val, char *str)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the matrix to format and express as a string.</li>
+				<li><code><b>str</b></code> the string to return the value into.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Takes a <a href="matrices.html#zmlMatrix">zmlMatrix</a> <code>val</code> and converts it to a formatted string.
+				See <a href="https://stackoverflow.com/a/25799033/">this answer</a> on StackOverflow for an explanation into
+				returning the string as an argument, rather than a return type. The string is formatted as such:
+			</p>
 <pre>
 (mat2x2) [ 3.00000, 0.00000 ],
          [ 0.00000, 3.00000 ]
 </pre>
-		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.</span>
+			<span class="note">
+				There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value.
+				To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.
+			</span>
+		</section>
 		
 		<hr>
 		
-		<h2 id="zmlPrintV"><code>void zmlPrintV(zmlVector val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the vector to format and print.</li>
-		</ul>
-		<h3>Summary</h3>
-		Prints the output of <a href="#zmlToStringV">zmlToStringV()</a> to stdout <i>(with a new line)</i>. The string allocated to print the vector is intended to be optimised so that it is the exactly correct length to use as little memory as possible, so you should use this function to print vectors rather than manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
-		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print vector elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", vec.elements[0])</code>.</span>
+		<section>
+			<h2 id="zmlPrintV"><code>void zmlPrintV(zmlVector val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the vector to format and print.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Prints the output of <a href="#zmlToStringV">zmlToStringV()</a> to stdout <i>(with a new line)</i>.
+				The string allocated to print the vector is intended to be optimised so that it is the exactly correct
+				length to use as little memory as possible, so you should use this function to print vectors rather than
+				manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
+			</p>
+			<span class="note">
+				There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value.
+				To print vector elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", vec.elements[0])</code>.
+			</span>
+		</section>
 		
 		<hr>
 		
-		<h2 id="zmlPrintM"><code>void zmlPrintM(zmlMatrix val)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the matrix to format and print.</li>
-		</ul>
-		<h3>Summary</h3>
-		Prints the output of <a href="#zmlToStringM">zmlToStringM()</a> to stdout <i>(with 2 new lines)</i>. The string allocated to print the matrix is intended to be optimised so that it is the exactly correct length to use as little memory as possible, so you should use this function to print matrice rather than manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
-		<span class="note">There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value. To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.</span>
+		<section>
+			<h2 id="zmlPrintM"><code>void zmlPrintM(zmlMatrix val)</code></h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the matrix to format and print.</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Prints the output of <a href="#zmlToStringM">zmlToStringM()</a> to stdout <i>(with 2 new lines)</i>.
+				The string allocated to print the matrix is intended to be optimised so that it is the exactly correct
+				length to use as little memory as possible, so you should use this function to print matrice rather than
+				manually printing the output of zmlToStringV() <i>(plus it's more convenient)</i>.
+			</p>
+			<span class="note">
+				There are always 5 decimals of precision. This is <b>not</b> representative of the internal precision of the value.
+				To print matrix elements with higher precision, you will need to do it manually e.g. <code>printf("%.9f", mat.elements[0][0])</code>.
+			</span>
+		</section>
 		
 		<hr>
 		
-		<h2 id="zmlLerp"><code><i>floating</i> zmlLerp(<i>floating</i> val, <i>floating</i> start1, <i>floating</i> stop1, <i>floating</i> start2, <i>floating</i> stop2)</code></h2>
-		<h3>Arguments</h3>
-		<ul>
-			<li><code><b>val</b></code> the value to interpolate</li>
-			<li><code><b>start1</b></code> the min point of the input range</li>
-			<li><code><b>stop1</b></code> the max point of the input range</li>
-			<li><code><b>start2</b></code> the min point of the output range</li>
-			<li><code><b>stop2</b></code> the max point of the output range</li>
-		</ul>
-		<h3>Summary</h3>
-		Performs a linear interpolation operation on value <code>val</code>. The input range is specified with <code>start1</code> and <code>stop1</code>, and the output range is specified with <code>start2</code> and <code>stop2</code>. The formula used by the function is as follows:
-		
+		<section>
+			<h2 id="zmlLerp">
+				<code><i>floating</i> zmlLerp(<i>floating</i> val, <i>floating</i> start1, <i>floating</i> stop1,
+				<i>floating</i> start2, <i>floating</i> stop2)</code>
+			</h2>
+			<h3>Arguments</h3>
+			<ul>
+				<li><code><b>val</b></code> the value to interpolate</li>
+				<li><code><b>start1</b></code> the min point of the input range</li>
+				<li><code><b>stop1</b></code> the max point of the input range</li>
+				<li><code><b>start2</b></code> the min point of the output range</li>
+				<li><code><b>stop2</b></code> the max point of the output range</li>
+			</ul>
+			<h3>Summary</h3>
+			<p>
+				Performs a linear interpolation operation on value <code>val</code>. The input range is specified with
+				<code>start1</code> and <code>stop1</code>, and the output range is specified with <code>start2</code>
+				and <code>stop2</code>. The formula used by the function is as follows:
+			</p>
 <pre>
 start2 + (stop2 - start2) * ((val - start1) / (stop1 - start1))
 </pre>
+		</section>
 		<hr>
 
-		<h2 id="PI"><code>PI</code></h2>
-		The irrational mathematical constant of the same name. This is pi (&pi;) shown to the nearest 21 decimal places, as stored internally in zetaml:
+		<section>
+			<h2 id="PI"><code>PI</code></h2>
+			<p>
+				The irrational mathematical constant of the same name. This is pi (&pi;) shown to the nearest 21 decimal places, as stored internally in zetaml:
+			</p>
 <pre>
 3.141592653589793238463
 </pre>
+		</section>
 
 		<hr>
 	</body>
