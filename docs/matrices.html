@@ -105,7 +105,7 @@
 		
 		<section>
 			<h2 id="operators">Arithmetic and logical operator functions</h2>
-			<p>The functions for matrix-matrix, and matrix-scalar operations are:</p>
+			<p>The functions for matrix-matrix and matrix-scalar operations are:</p>
 			<br>
 			<section class="table-container" id="hoz-collapse-1">
 				<h3 class="hidden">Operator table</h3>
@@ -124,38 +124,41 @@
 						<tr><td><code>zmlMultiplyMats(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
 					</table>
 				</section>
-
-				<section>
-					<h4>Arithmetic operators (matrix-scalar)</h4>
-					<table>
-						<tr>
-							<th>Function name</th>
-							<th>Representation in operators</th>
-						</tr>
-						<tr><td><code>zmlAddMatScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
-						<tr><td><code>zmlAddMatScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
-						<tr><td><code>zmlSubtractMatScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
-						<tr><td><code>zmlSubtractMatScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
-						<tr><td><code>zmlMultiplyMatScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
-						<tr><td><code>zmlMultiplyMatScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
-						<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
-						<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
-					</table>
-				</section>
-	
-				<section>
-					<h4>Boolean operators</h4>
-					<table>
-						<tr>
-							<th>Function name</th>
-							<th>Representation in operators</th>
-						</tr>
-						<tr><td><code>zmlMatEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
-						<tr><td><code>zmlMatGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
-						<tr><td><code>zmlMatGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
-						<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
-						<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
-					</table>
+				
+				<section class="hoz-collapse" id="hoz-collapse-2">
+					<h3 class="hidden">Scalar Boolean operators</h3>
+					<section>
+						<h4>Arithmetic operators (matrix-scalar)</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlAddMatScalar_r(v1, v2)</code></td><td><code>v1 + v2</code></td></tr>
+							<tr><td><code>zmlAddMatScalar(v1, v2)</code></td><td><code>v1 += v2</code></td></tr>
+							<tr><td><code>zmlSubtractMatScalar_r(v1, v2)</code></td><td><code>v1 - v2</code></td></tr>
+							<tr><td><code>zmlSubtractMatScalar(v1, v2)</code></td><td><code>v1 -= v2</code></td></tr>
+							<tr><td><code>zmlMultiplyMatScalar_r(v1, v2)</code></td><td><code>v1 * v2</code></td></tr>
+							<tr><td><code>zmlMultiplyMatScalar(v1, v2)</code></td><td><code>v1 *= v2</code></td></tr>
+							<tr><td><code>zmlDivideMatScalar_r(v1, v2)</code></td><td><code>v1 / v2</code></td></tr>
+							<tr><td><code>zmlDivideMatScalar(v1, v2)</code></td><td><code>v1 /= v2</code></td></tr>
+						</table>
+					</section>
+			
+					<section>
+						<h4>Boolean operators</h4>
+						<table>
+							<tr>
+								<th>Function name</th>
+								<th>Representation in operators</th>
+							</tr>
+							<tr><td><code>zmlMatEquals(v1, v2)</code></td><td><code>v1 == v2</code></td></tr>
+							<tr><td><code>zmlMatGT(v1, v2)</code></td><td><code>v1 > v2</code></td></tr>
+							<tr><td><code>zmlMatGTE(v1, v2)</code></td><td><code>v1 >= v2</code></td></tr>
+							<tr><td><code>zmlMatLT(v1, v2)</code></td><td><code>v1 &lt; v2</code></td></tr>
+							<tr><td><code>zmlMatLTE(v1, v2)</code></td><td><code>v1 &lt;= v2</code></td></tr>
+						</table>
+					</section>
 				</section>
 			</section>
 			<br>
