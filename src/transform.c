@@ -34,6 +34,7 @@ zmlMatrix zmlTranslated(zmlMatrix mat, zmlVector vec) {
 void zmlTranslate(zmlMatrix *mat, zmlVector vec) {
 	if (mat->cols != 4 || mat->rows != 4) {
 		printf("zetaml: zmlTranslate(): given matrix is not 4x4, no transformation performed!\n");
+		return;
 	}
 	if (vec.size != 3) {
 		printf("zetaml: zmlTranslate(): given vector is not of size 3, no transformation performed!\n");
