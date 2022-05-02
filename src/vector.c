@@ -158,8 +158,7 @@ __zml_floating zmlMagnitude(zmlVector vec) {
 		r += (__zml_floating) pow(vec.elements[i], 2); // add square of each element to r
 	}
 
-	// result is made absolute just in case though that should never matter anyway
-	return (__zml_floating) abs(sqrt(r));
+	return (__zml_floating) sqrt(r);
 }
 
 /**
@@ -179,11 +178,7 @@ zmlVector zmlNormalised(zmlVector vec) {
  * @param vec the specified vector.
  */
 void zmlNormalise(zmlVector *vec) {
-	float m = zmlMagnitude(*vec);
-
-	for (unsigned int i = 0; i < vec->size; i++) {
-		vec->elements[i] /= m;
-	}
+	zmlDivideVecScalar(vec, zmlMagnitude(*vec));
 }
 
 #define _zml_assertSameSize(x, y, rval) {\
