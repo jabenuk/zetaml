@@ -3,11 +3,13 @@
 This repository has been **archived**. I don't plan on maintaining it any longer, but I have made it public for the sake of documenting the work I have
 done on it in the past.
 
+---
+
 # zetaml: a lightweight general-purpose maths library.
 
 ## Documentation
 
-You can see the official documentation [here](https://jabenuk.github.io/zetaml/). The home page of that documentation is essentially mirrored in this README file.
+You can see the official documentation [here](https://kosude.github.io/zetaml/). The home page of that documentation is essentially mirrored in this README file.
 
 ## Summary
 
