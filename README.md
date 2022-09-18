@@ -1,9 +1,16 @@
+## Note from 18/09/2022
+
+This repository has been **archived**. I don't plan on maintaining it any longer, but I have made it public for the sake of documenting the work I have
+done on it in the past.
+
 # zetaml: a lightweight general-purpose maths library.
 
 ## Documentation
+
 You can see the official documentation [here](https://jabenuk.github.io/zetaml/). The home page of that documentation is essentially mirrored in this README file.
 
 ## Summary
+
 Zetaml is suitable for any C/C++ project that requires more complex mathematical functions and objects such as matrices, vectors, etc. Keep in mind that I am developing this project mainly for my own use, so the features here are really just the features I need for my other project(s). This is a personal project, not a professional one. But I still try to put effort into its documentation. 
 
 ## Usage
